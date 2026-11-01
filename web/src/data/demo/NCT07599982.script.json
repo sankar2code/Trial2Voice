@@ -1,0 +1,1866 @@
+{
+  "criteria": [
+    {
+      "id": "IN-01",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I1"
+      ],
+      "sourceText": "Clinical diagnosis, based on investigator assessment, of T1D or T2D of at least 6 months duration at time of informed consent",
+      "mode": "ask",
+      "question": {
+        "en": "Were you first told you have type 1 or type 2 diabetes at least 6 months ago?",
+        "es": "¿Le dijeron por primera vez que tiene diabetes tipo 1 o tipo 2 hace al menos 6 meses?"
+      },
+      "questionProxy": {
+        "en": "Was the person you're calling for first told they have type 1 or type 2 diabetes at least 6 months ago?",
+        "es": "¿A la persona por la que llama le dijeron por primera vez que tiene diabetes tipo 1 o tipo 2 hace al menos 6 meses?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Have you had type 1 or type 2 diabetes for 6 months or longer?"
+        ],
+        "es": [
+          "¿Ha tenido diabetes tipo 1 o tipo 2 por 6 meses o más?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you have not had type 1 or type 2 diabetes for at least 6 months — is that right?",
+        "es": "Entonces, usted no ha tenido diabetes tipo 1 o tipo 2 por al menos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has not had type 1 or type 2 diabetes for at least 6 months — is that right?",
+        "es": "Entonces, la persona por la que llama no ha tenido diabetes tipo 1 o tipo 2 por al menos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator confirms the clinical diagnosis of T1D or T2D and that it is at least 6 months old at informed consent."
+    },
+    {
+      "id": "IN-02",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I2"
+      ],
+      "sourceText": "Insulin therapy as follows:",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Verify the insulin regimen by diabetes type. T1D: MDI for ≥3 months before screening, willing to use time-of-day or meal-size mealtime dosing, and 1 basal injection per day for ≥1 week. T2D, one of: (i) no insulin in the prior 3 months but needs a basal-only start per investigator; (ii) basal-only for ≥3 months with 1 basal injection per day for ≥1 week; (iii) MDI for ≥3 months, willing to use time-of-day or meal-size mealtime dosing, and 1 basal injection per day for ≥1 week."
+    },
+    {
+      "id": "IN-03",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I4"
+      ],
+      "sourceText": "HbA1c >7.5% and <12% as measured by point-of-care device or local lab at the time of screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Measure HbA1c at screening (point-of-care device or local lab). It must be above 7.5% and below 12%."
+    },
+    {
+      "id": "IN-04",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I5"
+      ],
+      "sourceText": "Using only injected insulin types that are specified in the MODI Instructions for Use materials",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check that every insulin the participant injects is on the list in the MODI Instructions for Use."
+    },
+    {
+      "id": "IN-05",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I6"
+      ],
+      "sourceText": "Stable doses of non-insulin glucose lowering medications over the 4 weeks preceding screening as determined by Investigator and no changes anticipated for the duration of the study",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator confirms non-insulin glucose-lowering medication doses were stable for the 4 weeks before screening and no changes are expected during the study (safety-driven reductions or stops allowed)."
+    },
+    {
+      "id": "IN-06",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I7"
+      ],
+      "sourceText": "Stable doses of weight loss medications that may have a meaningful effect on glycemic control over the 4 weeks preceding screening and no changes anticipated for the duration of the study",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review weight-loss medications that may affect glycemic control (e.g., GLP-1 based drugs): doses stable for the 4 weeks before screening and no changes expected during the study (safety-driven reductions or stops allowed)."
+    },
+    {
+      "id": "IN-07",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I8"
+      ],
+      "sourceText": "Weight between 80 - 440 lb at the time of screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"About how much do you weigh, in pounds?\" Weigh the participant at screening; must be 80–440 lb. (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "IN-08",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I9"
+      ],
+      "sourceText": "Willing to use FSL 3 System according to manufacturer instructions",
+      "mode": "ask",
+      "question": {
+        "en": "Are you willing to wear the study's glucose sensor, called the FSL 3 System, and use it the way the maker says?",
+        "es": "¿Acepta usar el sensor de glucosa del estudio, llamado sistema FSL 3, como lo indica el fabricante?"
+      },
+      "questionProxy": {
+        "en": "Is the person you're calling for willing to wear the study's glucose sensor, called the FSL 3 System, and use it the way the maker says?",
+        "es": "¿La persona por la que llama acepta usar el sensor de glucosa del estudio, llamado sistema FSL 3, como lo indica el fabricante?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you are not willing to use the study's FSL 3 sensor — is that right?",
+        "es": "Entonces, usted no acepta usar el sensor FSL 3 del estudio, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for is not willing to use the study's FSL 3 sensor — is that right?",
+        "es": "Entonces, la persona por la que llama no acepta usar el sensor FSL 3 del estudio, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-09",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I9"
+      ],
+      "sourceText": "avoid use of any other personal CGM system during the period of study participation",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"During the study, are you willing to not use any other glucose sensor of your own?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "IN-10",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I10"
+      ],
+      "sourceText": "Willing to document insulin delivery, meals, and daily activities in the Diary mobile app",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Are you willing to log your insulin doses, meals, and daily activities in a diary app on your phone?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "IN-11",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I11"
+      ],
+      "sourceText": "Has a smartphone compatible with study requirements",
+      "mode": "ask",
+      "question": {
+        "en": "Do you have a smartphone, like an iPhone or an Android phone?",
+        "es": "¿Tiene un teléfono inteligente, como un iPhone o un teléfono Android?"
+      },
+      "questionProxy": {
+        "en": "Does the person you're calling for have a smartphone, like an iPhone or an Android phone?",
+        "es": "¿La persona por la que llama tiene un teléfono inteligente, como un iPhone o un teléfono Android?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you don't have a smartphone — is that right?",
+        "es": "Entonces, usted no tiene un teléfono inteligente, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for doesn't have a smartphone — is that right?",
+        "es": "Entonces, la persona por la que llama no tiene un teléfono inteligente, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-12",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I11"
+      ],
+      "sourceText": "either iOS version 17.0 or higher, or Android version 10.0 or higher",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check the participant's phone: iOS 17.0 or higher, or Android 10.0 or higher, and able to run the study apps."
+    },
+    {
+      "id": "IN-13",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I11"
+      ],
+      "sourceText": "willing to install required apps and use them as instructed during the period of study participation",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Are you willing to put the study apps on your phone and use them as told during the study?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "IN-14",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I11"
+      ],
+      "sourceText": "with internet connectivity for a data upload at least once per day",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Can your phone connect to the internet at least once a day, by Wi-Fi or a data plan?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "IN-15",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I12"
+      ],
+      "sourceText": "Is deemed an appropriate candidate for automatic insulin guidance therapy per Investigator assessment",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator decides whether the participant is an appropriate candidate for automatic insulin guidance therapy."
+    },
+    {
+      "id": "IN-16",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I13"
+      ],
+      "sourceText": "Investigator has confidence that the participant has the cognitive ability necessary for study participation, can successfully operate all study devices, and can adhere to the protocol",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator confirms cognitive ability, ability to operate all study devices, and ability to follow the protocol."
+    },
+    {
+      "id": "IN-17",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I14"
+      ],
+      "sourceText": "Has a sufficient understanding of written/spoken English for legally effective informed consent and successful use of the study mobile apps",
+      "mode": "ask",
+      "question": {
+        "en": "Is your English good enough to understand the study forms and use phone apps in English?",
+        "es": "¿Su inglés es lo bastante bueno para entender los formularios del estudio y usar aplicaciones en inglés?"
+      },
+      "questionProxy": {
+        "en": "Is the English of the person you're calling for good enough to understand the study forms and use phone apps in English?",
+        "es": "¿El inglés de la persona por la que llama es lo bastante bueno para entender los formularios del estudio y usar aplicaciones en inglés?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So your English is not good enough for the study forms and apps in English — is that right?",
+        "es": "Entonces, su inglés no es lo bastante bueno para los formularios y las aplicaciones del estudio en inglés, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the English of the person you're calling for is not good enough for the study forms and apps in English — is that right?",
+        "es": "Entonces, el inglés de la persona por la que llama no es lo bastante bueno para los formularios y las aplicaciones del estudio en inglés, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Site confirms English is sufficient for legally effective informed consent and use of the study apps."
+    },
+    {
+      "id": "IN-18",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I15"
+      ],
+      "sourceText": "If woman of childbearing potential, is willing and able to have pregnancy testing",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"If you could become pregnant, are you willing and able to have pregnancy tests during the study?\" Site confirms childbearing potential and willingness to have pregnancy testing. (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-01",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E1"
+      ],
+      "sourceText": "Use of an insulin pump within 3 months prior to informed consent",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 3 months, have you used an insulin pump?",
+        "es": "En los últimos 3 meses, ¿ha usado una bomba de insulina?"
+      },
+      "questionProxy": {
+        "en": "In the last 3 months, has the person you're calling for used an insulin pump?",
+        "es": "En los últimos 3 meses, ¿la persona por la que llama ha usado una bomba de insulina?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have used an insulin pump in the last 3 months — is that right?",
+        "es": "Entonces, usted ha usado una bomba de insulina en los últimos 3 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has used an insulin pump in the last 3 months — is that right?",
+        "es": "Entonces, la persona por la que llama ha usado una bomba de insulina en los últimos 3 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-02",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E2"
+      ],
+      "sourceText": "Use of mixed insulin or intermediate insulin (NPH) within the past 3 months prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 3 months, have you used mixed insulin or NPH insulin?",
+        "es": "En los últimos 3 meses, ¿ha usado insulina mezclada o insulina NPH?"
+      },
+      "questionProxy": {
+        "en": "In the last 3 months, has the person you're calling for used mixed insulin or NPH insulin?",
+        "es": "En los últimos 3 meses, ¿la persona por la que llama ha usado insulina mezclada o insulina NPH?"
+      },
+      "altPhrasings": {
+        "en": [
+          "In the last 3 months, have you used insulin that comes already mixed, or the cloudy insulin called NPH?"
+        ],
+        "es": [
+          "En los últimos 3 meses, ¿ha usado insulina que viene ya mezclada, o la insulina turbia llamada NPH?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have used mixed insulin or NPH insulin in the last 3 months — is that right?",
+        "es": "Entonces, usted ha usado insulina mezclada o insulina NPH en los últimos 3 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has used mixed insulin or NPH insulin in the last 3 months — is that right?",
+        "es": "Entonces, la persona por la que llama ha usado insulina mezclada o insulina NPH en los últimos 3 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-03",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "Taking more than 128 units of daily basal insulin",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"In the last 7 days, have you taken more than 128 units of long-acting insulin in one day?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-04",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "more than 79 units in a single bolus insulin injection in the 7 days prior to screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"In the last 7 days, have you taken more than 79 units of mealtime insulin in a single shot?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-05",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E4"
+      ],
+      "sourceText": "Any medical condition which in the opinion of the investigator, would put the participant at an unacceptable safety risk, such as untreated malignancy, unstable cardiac disease, unstable or end-stage renal disease, and/or eating disorders (i.e. anorexia/bulimia)",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator reviews medical history for conditions posing unacceptable safety risk (e.g., untreated cancer, unstable heart disease, unstable or end-stage kidney disease, anorexia/bulimia)."
+    },
+    {
+      "id": "EX-06",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "Current or known history of coronary artery disease that is not stable with medical management, including unstable angina",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review records for coronary artery disease not stable with medical management, including unstable angina."
+    },
+    {
+      "id": "EX-07",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "angina that prevents moderate exercise despite medical management",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you have chest pain from your heart, called angina, that keeps you from moderate exercise even with medicine?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-08",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "a history of myocardial infarction, percutaneous coronary intervention, or coronary artery bypass grafting within the 12 months prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 12 months, have you had a heart attack?",
+        "es": "En los últimos 12 meses, ¿ha tenido un ataque al corazón?"
+      },
+      "questionProxy": {
+        "en": "In the last 12 months, has the person you're calling for had a heart attack?",
+        "es": "En los últimos 12 meses, ¿la persona por la que llama ha tenido un ataque al corazón?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had a heart attack in the last 12 months — is that right?",
+        "es": "Entonces, usted ha tenido un ataque al corazón en los últimos 12 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has had a heart attack in the last 12 months — is that right?",
+        "es": "Entonces, la persona por la que llama ha tenido un ataque al corazón en los últimos 12 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-09",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "a history of myocardial infarction, percutaneous coronary intervention, or coronary artery bypass grafting within the 12 months prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 12 months, have you had a procedure to open a blocked heart artery, like a stent?",
+        "es": "En los últimos 12 meses, ¿le hicieron un procedimiento para abrir una arteria del corazón tapada, como un stent?"
+      },
+      "questionProxy": {
+        "en": "In the last 12 months, has the person you're calling for had a procedure to open a blocked heart artery, like a stent?",
+        "es": "En los últimos 12 meses, ¿a la persona por la que llama le hicieron un procedimiento para abrir una arteria del corazón tapada, como un stent?"
+      },
+      "altPhrasings": {
+        "en": [
+          "In the past year, did a doctor put a stent in your heart or open a heart artery with a balloon?"
+        ],
+        "es": [
+          "En el último año, ¿un médico le puso un stent en el corazón o le abrió una arteria del corazón con un globo?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had a procedure to open a heart artery in the last 12 months — is that right?",
+        "es": "Entonces, a usted le hicieron un procedimiento para abrir una arteria del corazón en los últimos 12 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has had a procedure to open a heart artery in the last 12 months — is that right?",
+        "es": "Entonces, a la persona por la que llama le hicieron un procedimiento para abrir una arteria del corazón en los últimos 12 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-10",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "a history of myocardial infarction, percutaneous coronary intervention, or coronary artery bypass grafting within the 12 months prior to screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"In the last 12 months, have you had heart bypass surgery?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-11",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E6"
+      ],
+      "sourceText": "Any planned surgery during the study which could be considered major in the judgment of the investigator",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask about any surgery planned during the study; investigator decides whether it is major."
+    },
+    {
+      "id": "EX-12",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E7"
+      ],
+      "sourceText": "History of more than 1 severe hypoglycemic event in the 6 months prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you had more than one severe low blood sugar, where you needed someone else's help?",
+        "es": "En los últimos 6 meses, ¿ha tenido más de un episodio de azúcar muy baja en la sangre en el que necesitó ayuda de otra persona?"
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for had more than one severe low blood sugar, where they needed someone else's help?",
+        "es": "En los últimos 6 meses, ¿la persona por la que llama ha tenido más de un episodio de azúcar muy baja en la sangre en el que necesitó ayuda de otra persona?"
+      },
+      "altPhrasings": {
+        "en": [
+          "In the past 6 months, has your blood sugar dropped so low that someone had to help you, more than once?"
+        ],
+        "es": [
+          "En los últimos 6 meses, ¿se le ha bajado tanto el azúcar que otra persona tuvo que ayudarle, más de una vez?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had more than one severe low blood sugar in the last 6 months — is that right?",
+        "es": "Entonces, usted ha tenido más de un episodio de azúcar muy baja en la sangre en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has had more than one severe low blood sugar in the last 6 months — is that right?",
+        "es": "Entonces, la persona por la que llama ha tenido más de un episodio de azúcar muy baja en la sangre en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Site confirms the number of severe hypoglycemic events using the protocol definition."
+    },
+    {
+      "id": "EX-13",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E8"
+      ],
+      "sourceText": "History of diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic syndrome (HHS) in the 6 months prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you had diabetic ketoacidosis, also called DKA?",
+        "es": "En los últimos 6 meses, ¿ha tenido cetoacidosis diabética?"
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for had diabetic ketoacidosis, also called DKA?",
+        "es": "En los últimos 6 meses, ¿la persona por la que llama ha tenido cetoacidosis diabética?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had DKA in the last 6 months — is that right?",
+        "es": "Entonces, usted ha tenido cetoacidosis diabética en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has had DKA in the last 6 months — is that right?",
+        "es": "Entonces, la persona por la que llama ha tenido cetoacidosis diabética en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-14",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E8"
+      ],
+      "sourceText": "History of diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic syndrome (HHS) in the 6 months prior to screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"In the last 6 months, have you had hyperosmolar hyperglycemic syndrome, also called HHS?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-15",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E9"
+      ],
+      "sourceText": "Blood disorder or dyscrasia within 3 months prior to screening which in the investigator's opinion could interfere with determination of HbA1c",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator reviews for any blood disorder or dyscrasia in the 3 months before screening that could interfere with HbA1c measurement."
+    },
+    {
+      "id": "EX-16",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E10"
+      ],
+      "sourceText": "Any condition or intervention that may affect red blood cell turnover, in the 3 months prior to the study and during the study, such as blood transfusion or donation",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"In the last 3 months, have you had a blood transfusion?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-17",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E10"
+      ],
+      "sourceText": "Any condition or intervention that may affect red blood cell turnover, in the 3 months prior to the study and during the study, such as blood transfusion or donation",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"In the last 3 months, have you donated blood?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-18",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E10"
+      ],
+      "sourceText": "Any condition or intervention that may affect red blood cell turnover, in the 3 months prior to the study and during the study, such as blood transfusion or donation",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check for any other condition or intervention affecting red blood cell turnover in the prior 3 months, and confirm no transfusion or blood donation is planned during the study."
+    },
+    {
+      "id": "EX-19",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E11"
+      ],
+      "sourceText": "Has taken oral or injectable corticosteroids within 2 weeks prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 2 weeks, have you taken steroid pills or had a steroid shot? Creams and inhalers don't count.",
+        "es": "En las últimas 2 semanas, ¿ha tomado pastillas de esteroides o le pusieron una inyección de esteroides? Las cremas y los inhaladores no cuentan."
+      },
+      "questionProxy": {
+        "en": "In the last 2 weeks, has the person you're calling for taken steroid pills or had a steroid shot? Creams and inhalers don't count.",
+        "es": "En las últimas 2 semanas, ¿la persona por la que llama ha tomado pastillas de esteroides o le pusieron una inyección de esteroides? Las cremas y los inhaladores no cuentan."
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have taken steroid pills or had a steroid shot in the last 2 weeks — is that right?",
+        "es": "Entonces, usted ha tomado pastillas de esteroides o le pusieron una inyección de esteroides en las últimas 2 semanas, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has taken steroid pills or had a steroid shot in the last 2 weeks — is that right?",
+        "es": "Entonces, la persona por la que llama ha tomado pastillas de esteroides o le pusieron una inyección de esteroides en las últimas 2 semanas, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-20",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E11"
+      ],
+      "sourceText": "plans to take oral or injectable corticosteroids during the study",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you plan to take steroid pills or get a steroid shot during the study?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-21",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E12"
+      ],
+      "sourceText": "Unable to follow clinical protocol for the duration of the study or is otherwise deemed unacceptable to participate in the study per the Investigator's clinical judgment",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator judges whether the participant can follow the protocol for the whole study and is otherwise acceptable to take part."
+    },
+    {
+      "id": "EX-22",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "Is an employee of DreaMed Diabetes, is a study Investigator or a member of the Investigator's study team",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you work for DreaMed Diabetes, or are you part of this study's team?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-23",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "is immediate family member (spouse, biological or legal guardian, child, sibling, parent) of any of the aforementioned",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Does your spouse, parent, guardian, child, brother, or sister work for DreaMed Diabetes or on this study's team?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-24",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E14"
+      ],
+      "sourceText": "Participation in another clinical study using an investigational drug or device in the 90 days prior to screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 90 days, have you been in another research study that tested an experimental drug or device?",
+        "es": "En los últimos 90 días, ¿ha participado en otro estudio de investigación que probaba un medicamento o aparato experimental?"
+      },
+      "questionProxy": {
+        "en": "In the last 90 days, has the person you're calling for been in another research study that tested an experimental drug or device?",
+        "es": "En los últimos 90 días, ¿la persona por la que llama ha participado en otro estudio de investigación que probaba un medicamento o aparato experimental?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have been in a study of an experimental drug or device in the last 90 days — is that right?",
+        "es": "Entonces, usted ha participado en un estudio de un medicamento o aparato experimental en los últimos 90 días, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has been in a study of an experimental drug or device in the last 90 days — is that right?",
+        "es": "Entonces, la persona por la que llama ha participado en un estudio de un medicamento o aparato experimental en los últimos 90 días, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-25",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E14"
+      ],
+      "sourceText": "intends to participate during the study period",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you plan to join another research study of an experimental drug or device while in this study?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-26",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E15"
+      ],
+      "sourceText": "Pregnant or lactating",
+      "mode": "ask",
+      "question": {
+        "en": "Are you currently pregnant or breastfeeding?",
+        "es": "¿Está embarazada o dando pecho en este momento?"
+      },
+      "questionProxy": {
+        "en": "Is the person you're calling for currently pregnant or breastfeeding?",
+        "es": "¿La persona por la que llama está embarazada o dando pecho en este momento?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you are pregnant or breastfeeding right now — is that right?",
+        "es": "Entonces, usted está embarazada o dando pecho en este momento, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for is pregnant or breastfeeding right now — is that right?",
+        "es": "Entonces, la persona por la que llama está embarazada o dando pecho en este momento, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-27",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E15"
+      ],
+      "sourceText": "planning to become pregnant during the study",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Are you planning to become pregnant during the study?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-28",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E15"
+      ],
+      "sourceText": "is a woman of childbearing potential and not on acceptable form of birth control (acceptable includes abstinence, condoms, oral/injectable contraceptives, IUD, or implant)",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"If you could become pregnant, do you use, or are you willing to start, one of these: not having sex, condoms, birth control pills or shots, an IUD, or an implant?\" Site confirms childbearing potential (menstruation started, not surgically sterile, not >12 months postmenopausal) and an acceptable birth control method at screening. (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-29",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E16"
+      ],
+      "sourceText": "Unable to tolerate adhesive tape",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Does your skin react so badly to medical tape that you can't wear it?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-30",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E16"
+      ],
+      "sourceText": "has any unresolved skin condition that could impact the CGM sensor",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Examine skin at sensor sites for any unresolved skin condition that could affect CGM sensor wear."
+    }
+  ],
+  "groups": [],
+  "glossary": [
+    {
+      "term": "glucose sensor",
+      "plainDefinition": {
+        "en": "A small device worn on the skin that checks your blood sugar all day and night. It is also called a CGM.",
+        "es": "Un aparato pequeño que se pone en la piel y mide el azúcar en la sangre de día y de noche. También se llama monitor continuo de glucosa."
+      }
+    },
+    {
+      "term": "FSL 3 System",
+      "plainDefinition": {
+        "en": "The glucose sensor system used in this study.",
+        "es": "El sistema de sensor de glucosa que se usa en este estudio."
+      }
+    },
+    {
+      "term": "insulin pump",
+      "plainDefinition": {
+        "en": "A small machine worn on the body that gives insulin through a thin tube or patch, instead of shots.",
+        "es": "Una máquina pequeña que se lleva en el cuerpo y da insulina por un tubito o un parche, en lugar de inyecciones."
+      }
+    },
+    {
+      "term": "mixed insulin",
+      "plainDefinition": {
+        "en": "Insulin that comes already mixed, with two kinds in one pen or bottle, such as 70/30.",
+        "es": "Insulina que viene ya mezclada, con dos tipos en una pluma o frasco, como la 70/30."
+      }
+    },
+    {
+      "term": "NPH insulin",
+      "plainDefinition": {
+        "en": "A cloudy, medium-acting insulin. It is also called intermediate insulin.",
+        "es": "Una insulina turbia de acción intermedia."
+      }
+    },
+    {
+      "term": "stent",
+      "plainDefinition": {
+        "en": "A tiny tube a doctor puts inside a blocked heart artery to keep it open.",
+        "es": "Un tubito que el médico pone dentro de una arteria del corazón tapada para mantenerla abierta."
+      }
+    },
+    {
+      "term": "severe low blood sugar",
+      "plainDefinition": {
+        "en": "Blood sugar that drops so low you need another person's help to treat it.",
+        "es": "Azúcar en la sangre tan baja que necesita la ayuda de otra persona para tratarla."
+      }
+    },
+    {
+      "term": "diabetic ketoacidosis (DKA)",
+      "plainDefinition": {
+        "en": "A dangerous problem when the body has too little insulin and makes acids called ketones. It usually needs hospital care.",
+        "es": "Un problema grave cuando el cuerpo tiene muy poca insulina y produce ácidos llamados cetonas. Por lo general requiere atención en el hospital."
+      }
+    },
+    {
+      "term": "steroid",
+      "plainDefinition": {
+        "en": "A strong medicine that lowers swelling, such as prednisone. In this study it means pills or shots, not creams or inhalers.",
+        "es": "Una medicina fuerte que baja la inflamación, como la prednisona. Aquí se refiere a pastillas o inyecciones, no a cremas ni inhaladores."
+      }
+    },
+    {
+      "term": "experimental drug or device",
+      "plainDefinition": {
+        "en": "A medicine or device that is still being tested and is not yet approved for general use.",
+        "es": "Un medicamento o aparato que todavía se está probando y aún no está aprobado para uso general."
+      }
+    }
+  ],
+  "derivedBulletIds": {
+    "age": [
+      "I3"
+    ],
+    "sex": []
+  }
+}

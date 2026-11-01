@@ -1,0 +1,346 @@
+{
+ "protocolSection": {
+  "identificationModule": {
+   "nctId": "NCT07219771",
+   "orgStudyIdInfo": {
+    "id": "KOA-25-03"
+   },
+   "organization": {
+    "fullName": "Doron Therapeutics Inc.",
+    "class": "INDUSTRY"
+   },
+   "briefTitle": "A Study to Evaluate the Efficacy and Safey of PTP-001 (MOTYS™) in Knee Osteoarthritis Patients (MOTION-P)",
+   "officialTitle": "A Multicenter, Prospective, Randomized, Double-Blind, Placebo-Controlled, Parallel-Arm, Phase 3 Study of Intra-Articular Administration of an Allogeneic Human Placental Tissue Particulate (PTP-001) for the Treatment of Knee Osteoarthritis",
+   "acronym": "MOTION-P"
+  },
+  "statusModule": {
+   "statusVerifiedDate": "2026-10",
+   "overallStatus": "RECRUITING",
+   "startDateStruct": {
+    "date": "2025-10-14",
+    "type": "ACTUAL"
+   },
+   "primaryCompletionDateStruct": {
+    "date": "2027-06-30",
+    "type": "ESTIMATED"
+   },
+   "completionDateStruct": {
+    "date": "2027-12-30",
+    "type": "ESTIMATED"
+   },
+   "studyFirstSubmitDate": "2025-10-21",
+   "studyFirstSubmitQcDate": "2025-10-21",
+   "studyFirstPostDateStruct": {
+    "date": "2025-10-22",
+    "type": "ACTUAL"
+   },
+   "lastUpdateSubmitDate": "2026-10-13",
+   "lastUpdatePostDateStruct": {
+    "date": "2026-10-16",
+    "type": "ACTUAL"
+   }
+  },
+  "conditionsModule": {
+   "conditions": [
+    "Knee Osteoarthritis"
+   ],
+   "keywords": [
+    "Osteoarthritis",
+    "Knee Osteoarthritis"
+   ]
+  },
+  "eligibilityModule": {
+   "eligibilityCriteria": "Inclusion Criteria:\n\n1. Males and females aged 40 to 80 years.\n2. Presenting with symptomatic knee OA with Kellgren-Lawrence (KL) radiographic classification of 2 or 3 (mild or moderate), as assessed by the central reading facility.\n3. Primary source of pain throughout the body is due to OA in the target knee.\n4. Target knee pain ≥ 20 and ≤ 40 out of 50 on the WOMAC® numerical rating scale (NRS) 3.1 pain questionnaire (sum of 5 questions) at Screening and Baseline.\n5. Onset of symptomatic OA of the target knee was at least 6 months prior to Screening.\n6. Insufficient, failed response, or intolerance to analgesics and / or non-steroidal anti-inflammatory drugs (NSAIDs), as reported by the participant.\n7. If female, must meet all of the following:\n\n   1. Not breast feeding,\n   2. Not planning to become pregnant during the study,\n   3. Must abstain from ova / egg donation during the study,\n   4. If of childbearing potential, must have a negative pregnancy test result within 72 hours prior to receiving the intra-articular injection, and must commit to the use of a highly effective form of birth control for at least 90 days after the injection.\n8. Willing to use acetaminophen as the only oral rescue (as needed) analgesic medication for target knee pain during the study.\n9. Willing to abstain from taking any illicit or unauthorized medications for treatment of OA or any other concurrent condition during the study.\n10. Willing to comply with study visit schedule and post-injection restrictions.\n11. Written informed consent is obtained from the participant.\n\nExclusion Criteria:\n\n1. Participant is non-ambulatory (unable to walk \\> 50 feet / 15 meters without assistance).\n2. Clinically severe obesity as defined by the National Institutes of Health (body mass index ≥ 40 kg/m2) at Screening and / or Baseline.\n3. Contralateral (non-target) knee pain is \\>10 out of 50 on the WOMAC® NRS 3.1 pain questionnaire (sum of 5 questions) at Screening or at Baseline.\n4. At Baseline, difference between the first Baseline and second Baseline WOMAC pain scores is \\> 3 for the target knee.\n5. Contralateral (non-target) knee pain is experienced for ≥ 14 days in the month.\n6. Use of any analgesia during the washout period (5 half-lives) at Screening or Baseline.\n7. Participation in any investigational study within 30 days (or 5 half-lives, whichever is longer) prior to Screening or planning to participate in any other investigational drug or device clinical trials within 30 days of study completion.\n8. Currently requires use of a lower extremity prosthesis and / or a structural knee brace (ie, a knee brace that contains hardware).\n9. Clinically significant effusion of the target knee at either the Screening or Baseline visits as determined by physical examination (eg, ballotable patella or positive bulge sign).\n\n   Note: Participants presenting with effusion may be enrolled in the study after undergoing knee aspiration to remove excess fluid in the target joint.\n10. Clinical and/or radiographic evidence (other than that performed for Kellgren-Lawrence eligibility assessment) of severe (excessive) malalignment of the tibial-femoral axis, as assessed by the Investigator.\n11. Presence of active infection in the target knee or systemic infection requiring treatment within the 3 months prior to Screening.\n12. Clinical diagnosis of inflammatory arthritis (eg, rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis, systemic lupus erythematosus, etc.) established by clinical history, examination, or serology.\n13. Participant is receiving, has received, or plans to receive any of the following therapies:\n\n    1. Prior administration of hyaluronic acid, extended-release corticosteroid (eg, Zilretta®), platelet-rich plasma (PRP), or stem cell therapies by intra-articular injection(s) of the target knee within 6 months prior to Screening.\n    2. Prior administration of corticosteroid by intra-articular injection of the target knee within 3 months prior to Screening or into any other joint within 30 days prior to Screening.\n    3. Current chronic systemic use of corticosteroids in doses exceeding the equivalent of 10 mg prednisolone daily.\n    4. Treatment with any investigational therapy (drug, device, or biologic) within 3 months prior to Screening or is planned for the duration of the study.\n    5. Treatment with immunosuppressive medication (not including mild transient immunosuppressants such as corticosteroids) or chemotherapy within the past 5 years.\n14. Chronic use of narcotics or alcohol abuse within the past 6 months prior to Screening.\n15. Surgery to either knee (including arthroscopy) within 6 months prior to receiving the intra-articular injection or planned surgery of either knee within 6 months after the injection.\n16. Participant previously underwent arthroplasty (ie, full or partial knee replacement) of the target knee.\n17. Presence of joint instability or complaints of locking, intermittent limitation in range of motion, or loose body sensation, suggestive of internal derangement of the knee (either extremity).\n18. Diagnosis of lower extremity gout or pseudo-gout in the past 6 months prior to Screening.\n19. History of, or current manifestation of, osteonecrosis of either knee.\n20. Significant acute (within the past 3 months) injury to the target knee.\n21. History of receiving a solid organ or hematologic transplant.\n22. History of malignancy, radiotherapy, or chemotherapy for malignancy within the past 5 years, except for basal or squamous cell carcinoma of the skin.\n23. History of prior radiation therapy of the target knee.\n24. History of autoimmune disease affecting the musculoskeletal system.\n25. Known (documented) history of acquired immune deficiency syndrome or human immunodeficiency virus (HIV).\n26. Any condition causing pain in or around the target knee (eg, radiating pain or pain in another region of the ipsilateral lower extremity) that may interfere with assessment(s) of the target knee.\n27. Other chronic pain anywhere in the body that requires the chronic use of analgesic medications, such as knee OA of the contralateral (non-target) knee, fibromyalgia, tendonitis, plantar fasciitis, neuropathic pain, lower back pain, etc.\n28. Known presence of any concurrent medical condition (eg, hematologic renal, hepatic, cardiac, or coagulation abnormalities) or other factors that in the Investigator's judgment would interfere with the required study assessments and study participation.\n29. Participant is involved in litigation (eg, worker's compensation) for a medical condition or injury at any anatomical site.",
+   "healthyVolunteers": false,
+   "sex": "ALL",
+   "minimumAge": "40 Years",
+   "maximumAge": "80 Years",
+   "stdAges": [
+    "ADULT",
+    "OLDER_ADULT"
+   ]
+  },
+  "contactsLocationsModule": {
+   "locations": [
+    {
+     "facility": "Central Research Associates, LLC dba Flourish Research",
+     "status": "RECRUITING",
+     "city": "Birmingham",
+     "state": "Alabama",
+     "zip": "35205",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "659-209-5575"
+      }
+     ],
+     "geoPoint": {
+      "lat": 33.52066,
+      "lon": -86.80249
+     }
+    },
+    {
+     "facility": "Tucson Orthopaedic Institute",
+     "status": "RECRUITING",
+     "city": "Tucson",
+     "state": "Arizona",
+     "zip": "85712",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "520-404-0276"
+      }
+     ],
+     "geoPoint": {
+      "lat": 32.22174,
+      "lon": -110.92648
+     }
+    },
+    {
+     "facility": "Horizon Clinical Research",
+     "status": "RECRUITING",
+     "city": "La Mesa",
+     "state": "California",
+     "zip": "91942",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "619-456-6012"
+      }
+     ],
+     "geoPoint": {
+      "lat": 32.76783,
+      "lon": -117.02308
+     }
+    },
+    {
+     "facility": "Focus Clinical Research",
+     "status": "RECRUITING",
+     "city": "West Hills",
+     "state": "California",
+     "zip": "91307",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "818-253-8966"
+      }
+     ],
+     "geoPoint": {
+      "lat": 34.19731,
+      "lon": -118.64398
+     }
+    },
+    {
+     "facility": "Conquest Research, LLC",
+     "status": "RECRUITING",
+     "city": "Winter Park",
+     "state": "Florida",
+     "zip": "32789",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "407-916-0060"
+      }
+     ],
+     "geoPoint": {
+      "lat": 28.6,
+      "lon": -81.33924
+     }
+    },
+    {
+     "facility": "Chicago Clinical Research Institute, Inc.",
+     "status": "RECRUITING",
+     "city": "Chicago",
+     "state": "Illinois",
+     "zip": "60607",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "312-791-3241"
+      }
+     ],
+     "geoPoint": {
+      "lat": 41.85003,
+      "lon": -87.65005
+     }
+    },
+    {
+     "facility": "Lehigh Center for Clinical Research",
+     "status": "WITHDRAWN",
+     "city": "Allentown",
+     "state": "Pennsylvania",
+     "zip": "18104",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 40.60843,
+      "lon": -75.49018
+     },
+     "contacts": []
+    },
+    {
+     "facility": "Coastal Carolina Research Center, LLD",
+     "status": "RECRUITING",
+     "city": "North Charleston",
+     "state": "South Carolina",
+     "zip": "29405",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "312-878-9477"
+      }
+     ],
+     "geoPoint": {
+      "lat": 32.85462,
+      "lon": -79.97481
+     }
+    },
+    {
+     "facility": "JBR Clinical Research, LLC",
+     "status": "RECRUITING",
+     "city": "Salt Lake City",
+     "state": "Utah",
+     "zip": "84107",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "801-261-2000"
+      }
+     ],
+     "geoPoint": {
+      "lat": 40.76078,
+      "lon": -111.89105
+     }
+    },
+    {
+     "facility": "Emeritus Research Sydney",
+     "status": "TERMINATED",
+     "city": "Botany",
+     "state": "New South Wales",
+     "zip": "2019",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -33.94599,
+      "lon": 151.19591
+     },
+     "contacts": []
+    },
+    {
+     "facility": "Genesis Research Services",
+     "status": "RECRUITING",
+     "city": "Broadmeadow",
+     "state": "New South Wales",
+     "zip": "2292",
+     "country": "Australia",
+     "contacts": [
+      {
+       "phone": "61 2 4985 1860"
+      }
+     ],
+     "geoPoint": {
+      "lat": -32.92371,
+      "lon": 151.72849
+     }
+    },
+    {
+     "facility": "Royal North Shore Hospital",
+     "status": "ACTIVE_NOT_RECRUITING",
+     "city": "St Leonards",
+     "state": "New South Wales",
+     "zip": "2065",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -33.82344,
+      "lon": 151.19836
+     },
+     "contacts": []
+    },
+    {
+     "facility": "University of the Sunshine Coast Clinical Trials, Birtinya",
+     "status": "ACTIVE_NOT_RECRUITING",
+     "city": "Birtinya",
+     "state": "Queensland",
+     "zip": "4575",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -26.74322,
+      "lon": 153.11913
+     },
+     "contacts": []
+    },
+    {
+     "facility": "University of the Sunshine Coast Clinical Trials, Maroochydore",
+     "status": "RECRUITING",
+     "city": "Maroochydore",
+     "state": "Queensland",
+     "zip": "4566",
+     "country": "Australia",
+     "contacts": [
+      {
+       "phone": "61 7 5456 3797"
+      }
+     ],
+     "geoPoint": {
+      "lat": -26.66008,
+      "lon": 153.09953
+     }
+    },
+    {
+     "facility": "University of the Sunshine Coast Clinical Trials, Morayfield",
+     "status": "ACTIVE_NOT_RECRUITING",
+     "city": "Morayfield",
+     "state": "Queensland",
+     "zip": "4506",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -27.10876,
+      "lon": 152.94907
+     },
+     "contacts": []
+    },
+    {
+     "facility": "Momentum Clinical Research Taringa",
+     "status": "ACTIVE_NOT_RECRUITING",
+     "city": "Taringa",
+     "state": "Queensland",
+     "zip": "4068",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -27.49061,
+      "lon": 152.97861
+     },
+     "contacts": []
+    },
+    {
+     "facility": "Momentum Clinical Research Wellers Hill",
+     "status": "TERMINATED",
+     "city": "Tarragindi",
+     "state": "Queensland",
+     "zip": "4121",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -27.52713,
+      "lon": 153.04556
+     },
+     "contacts": []
+    },
+    {
+     "facility": "Momentum Clinical Research Sunshine",
+     "status": "RECRUITING",
+     "city": "St Albans",
+     "state": "Victoria",
+     "zip": "3021",
+     "country": "Australia",
+     "contacts": [
+      {
+       "phone": "61 3 9125 0799"
+      }
+     ],
+     "geoPoint": {
+      "lat": -37.74496,
+      "lon": 144.80049
+     }
+    }
+   ]
+  }
+ }
+}

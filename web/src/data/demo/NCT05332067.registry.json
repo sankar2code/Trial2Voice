@@ -1,0 +1,92 @@
+{
+ "protocolSection": {
+  "identificationModule": {
+   "nctId": "NCT05332067",
+   "orgStudyIdInfo": {
+    "id": "CAUSE-CNH-01"
+   },
+   "secondaryIdInfos": [
+    {
+     "id": "1U01AI160090-01",
+     "type": "NIH",
+     "link": "https://reporter.nih.gov/quickSearch/1U01AI160090-01"
+    }
+   ],
+   "organization": {
+    "fullName": "Children's National Research Institute",
+    "class": "OTHER"
+   },
+   "briefTitle": "Omalizumab Before Onset of Exacerbations",
+   "officialTitle": "Omalizumab Before Onset of Exacerbations",
+   "acronym": "OBOE"
+  },
+  "statusModule": {
+   "statusVerifiedDate": "2025-07",
+   "overallStatus": "RECRUITING",
+   "expandedAccessInfo": {
+    "hasExpandedAccess": false
+   },
+   "startDateStruct": {
+    "date": "2022-05-01",
+    "type": "ACTUAL"
+   },
+   "primaryCompletionDateStruct": {
+    "date": "2028-01-01",
+    "type": "ESTIMATED"
+   },
+   "completionDateStruct": {
+    "date": "2028-03-01",
+    "type": "ESTIMATED"
+   },
+   "studyFirstSubmitDate": "2022-03-30",
+   "studyFirstSubmitQcDate": "2022-04-14",
+   "studyFirstPostDateStruct": {
+    "date": "2022-04-18",
+    "type": "ACTUAL"
+   },
+   "lastUpdateSubmitDate": "2025-07-10",
+   "lastUpdatePostDateStruct": {
+    "date": "2025-07-14",
+    "type": "ACTUAL"
+   }
+  },
+  "conditionsModule": {
+   "conditions": [
+    "Asthma in Children",
+    "Atopy",
+    "Viral Upper Respiratory Infection"
+   ]
+  },
+  "eligibilityModule": {
+   "eligibilityCriteria": "Inclusion Criteria at Study Entry:\n\nParticipants must meet the following:\n\n1. Parent or guardian must be able to understand and provide informed consent in English and participants ≥7 must be able to provide assent\n2. 6-17 years, inclusive at time of screening\n3. Physician-diagnosed persistent asthma\n4. ≥1 exacerbation of asthma requiring systemic corticosteroids in the 6-month period before the planned start of the participant's upcoming school year or ≥2 exacerbations of asthma requiring systemic corticosteroids in the 12-month period before the planned start of the participant's upcoming school year\n5. Sensitization to ≥1 perennial aeroallergen\n6. Total serum IgE and weight appropriate for omalizumab dosing\n7. Insurance that covers standard of care medications\n8. Primary family residence (home where child sleeps a majority of nights) in a Metropolitan Statistical Area where ≥10% of families have income below poverty line and/or publicly funded health insurance\n9. At least one of the following criteria:\n\n   1. peripheral eosinophilia \\>300µL\n   2. total serum IgE \\>300kU/L\n   3. sensitization to ≥3 perennial aeroallergens\n10. Females of childbearing potential must have a negative pregnancy test upon study entry\n11. Females with reproductive potential must agree to use FDA approved methods of birth control for the duration of the study\n\nAdditional Inclusion Criteria (these must be met prior to randomization at the fall season sick visit A (SVa) during the 90-day outcome period):\n\nIn order to be eligible for randomization at the SVa visit, participants must also meet all of the following criteria:\n\n1. Reporting onset of URI symptoms within 72 hours prior to SVa, confirmed by the study physician\n2. Report no use of nasal corticosteroids or nasal vaccinations within 14 days prior to SVa\n3. Have a negative rapid nasal swab antigen test for SARS-CoV-2\n4. Be more than 14 days from the onset of any previous asthma exacerbation requiring systemic steroids\n5. Have no current lower respiratory symptoms that, in the opinion of the study physician, require systemic corticosteroid treatment\n6. Complete collection of nasal absorption sample within 72 hours of onset URI \\[defined by onset of (or substantial worsening of) rhinorrhea, nasal congestion or sneezing (single or multiple symptoms)\\] as determined by the study physician's assessment at the SVa visit\n\nExclusion Criteria:\n\n1. Inability or unwillingness of a participant's parent or guardian to give written informed consent or comply with study protocol or inability or unwillingness of a participant ≥7 to provide assent\n2. Contraindication to receipt of omalizumab\n3. Presence of a second chronic medical condition (including but not limited to serious cardiorespiratory disorders, cancer, sickle cell disease, uncontrolled seizure disorder, auto-immune disorders, or type 1 diabetes)\n4. Pregnancy or active lactation\n5. History of latex allergy\n6. Treatment with omalizumab or other monoclonal antibody, or aeroallergen immunotherapy in the prior six months\n7. Plan for home schooling during the 90-day outcome period\n8. History of life-threatening asthma defined by requirement for intubation or cardiorespiratory arrest\n9. Inability of primary caregiver and child to speak English\n10. In the opinion of the investigator, participant will not be able to wean from nasal steroids or to avoid nasal vaccinations during the 90-day fall outcome period\n11. Past or current medical problems or findings from physical examination or laboratory testing that are not listed above, which, in the opinion of the investigator, may pose additional risks from participation in the study, may interfere with the participant's ability to comply with study requirements or that may impact the quality or interpretation of the data obtained from the study",
+   "healthyVolunteers": false,
+   "sex": "ALL",
+   "minimumAge": "6 Years",
+   "maximumAge": "17 Years",
+   "stdAges": [
+    "CHILD"
+   ]
+  },
+  "contactsLocationsModule": {
+   "locations": [
+    {
+     "facility": "Children's National Hospital",
+     "status": "RECRUITING",
+     "city": "Washington D.C.",
+     "state": "District of Columbia",
+     "zip": "20010",
+     "country": "United States",
+     "contacts": [
+      {
+       "phone": "202-476-5000"
+      }
+     ],
+     "geoPoint": {
+      "lat": 38.89511,
+      "lon": -77.03637
+     }
+    }
+   ]
+  }
+ }
+}

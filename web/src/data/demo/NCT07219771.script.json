@@ -1,0 +1,2004 @@
+{
+  "criteria": [
+    {
+      "id": "IN-01",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I2"
+      ],
+      "sourceText": "Presenting with symptomatic knee OA",
+      "mode": "ask",
+      "question": {
+        "en": "Do you have arthritis pain in one or both of your knees?",
+        "es": "¿Tiene dolor de artritis en una o en ambas rodillas?"
+      },
+      "questionProxy": {
+        "en": "Does the person you're calling for have arthritis pain in one or both of their knees?",
+        "es": "¿La persona por la que llama tiene dolor de artritis en una o en ambas rodillas?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Do you have wear-and-tear arthritis that makes your knee hurt?"
+        ],
+        "es": [
+          "¿Tiene artritis por desgaste que le causa dolor en la rodilla?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you do not have arthritis pain in either knee — is that right?",
+        "es": "Entonces, usted no tiene dolor de artritis en ninguna de las rodillas, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for does not have arthritis pain in either knee — is that right?",
+        "es": "Entonces, la persona por la que llama no tiene dolor de artritis en ninguna de las rodillas, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-02",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I2"
+      ],
+      "sourceText": "Kellgren-Lawrence (KL) radiographic classification of 2 or 3 (mild or moderate), as assessed by the central reading facility",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm knee X-ray shows Kellgren-Lawrence grade 2 or 3 in the target knee, as read by the central reading facility."
+    },
+    {
+      "id": "IN-03",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I3"
+      ],
+      "sourceText": "Primary source of pain throughout the body is due to OA in the target knee.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm that OA in the target knee is the participant's main source of pain anywhere in the body."
+    },
+    {
+      "id": "IN-04",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I4"
+      ],
+      "sourceText": "Target knee pain ≥ 20 and ≤ 40 out of 50 on the WOMAC® numerical rating scale (NRS) 3.1 pain questionnaire (sum of 5 questions) at Screening and Baseline.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Give the WOMAC NRS 3.1 pain questionnaire at Screening and Baseline; target knee score must be 20 to 40 out of 50 at both visits."
+    },
+    {
+      "id": "IN-05",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I5"
+      ],
+      "sourceText": "Onset of symptomatic OA of the target knee was at least 6 months prior to Screening.",
+      "mode": "ask",
+      "question": {
+        "en": "Did your knee arthritis pain start at least 6 months ago?",
+        "es": "¿Su dolor de artritis en la rodilla empezó hace 6 meses o más?"
+      },
+      "questionProxy": {
+        "en": "Did the knee arthritis pain of the person you're calling for start at least 6 months ago?",
+        "es": "¿El dolor de artritis en la rodilla de la persona por la que llama empezó hace 6 meses o más?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Have you had this knee arthritis pain for 6 months or longer?"
+        ],
+        "es": [
+          "¿Ha tenido este dolor de artritis en la rodilla por 6 meses o más?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So your knee arthritis pain started less than 6 months ago — is that right?",
+        "es": "Entonces, su dolor de artritis en la rodilla empezó hace menos de 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the knee arthritis pain of the person you're calling for started less than 6 months ago — is that right?",
+        "es": "Entonces, el dolor de artritis en la rodilla de la persona por la que llama empezó hace menos de 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-06",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I6"
+      ],
+      "sourceText": "Insufficient, failed response, or intolerance to analgesics and / or non-steroidal anti-inflammatory drugs (NSAIDs), as reported by the participant.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask the participant whether pain relievers and/or NSAIDs gave too little relief, did not work, or were not tolerated."
+    },
+    {
+      "id": "IN-07",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I7"
+      ],
+      "sourceText": "Not breast feeding",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Are you breastfeeding right now?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "IN-08",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I7"
+      ],
+      "sourceText": "If female, must meet all of the following:",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "For female participants: confirm not planning pregnancy during the study, will not donate eggs during the study, and, if of childbearing potential, negative pregnancy test within 72 hours before the injection and commitment to highly effective birth control for at least 90 days after it."
+    },
+    {
+      "id": "IN-09",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I8"
+      ],
+      "sourceText": "Willing to use acetaminophen as the only oral rescue (as needed) analgesic medication for target knee pain during the study.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the participant agrees to use only acetaminophen as as-needed oral pain medicine for the target knee during the study."
+    },
+    {
+      "id": "IN-10",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I9"
+      ],
+      "sourceText": "Willing to abstain from taking any illicit or unauthorized medications for treatment of OA or any other concurrent condition during the study.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the participant agrees not to take illicit or unauthorized medications for OA or any other condition during the study."
+    },
+    {
+      "id": "IN-11",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I10"
+      ],
+      "sourceText": "Willing to comply with study visit schedule and post-injection restrictions.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review the visit schedule and post-injection restrictions and confirm the participant agrees to follow them."
+    },
+    {
+      "id": "IN-12",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I11"
+      ],
+      "sourceText": "Written informed consent is obtained from the participant.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Obtain written informed consent at the site."
+    },
+    {
+      "id": "EX-01",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E1"
+      ],
+      "sourceText": "Participant is non-ambulatory (unable to walk > 50 feet / 15 meters without assistance).",
+      "mode": "ask",
+      "question": {
+        "en": "Can you walk more than 50 feet, about 15 meters, without help?",
+        "es": "¿Puede caminar más de 15 metros, unos 50 pies, sin ayuda?"
+      },
+      "questionProxy": {
+        "en": "Can the person you're calling for walk more than 50 feet, about 15 meters, without help?",
+        "es": "¿La persona por la que llama puede caminar más de 15 metros, unos 50 pies, sin ayuda?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Without help, can you walk more than 50 feet — about the length of three cars?"
+        ],
+        "es": [
+          "Sin ayuda, ¿puede caminar más de 15 metros, más o menos el largo de tres carros?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you cannot walk more than 50 feet without help — is that right?",
+        "es": "Entonces, usted no puede caminar más de 15 metros sin ayuda, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for cannot walk more than 50 feet without help — is that right?",
+        "es": "Entonces, la persona por la que llama no puede caminar más de 15 metros sin ayuda, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-02",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E2"
+      ],
+      "sourceText": "Clinically severe obesity as defined by the National Institutes of Health (body mass index ≥ 40 kg/m2) at Screening and / or Baseline.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Measure height and weight at Screening and Baseline; exclude if BMI is 40 kg/m2 or higher at either visit."
+    },
+    {
+      "id": "EX-03",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "Contralateral (non-target) knee pain is >10 out of 50 on the WOMAC® NRS 3.1 pain questionnaire (sum of 5 questions) at Screening or at Baseline.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Score the non-target knee on the WOMAC NRS 3.1 pain questionnaire; exclude if above 10 out of 50 at Screening or Baseline."
+    },
+    {
+      "id": "EX-04",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E4"
+      ],
+      "sourceText": "At Baseline, difference between the first Baseline and second Baseline WOMAC pain scores is > 3 for the target knee.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Compare the two Baseline WOMAC pain scores for the target knee; exclude if they differ by more than 3."
+    },
+    {
+      "id": "EX-05",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "Contralateral (non-target) knee pain is experienced for ≥ 14 days in the month.",
+      "mode": "ask",
+      "question": {
+        "en": "Does your other knee, the one that bothers you less, hurt on 14 or more days a month?",
+        "es": "¿Su otra rodilla, la que le molesta menos, le duele 14 días o más al mes?"
+      },
+      "questionProxy": {
+        "en": "Does the other knee of the person you're calling for, the one that bothers them less, hurt on 14 or more days a month?",
+        "es": "A la persona por la que llama, ¿la otra rodilla, la que le molesta menos, le duele 14 días o más al mes?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Thinking about your other knee: in a typical month, does it hurt on 14 days or more?"
+        ],
+        "es": [
+          "Pensando en su otra rodilla: en un mes normal, ¿le duele 14 días o más?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So your other knee hurts on 14 or more days a month — is that right?",
+        "es": "Entonces, su otra rodilla le duele 14 días o más al mes, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the other knee of the person you're calling for hurts on 14 or more days a month — is that right?",
+        "es": "Entonces, a la persona por la que llama la otra rodilla le duele 14 días o más al mes, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-06",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E6"
+      ],
+      "sourceText": "Use of any analgesia during the washout period (5 half-lives) at Screening or Baseline.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review pain medication use and confirm no analgesics were taken during the washout period (5 half-lives) before Screening and Baseline."
+    },
+    {
+      "id": "EX-07",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E7"
+      ],
+      "sourceText": "Participation in any investigational study within 30 days (or 5 half-lives, whichever is longer) prior to Screening or planning to participate in any other investigational drug or device clinical trials within 30 days of study completion.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm no investigational study participation within 30 days (or 5 half-lives, whichever is longer) before Screening, and no plans to join another drug or device trial within 30 days after study completion."
+    },
+    {
+      "id": "EX-08",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E8"
+      ],
+      "sourceText": "Currently requires use of a lower extremity prosthesis and / or a structural knee brace (ie, a knee brace that contains hardware).",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the participant does not currently need a leg prosthesis or a structural knee brace with hardware."
+    },
+    {
+      "id": "EX-09",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E9"
+      ],
+      "sourceText": "Clinically significant effusion of the target knee at either the Screening or Baseline visits as determined by physical examination (eg, ballotable patella or positive bulge sign).",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Examine the target knee for clinically significant effusion at Screening and Baseline. Per the registry note, a participant with effusion may still enroll after knee aspiration."
+    },
+    {
+      "id": "EX-10",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E10"
+      ],
+      "sourceText": "Clinical and/or radiographic evidence (other than that performed for Kellgren-Lawrence eligibility assessment) of severe (excessive) malalignment of the tibial-femoral axis, as assessed by the Investigator.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator to assess for severe tibial-femoral malalignment by exam and/or imaging."
+    },
+    {
+      "id": "EX-11",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E11"
+      ],
+      "sourceText": "Presence of active infection in the target knee or systemic infection requiring treatment within the 3 months prior to Screening.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm no active infection in the target knee and no systemic infection needing treatment in the 3 months before Screening."
+    },
+    {
+      "id": "EX-12",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E12"
+      ],
+      "sourceText": "rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis, systemic lupus erythematosus",
+      "mode": "ask",
+      "question": {
+        "en": "Has a doctor ever told you that you have rheumatoid arthritis, psoriatic arthritis, lupus, or ankylosing spondylitis?",
+        "es": "¿Algún médico le ha dicho alguna vez que tiene artritis reumatoide, artritis psoriásica, lupus o espondilitis anquilosante?"
+      },
+      "questionProxy": {
+        "en": "Has a doctor ever told the person you're calling for that they have rheumatoid arthritis, psoriatic arthritis, lupus, or ankylosing spondylitis?",
+        "es": "¿Algún médico le ha dicho alguna vez a la persona por la que llama que tiene artritis reumatoide, artritis psoriásica, lupus o espondilitis anquilosante?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So a doctor has told you that you have one of those conditions — is that right?",
+        "es": "Entonces, un médico le ha dicho que tiene una de esas enfermedades, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So a doctor has told the person you're calling for that they have one of those conditions — is that right?",
+        "es": "Entonces, un médico le ha dicho a la persona por la que llama que tiene una de esas enfermedades, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-13",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E12"
+      ],
+      "sourceText": "Clinical diagnosis of inflammatory arthritis",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review history, exam, or serology for any other inflammatory arthritis not named in the phone question."
+    },
+    {
+      "id": "EX-14",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "Prior administration of hyaluronic acid, extended-release corticosteroid (eg, Zilretta®), platelet-rich plasma (PRP), or stem cell therapies by intra-articular injection(s) of the target knee within 6 months prior to Screening.",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you had a gel shot, a PRP shot, or a stem cell shot in the knee that bothers you most?",
+        "es": "En los últimos 6 meses, ¿le han puesto una inyección de gel, de PRP o de células madre en la rodilla que más le molesta?"
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for had a gel shot, a PRP shot, or a stem cell shot in the knee that bothers them most?",
+        "es": "En los últimos 6 meses, ¿a la persona por la que llama le han puesto una inyección de gel, de PRP o de células madre en la rodilla que más le molesta?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you had one of those shots in that knee in the last 6 months — is that right?",
+        "es": "Entonces, le pusieron una de esas inyecciones en esa rodilla en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for had one of those shots in that knee in the last 6 months — is that right?",
+        "es": "Entonces, a la persona por la que llama le pusieron una de esas inyecciones en esa rodilla en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-15",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "extended-release corticosteroid (eg, Zilretta®)",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check records for an extended-release corticosteroid injection (eg, Zilretta) in the target knee within 6 months before Screening; callers may not know the product type."
+    },
+    {
+      "id": "EX-16",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "Prior administration of corticosteroid by intra-articular injection of the target knee within 3 months prior to Screening",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 3 months, have you had a steroid shot, also called a cortisone shot, in the knee that bothers you most?",
+        "es": "En los últimos 3 meses, ¿le han puesto una inyección de esteroides, también llamada inyección de cortisona, en la rodilla que más le molesta?"
+      },
+      "questionProxy": {
+        "en": "In the last 3 months, has the person you're calling for had a steroid shot, also called a cortisone shot, in the knee that bothers them most?",
+        "es": "En los últimos 3 meses, ¿a la persona por la que llama le han puesto una inyección de esteroides, también llamada inyección de cortisona, en la rodilla que más le molesta?"
+      },
+      "altPhrasings": {
+        "en": [
+          "In the last 3 months, did a doctor inject cortisone into the knee that bothers you most?"
+        ],
+        "es": [
+          "En los últimos 3 meses, ¿un médico le inyectó cortisona en la rodilla que más le molesta?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you had a steroid shot in that knee in the last 3 months — is that right?",
+        "es": "Entonces, le pusieron una inyección de esteroides en esa rodilla en los últimos 3 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for had a steroid shot in that knee in the last 3 months — is that right?",
+        "es": "Entonces, a la persona por la que llama le pusieron una inyección de esteroides en esa rodilla en los últimos 3 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-17",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "or into any other joint within 30 days prior to Screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm no corticosteroid injection into any other joint within 30 days before Screening."
+    },
+    {
+      "id": "EX-18",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "Current chronic systemic use of corticosteroids in doses exceeding the equivalent of 10 mg prednisolone daily.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review medications; exclude current chronic systemic corticosteroid use above 10 mg prednisolone-equivalent per day."
+    },
+    {
+      "id": "EX-19",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "Treatment with any investigational therapy (drug, device, or biologic) within 3 months prior to Screening or is planned for the duration of the study.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm no investigational drug, device, or biologic within 3 months before Screening and none planned during the study."
+    },
+    {
+      "id": "EX-20",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E13"
+      ],
+      "sourceText": "Treatment with immunosuppressive medication (not including mild transient immunosuppressants such as corticosteroids) or chemotherapy within the past 5 years.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review medication history for immunosuppressive medication (other than mild transient ones such as corticosteroids) or chemotherapy in the past 5 years."
+    },
+    {
+      "id": "EX-21",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E14"
+      ],
+      "sourceText": "Chronic use of narcotics",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you been taking opioid pain medicine, like oxycodone or hydrocodone, on a regular, ongoing basis?",
+        "es": "En los últimos 6 meses, ¿ha estado tomando medicina opioide para el dolor, como oxicodona o hidrocodona, de forma regular y continua?"
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for been taking opioid pain medicine, like oxycodone or hydrocodone, on a regular, ongoing basis?",
+        "es": "En los últimos 6 meses, ¿la persona por la que llama ha estado tomando medicina opioide para el dolor, como oxicodona o hidrocodona, de forma regular y continua?"
+      },
+      "altPhrasings": {
+        "en": [
+          "In the last 6 months, have you used strong prescription pain pills, like oxycodone or hydrocodone, most of the time?"
+        ],
+        "es": [
+          "En los últimos 6 meses, ¿ha tomado pastillas fuertes para el dolor con receta, como oxicodona o hidrocodona, casi todo el tiempo?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have been taking opioid pain medicine regularly in the last 6 months — is that right?",
+        "es": "Entonces, usted ha estado tomando medicina opioide para el dolor de forma regular en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has been taking opioid pain medicine regularly in the last 6 months — is that right?",
+        "es": "Entonces, la persona por la que llama ha estado tomando medicina opioide para el dolor de forma regular en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-22",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E14"
+      ],
+      "sourceText": "alcohol abuse within the past 6 months prior to Screening",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Assess for alcohol abuse in the 6 months before Screening."
+    },
+    {
+      "id": "EX-23",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E15"
+      ],
+      "sourceText": "Surgery to either knee (including arthroscopy) within 6 months prior to receiving the intra-articular injection",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you had surgery on either knee? This includes a knee scope.",
+        "es": "En los últimos 6 meses, ¿le han hecho una cirugía en cualquiera de las dos rodillas? Esto incluye una artroscopia."
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for had surgery on either knee? This includes a knee scope.",
+        "es": "En los últimos 6 meses, ¿a la persona por la que llama le han hecho una cirugía en cualquiera de las dos rodillas? Esto incluye una artroscopia."
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you had knee surgery in the last 6 months — is that right?",
+        "es": "Entonces, le hicieron una cirugía de rodilla en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for had knee surgery in the last 6 months — is that right?",
+        "es": "Entonces, a la persona por la que llama le hicieron una cirugía de rodilla en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-24",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E15"
+      ],
+      "sourceText": "planned surgery of either knee within 6 months after the injection",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you have surgery planned on either knee in the next 6 months?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-25",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E16"
+      ],
+      "sourceText": "Participant previously underwent arthroplasty (ie, full or partial knee replacement) of the target knee.",
+      "mode": "ask",
+      "question": {
+        "en": "Has the knee that bothers you most been replaced, fully or partly?",
+        "es": "¿Le han reemplazado, total o parcialmente, la rodilla que más le molesta?"
+      },
+      "questionProxy": {
+        "en": "Has the knee that bothers the person you're calling for most been replaced, fully or partly?",
+        "es": "A la persona por la que llama, ¿le han reemplazado, total o parcialmente, la rodilla que más le molesta?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Have you had knee replacement surgery on the knee that bothers you most?"
+        ],
+        "es": [
+          "¿Le han hecho una cirugía de reemplazo en la rodilla que más le molesta?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So the knee that bothers you most has been fully or partly replaced — is that right?",
+        "es": "Entonces, le reemplazaron total o parcialmente la rodilla que más le molesta, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the knee that bothers them most has been fully or partly replaced — is that right?",
+        "es": "Entonces, a la persona por la que llama le reemplazaron total o parcialmente la rodilla que más le molesta, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-26",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E17"
+      ],
+      "sourceText": "Presence of joint instability or complaints of locking, intermittent limitation in range of motion, or loose body sensation, suggestive of internal derangement of the knee (either extremity).",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Assess either knee for instability, locking, intermittent loss of motion, or loose-body sensation suggesting internal derangement."
+    },
+    {
+      "id": "EX-27",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E18"
+      ],
+      "sourceText": "Diagnosis of lower extremity gout or pseudo-gout in the past 6 months prior to Screening.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check history for a diagnosis of gout or pseudo-gout in the legs or feet in the 6 months before Screening."
+    },
+    {
+      "id": "EX-28",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E19"
+      ],
+      "sourceText": "History of, or current manifestation of, osteonecrosis of either knee.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check history and imaging for past or current osteonecrosis of either knee."
+    },
+    {
+      "id": "EX-29",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E20"
+      ],
+      "sourceText": "Significant acute (within the past 3 months) injury to the target knee.",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 3 months, have you had a serious injury to the knee that bothers you most?",
+        "es": "En los últimos 3 meses, ¿ha tenido una lesión grave en la rodilla que más le molesta?"
+      },
+      "questionProxy": {
+        "en": "In the last 3 months, has the person you're calling for had a serious injury to the knee that bothers them most?",
+        "es": "En los últimos 3 meses, ¿la persona por la que llama ha tenido una lesión grave en la rodilla que más le molesta?"
+      },
+      "altPhrasings": {
+        "en": [
+          "In the last 3 months, did you badly hurt the knee that bothers you most, like in a fall?"
+        ],
+        "es": [
+          "En los últimos 3 meses, ¿se lastimó gravemente la rodilla que más le molesta, por ejemplo en una caída?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you had a serious injury to that knee in the last 3 months — is that right?",
+        "es": "Entonces, tuvo una lesión grave en esa rodilla en los últimos 3 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for had a serious injury to that knee in the last 3 months — is that right?",
+        "es": "Entonces, la persona por la que llama tuvo una lesión grave en esa rodilla en los últimos 3 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-30",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E21"
+      ],
+      "sourceText": "History of receiving a solid organ or hematologic transplant.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Have you ever had an organ transplant, or a bone marrow or stem cell transplant?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-31",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E22"
+      ],
+      "sourceText": "History of malignancy, radiotherapy, or chemotherapy for malignancy within the past 5 years, except for basal or squamous cell carcinoma of the skin.",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 5 years, have you had cancer, or radiation or chemotherapy for cancer? Do not count basal cell or squamous cell skin cancer.",
+        "es": "En los últimos 5 años, ¿ha tenido cáncer, o ha recibido radiación o quimioterapia para el cáncer? No cuente el cáncer de piel de células basales o de células escamosas."
+      },
+      "questionProxy": {
+        "en": "In the last 5 years, has the person you're calling for had cancer, or radiation or chemotherapy for cancer? Do not count basal cell or squamous cell skin cancer.",
+        "es": "En los últimos 5 años, ¿la persona por la que llama ha tenido cáncer, o ha recibido radiación o quimioterapia para el cáncer? No cuente el cáncer de piel de células basales o de células escamosas."
+      },
+      "altPhrasings": {
+        "en": [
+          "Not counting the common skin cancers called basal cell or squamous cell, have you had cancer or cancer treatment in the last 5 years?"
+        ],
+        "es": [
+          "Sin contar los cánceres de piel comunes llamados de células basales o de células escamosas, ¿ha tenido cáncer o tratamiento para el cáncer en los últimos 5 años?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had cancer or cancer treatment in the last 5 years, not counting those skin cancers — is that right?",
+        "es": "Entonces, usted ha tenido cáncer o tratamiento para el cáncer en los últimos 5 años, sin contar esos cánceres de piel, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has had cancer or cancer treatment in the last 5 years, not counting those skin cancers — is that right?",
+        "es": "Entonces, la persona por la que llama ha tenido cáncer o tratamiento para el cáncer en los últimos 5 años, sin contar esos cánceres de piel, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-32",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E23"
+      ],
+      "sourceText": "History of prior radiation therapy of the target knee.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check history for any prior radiation therapy to the target knee."
+    },
+    {
+      "id": "EX-33",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E24"
+      ],
+      "sourceText": "History of autoimmune disease affecting the musculoskeletal system.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review history for any autoimmune disease affecting the muscles, bones, or joints."
+    },
+    {
+      "id": "EX-34",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E25"
+      ],
+      "sourceText": "Known (documented) history of acquired immune deficiency syndrome or human immunodeficiency virus (HIV).",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Check medical records for documented HIV or AIDS."
+    },
+    {
+      "id": "EX-35",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E26"
+      ],
+      "sourceText": "Any condition causing pain in or around the target knee (eg, radiating pain or pain in another region of the ipsilateral lower extremity) that may interfere with assessment(s) of the target knee.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Assess for any other condition causing pain in or around the target knee (eg, radiating pain, pain elsewhere in the same leg) that could interfere with knee assessments."
+    },
+    {
+      "id": "EX-36",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E27"
+      ],
+      "sourceText": "Other chronic pain anywhere in the body that requires the chronic use of analgesic medications",
+      "mode": "ask",
+      "question": {
+        "en": "Besides the knee that bothers you most, do you have other long-lasting pain, like back pain or fibromyalgia, that you take pain medicine for regularly?",
+        "es": "Aparte de la rodilla que más le molesta, ¿tiene otro dolor de larga duración, como dolor de espalda o fibromialgia, por el que toma medicina para el dolor de forma regular?"
+      },
+      "questionProxy": {
+        "en": "Besides the knee that bothers them most, does the person you're calling for have other long-lasting pain, like back pain or fibromyalgia, that they take pain medicine for regularly?",
+        "es": "Aparte de la rodilla que más le molesta, ¿la persona por la que llama tiene otro dolor de larga duración, como dolor de espalda o fibromialgia, por el que toma medicina para el dolor de forma regular?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Do you take pain medicine regularly for pain somewhere else in your body, like your back, feet, or other knee?"
+        ],
+        "es": [
+          "¿Toma medicina para el dolor de forma regular por un dolor en otra parte del cuerpo, como la espalda, los pies o la otra rodilla?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have other long-lasting pain that you take pain medicine for regularly — is that right?",
+        "es": "Entonces, usted tiene otro dolor de larga duración por el que toma medicina para el dolor de forma regular, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So the person you're calling for has other long-lasting pain that they take pain medicine for regularly — is that right?",
+        "es": "Entonces, la persona por la que llama tiene otro dolor de larga duración por el que toma medicina para el dolor de forma regular, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-37",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E28"
+      ],
+      "sourceText": "Known presence of any concurrent medical condition (eg, hematologic renal, hepatic, cardiac, or coagulation abnormalities) or other factors that in the Investigator's judgment would interfere with the required study assessments and study participation.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator to review medical history (eg, blood, kidney, liver, heart, or clotting problems) for anything that would interfere with study assessments or participation."
+    },
+    {
+      "id": "EX-38",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E29"
+      ],
+      "sourceText": "Participant is involved in litigation (eg, worker's compensation) for a medical condition or injury at any anatomical site.",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the participant is not involved in litigation, including workers' compensation, for any medical condition or injury."
+    }
+  ],
+  "groups": [],
+  "glossary": [
+    {
+      "term": "arthritis (osteoarthritis)",
+      "plainDefinition": {
+        "en": "Wear and tear of a joint that causes pain and stiffness.",
+        "es": "Desgaste de una articulación que causa dolor y rigidez."
+      }
+    },
+    {
+      "term": "knee replacement",
+      "plainDefinition": {
+        "en": "Surgery that replaces all or part of the knee joint with metal or plastic parts.",
+        "es": "Cirugía que cambia toda o parte de la rodilla por piezas de metal o plástico."
+      }
+    },
+    {
+      "term": "knee scope (arthroscopy)",
+      "plainDefinition": {
+        "en": "Surgery where a doctor uses a small camera through tiny cuts to look at or fix the knee.",
+        "es": "Cirugía en la que el médico usa una cámara pequeña por cortes muy pequeños para ver o arreglar la rodilla."
+      }
+    },
+    {
+      "term": "steroid shot (cortisone shot)",
+      "plainDefinition": {
+        "en": "A shot of medicine into the joint to calm swelling and pain.",
+        "es": "Una inyección de medicina en la articulación para bajar la hinchazón y el dolor."
+      }
+    },
+    {
+      "term": "gel shot",
+      "plainDefinition": {
+        "en": "A shot of a thick fluid (hyaluronic acid) into the knee to help it move more smoothly.",
+        "es": "Una inyección de un líquido espeso (ácido hialurónico) en la rodilla para que se mueva con más facilidad."
+      }
+    },
+    {
+      "term": "PRP shot",
+      "plainDefinition": {
+        "en": "A shot made from your own blood (platelet-rich plasma) put into the joint.",
+        "es": "Una inyección hecha con su propia sangre (plasma rico en plaquetas) que se pone en la articulación."
+      }
+    },
+    {
+      "term": "stem cell shot",
+      "plainDefinition": {
+        "en": "A shot of cells, often taken from your own body, put into the joint.",
+        "es": "Una inyección de células, a menudo tomadas de su propio cuerpo, que se pone en la articulación."
+      }
+    },
+    {
+      "term": "opioid",
+      "plainDefinition": {
+        "en": "A strong prescription pain medicine, like oxycodone or hydrocodone.",
+        "es": "Una medicina fuerte para el dolor que necesita receta, como la oxicodona o la hidrocodona."
+      }
+    },
+    {
+      "term": "rheumatoid arthritis",
+      "plainDefinition": {
+        "en": "A disease where the body's defense system attacks the joints, causing pain and swelling.",
+        "es": "Una enfermedad en la que las defensas del cuerpo atacan las articulaciones y causan dolor e hinchazón."
+      }
+    },
+    {
+      "term": "psoriatic arthritis",
+      "plainDefinition": {
+        "en": "Joint pain and swelling that happens in some people with the skin disease psoriasis.",
+        "es": "Dolor e hinchazón de las articulaciones en algunas personas con psoriasis, una enfermedad de la piel."
+      }
+    },
+    {
+      "term": "lupus",
+      "plainDefinition": {
+        "en": "A disease where the body's defense system attacks its own joints, skin, or organs.",
+        "es": "Una enfermedad en la que las defensas del cuerpo atacan sus propias articulaciones, piel u órganos."
+      }
+    },
+    {
+      "term": "ankylosing spondylitis",
+      "plainDefinition": {
+        "en": "A long-lasting swelling of the joints in the spine that causes back pain and stiffness.",
+        "es": "Una inflamación de larga duración en las articulaciones de la columna que causa dolor y rigidez en la espalda."
+      }
+    },
+    {
+      "term": "chemotherapy",
+      "plainDefinition": {
+        "en": "Strong medicine used to treat cancer.",
+        "es": "Medicina fuerte que se usa para tratar el cáncer."
+      }
+    },
+    {
+      "term": "radiation",
+      "plainDefinition": {
+        "en": "Treatment for cancer that uses strong energy beams.",
+        "es": "Tratamiento para el cáncer que usa rayos de energía fuerte."
+      }
+    },
+    {
+      "term": "basal cell or squamous cell skin cancer",
+      "plainDefinition": {
+        "en": "Common skin cancers that usually grow slowly and are removed by a skin doctor.",
+        "es": "Cánceres de piel comunes que suelen crecer despacio y que el dermatólogo quita."
+      }
+    },
+    {
+      "term": "fibromyalgia",
+      "plainDefinition": {
+        "en": "A long-lasting condition that causes pain in muscles all over the body.",
+        "es": "Una condición de larga duración que causa dolor en los músculos de todo el cuerpo."
+      }
+    }
+  ],
+  "derivedBulletIds": {
+    "age": [
+      "I1"
+    ],
+    "sex": []
+  }
+}

@@ -1,0 +1,1643 @@
+{
+  "criteria": [
+    {
+      "id": "IN-01",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I1"
+      ],
+      "sourceText": "Parent or guardian must be able to understand and provide informed consent in English",
+      "mode": "ask",
+      "question": {
+        "en": "Would your parent or guardian be able to understand and sign the study forms in English?",
+        "es": "¿Su padre, madre o tutor podría entender y firmar los formularios del estudio en inglés?"
+      },
+      "questionProxy": {
+        "en": "Would the parent or guardian of the person you're calling for be able to understand and sign the study forms in English?",
+        "es": "¿El padre, la madre o el tutor de la persona por la que llama podría entender y firmar los formularios del estudio en inglés?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Could your parent or guardian read and sign the study papers in English?"
+        ],
+        "es": [
+          "¿Su padre, madre o tutor podría leer y firmar los papeles del estudio en inglés?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So your parent or guardian would not be able to understand and sign the study forms in English — is that right?",
+        "es": "Entonces, su padre, madre o tutor no podría entender y firmar los formularios del estudio en inglés, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So their parent or guardian would not be able to understand and sign the study forms in English — is that right?",
+        "es": "Entonces, el padre, la madre o el tutor de esa persona no podría entender y firmar los formularios del estudio en inglés, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-02",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I1"
+      ],
+      "sourceText": "participants ≥7 must be able to provide assent",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "If the child is 7 or older, confirm at the consent visit that the child can understand the study and give assent."
+    },
+    {
+      "id": "IN-03",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I3"
+      ],
+      "sourceText": "Physician-diagnosed persistent asthma",
+      "mode": "ask",
+      "question": {
+        "en": "Has a doctor ever told you that you have asthma?",
+        "es": "¿Alguna vez un médico le ha dicho que tiene asma?"
+      },
+      "questionProxy": {
+        "en": "Has a doctor ever told the person you're calling for that they have asthma?",
+        "es": "¿Alguna vez un médico le ha dicho a la persona por la que llama que tiene asma?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So a doctor has never told you that you have asthma — is that right?",
+        "es": "Entonces, ningún médico le ha dicho que tiene asma, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So a doctor has never told them that they have asthma — is that right?",
+        "es": "Entonces, ningún médico le ha dicho a esa persona que tiene asma, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-04",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I3"
+      ],
+      "sourceText": "Physician-diagnosed persistent asthma",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm from medical records that the asthma is persistent (not intermittent), as diagnosed by a physician."
+    },
+    {
+      "id": "IN-05",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I4"
+      ],
+      "sourceText": "exacerbation of asthma requiring systemic corticosteroids",
+      "mode": "ask",
+      "question": {
+        "en": "Have you ever had an asthma attack that needed steroid medicine, like prednisone, taken by mouth, by shot, or by IV?",
+        "es": "¿Alguna vez ha tenido un ataque de asma que necesitó medicina con esteroides, como prednisona, por boca, por inyección o por vena?"
+      },
+      "questionProxy": {
+        "en": "Has the person you're calling for ever had an asthma attack that needed steroid medicine, like prednisone, taken by mouth, by shot, or by IV?",
+        "es": "¿La persona por la que llama alguna vez ha tenido un ataque de asma que necesitó medicina con esteroides, como prednisona, por boca, por inyección o por vena?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Has an asthma attack ever been bad enough that a doctor gave you steroid pills, liquid, or a shot, like prednisone? Inhalers don't count."
+        ],
+        "es": [
+          "¿Alguna vez un ataque de asma fue tan fuerte que un médico le dio esteroides en pastillas, líquido o inyección, como prednisona? Los inhaladores no cuentan."
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you have never needed steroid pills, liquid, a shot, or an IV for an asthma attack — is that right?",
+        "es": "Entonces, nunca ha necesitado esteroides en pastillas, líquido, inyección o por vena para un ataque de asma, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have never needed steroid pills, liquid, a shot, or an IV for an asthma attack — is that right?",
+        "es": "Entonces, esa persona nunca ha necesitado esteroides en pastillas, líquido, inyección o por vena para un ataque de asma, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-06",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I4"
+      ],
+      "sourceText": "≥1 exacerbation of asthma requiring systemic corticosteroids in the 6-month period before the planned start of the participant's upcoming school year or ≥2 exacerbations of asthma requiring systemic corticosteroids in the 12-month period before the planned start of the participant's upcoming school year",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "From records, confirm either 1 or more systemic-steroid asthma exacerbations in the 6 months before the upcoming school year starts, or 2 or more in the 12 months before. The phone question only checks that at least one has ever happened."
+    },
+    {
+      "id": "IN-07",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I5"
+      ],
+      "sourceText": "Sensitization to ≥1 perennial aeroallergen",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm by skin-prick or blood allergy test that the child is sensitized to at least 1 perennial aeroallergen."
+    },
+    {
+      "id": "IN-08",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I6"
+      ],
+      "sourceText": "Total serum IgE and weight appropriate for omalizumab dosing",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm total serum IgE and body weight fall within the omalizumab dosing table."
+    },
+    {
+      "id": "IN-09",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I7"
+      ],
+      "sourceText": "Insurance that covers standard of care medications",
+      "mode": "ask",
+      "question": {
+        "en": "Do you have health insurance of any kind, public or private?",
+        "es": "¿Tiene usted algún tipo de seguro médico, público o privado?"
+      },
+      "questionProxy": {
+        "en": "Does the person you're calling for have health insurance of any kind, public or private?",
+        "es": "¿La persona por la que llama tiene algún tipo de seguro médico, público o privado?"
+      },
+      "altPhrasings": {
+        "en": [
+          "Is there any health insurance for you, like Medicaid or a plan from work?"
+        ],
+        "es": [
+          "¿Tiene algún seguro médico, como Medicaid o un plan del trabajo?"
+        ]
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": true
+      },
+      "readBackText": {
+        "en": "So you do not have any health insurance right now — is that right?",
+        "es": "Entonces, usted no tiene ningún seguro médico en este momento, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they do not have any health insurance right now — is that right?",
+        "es": "Entonces, esa persona no tiene ningún seguro médico en este momento, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "IN-10",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I7"
+      ],
+      "sourceText": "Insurance that covers standard of care medications",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the child's insurance covers standard-of-care asthma medications."
+    },
+    {
+      "id": "IN-11",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I8"
+      ],
+      "sourceText": "Primary family residence (home where child sleeps a majority of nights) in a Metropolitan Statistical Area where ≥10% of families have income below poverty line and/or publicly funded health insurance",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the home address where the child sleeps most nights is in a qualifying Metropolitan Statistical Area (10% or more of families below the poverty line and/or on publicly funded insurance)."
+    },
+    {
+      "id": "IN-12",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I9"
+      ],
+      "sourceText": "peripheral eosinophilia >300µL",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": "GR-01",
+      "registryDerived": false,
+      "siteCheckNote": "Blood test: peripheral eosinophil count above 300/µL."
+    },
+    {
+      "id": "IN-13",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I9"
+      ],
+      "sourceText": "total serum IgE >300kU/L",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": "GR-01",
+      "registryDerived": false,
+      "siteCheckNote": "Blood test: total serum IgE above 300 kU/L."
+    },
+    {
+      "id": "IN-14",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I9"
+      ],
+      "sourceText": "sensitization to ≥3 perennial aeroallergens",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": "GR-01",
+      "registryDerived": false,
+      "siteCheckNote": "Allergy test: sensitized to 3 or more perennial aeroallergens."
+    },
+    {
+      "id": "IN-15",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I10"
+      ],
+      "sourceText": "Females of childbearing potential must have a negative pregnancy test upon study entry",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "For females of childbearing potential, confirm a negative pregnancy test at study entry."
+    },
+    {
+      "id": "IN-16",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I11"
+      ],
+      "sourceText": "Females with reproductive potential must agree to use FDA approved methods of birth control for the duration of the study",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "For females with reproductive potential, confirm at consent that they agree to use an FDA-approved birth control method for the whole study."
+    },
+    {
+      "id": "IN-17",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I12"
+      ],
+      "sourceText": "Reporting onset of URI symptoms within 72 hours prior to SVa, confirmed by the study physician",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Checked at the fall sick visit (SVa), not at enrollment. Study physician confirms cold (URI) symptoms started within 72 hours before SVa."
+    },
+    {
+      "id": "IN-18",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I13"
+      ],
+      "sourceText": "Report no use of nasal corticosteroids or nasal vaccinations within 14 days prior to SVa",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Checked at the fall sick visit (SVa), not at enrollment. Confirm no nasal steroid sprays or nasal vaccines in the 14 days before SVa."
+    },
+    {
+      "id": "IN-19",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I14"
+      ],
+      "sourceText": "Have a negative rapid nasal swab antigen test for SARS-CoV-2",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Checked at the fall sick visit (SVa), not at enrollment. Rapid nasal swab antigen test for SARS-CoV-2 must be negative."
+    },
+    {
+      "id": "IN-20",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I15"
+      ],
+      "sourceText": "Be more than 14 days from the onset of any previous asthma exacerbation requiring systemic steroids",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Checked at the fall sick visit (SVa), not at enrollment. Confirm more than 14 days since the start of any previous asthma exacerbation that needed systemic steroids."
+    },
+    {
+      "id": "IN-21",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I16"
+      ],
+      "sourceText": "Have no current lower respiratory symptoms that, in the opinion of the study physician, require systemic corticosteroid treatment",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Checked at the fall sick visit (SVa), not at enrollment. Study physician confirms no current lower respiratory symptoms that need systemic steroid treatment."
+    },
+    {
+      "id": "IN-22",
+      "kind": "inclusion",
+      "bulletIds": [
+        "I17"
+      ],
+      "sourceText": "Complete collection of nasal absorption sample within 72 hours of onset URI",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Checked at the fall sick visit (SVa), not at enrollment. Nasal absorption sample must be collected within 72 hours of URI onset, as judged by the study physician."
+    },
+    {
+      "id": "EX-01",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E1"
+      ],
+      "sourceText": "Inability or unwillingness of a participant's parent or guardian to give written informed consent or comply with study protocol",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "At the consent visit, confirm the parent or guardian is able and willing to give written informed consent and follow the study plan."
+    },
+    {
+      "id": "EX-02",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E1"
+      ],
+      "sourceText": "inability or unwillingness of a participant ≥7 to provide assent",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "If the child is 7 or older, confirm the child is able and willing to give assent."
+    },
+    {
+      "id": "EX-03",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E2"
+      ],
+      "sourceText": "Contraindication to receipt of omalizumab",
+      "mode": "ask",
+      "question": {
+        "en": "Have you ever had a serious allergic reaction to Xolair, also called omalizumab?",
+        "es": "¿Alguna vez ha tenido una reacción alérgica grave a Xolair, también llamado omalizumab?"
+      },
+      "questionProxy": {
+        "en": "Has the person you're calling for ever had a serious allergic reaction to Xolair, also called omalizumab?",
+        "es": "¿La persona por la que llama alguna vez ha tenido una reacción alérgica grave a Xolair, también llamado omalizumab?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had a serious allergic reaction to Xolair — is that right?",
+        "es": "Entonces, usted ha tenido una reacción alérgica grave a Xolair, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have had a serious allergic reaction to Xolair — is that right?",
+        "es": "Entonces, esa persona ha tenido una reacción alérgica grave a Xolair, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-04",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E2"
+      ],
+      "sourceText": "Contraindication to receipt of omalizumab",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review history for any other contraindication to omalizumab (per the product label)."
+    },
+    {
+      "id": "EX-05",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "sickle cell disease",
+      "mode": "ask",
+      "question": {
+        "en": "Do you have sickle cell disease, not just the trait?",
+        "es": "¿Tiene usted la enfermedad de células falciformes, no solo el rasgo?"
+      },
+      "questionProxy": {
+        "en": "Does the person you're calling for have sickle cell disease, not just the trait?",
+        "es": "¿La persona por la que llama tiene la enfermedad de células falciformes, no solo el rasgo?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have sickle cell disease — is that right?",
+        "es": "Entonces, usted tiene la enfermedad de células falciformes, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have sickle cell disease — is that right?",
+        "es": "Entonces, esa persona tiene la enfermedad de células falciformes, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-06",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "type 1 diabetes",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you have type 1 diabetes?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-07",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "cancer",
+      "mode": "ask",
+      "question": {
+        "en": "Do you have cancer right now, or are you being treated for cancer?",
+        "es": "¿Tiene usted cáncer en este momento o recibe tratamiento para el cáncer?"
+      },
+      "questionProxy": {
+        "en": "Does the person you're calling for have cancer right now, or are they being treated for cancer?",
+        "es": "¿La persona por la que llama tiene cáncer en este momento o recibe tratamiento para el cáncer?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have cancer or are being treated for it now — is that right?",
+        "es": "Entonces, usted tiene cáncer o recibe tratamiento para el cáncer ahora, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have cancer or are being treated for it now — is that right?",
+        "es": "Entonces, esa persona tiene cáncer o recibe tratamiento para el cáncer ahora, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-08",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E3"
+      ],
+      "sourceText": "Presence of a second chronic medical condition (including but not limited to serious cardiorespiratory disorders, cancer, sickle cell disease, uncontrolled seizure disorder, auto-immune disorders, or type 1 diabetes)",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review history for any other chronic condition besides asthma, including serious heart or lung disorders, uncontrolled seizure disorder, and autoimmune disorders."
+    },
+    {
+      "id": "EX-09",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E4"
+      ],
+      "sourceText": "Pregnancy or active lactation",
+      "mode": "ask",
+      "question": {
+        "en": "Are you currently pregnant or breastfeeding?",
+        "es": "¿Está usted embarazada o amamantando actualmente?"
+      },
+      "questionProxy": {
+        "en": "Is the person you're calling for currently pregnant or breastfeeding?",
+        "es": "¿La persona por la que llama está embarazada o amamantando actualmente?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you are pregnant or breastfeeding right now — is that right?",
+        "es": "Entonces, usted está embarazada o amamantando en este momento, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they are pregnant or breastfeeding right now — is that right?",
+        "es": "Entonces, esa persona está embarazada o amamantando en este momento, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-10",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E5"
+      ],
+      "sourceText": "History of latex allergy",
+      "mode": "ask",
+      "question": {
+        "en": "Have you ever had an allergy to latex, like rubber gloves or balloons?",
+        "es": "¿Alguna vez ha tenido alergia al látex, como el de los guantes de goma o los globos?"
+      },
+      "questionProxy": {
+        "en": "Has the person you're calling for ever had an allergy to latex, like rubber gloves or balloons?",
+        "es": "¿La persona por la que llama alguna vez ha tenido alergia al látex, como el de los guantes de goma o los globos?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had a latex allergy — is that right?",
+        "es": "Entonces, usted ha tenido alergia al látex, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have had a latex allergy — is that right?",
+        "es": "Entonces, esa persona ha tenido alergia al látex, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-11",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E6"
+      ],
+      "sourceText": "Treatment with omalizumab or other monoclonal antibody",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you gotten Xolair or another biologic shot for asthma or allergies, like Dupixent or Nucala?",
+        "es": "En los últimos 6 meses, ¿ha recibido Xolair u otra inyección biológica para el asma o las alergias, como Dupixent o Nucala?"
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for gotten Xolair or another biologic shot for asthma or allergies, like Dupixent or Nucala?",
+        "es": "En los últimos 6 meses, ¿la persona por la que llama ha recibido Xolair u otra inyección biológica para el asma o las alergias, como Dupixent o Nucala?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have gotten Xolair or another biologic shot in the last 6 months — is that right?",
+        "es": "Entonces, usted ha recibido Xolair u otra inyección biológica en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have gotten Xolair or another biologic shot in the last 6 months — is that right?",
+        "es": "Entonces, esa persona ha recibido Xolair u otra inyección biológica en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-12",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E6"
+      ],
+      "sourceText": "Treatment with omalizumab or other monoclonal antibody",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Review medication history for any other monoclonal antibody treatment, for any condition, in the prior 6 months."
+    },
+    {
+      "id": "EX-13",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E6"
+      ],
+      "sourceText": "aeroallergen immunotherapy in the prior six months",
+      "mode": "ask",
+      "question": {
+        "en": "In the last 6 months, have you gotten allergy shots, or allergy drops or tablets under the tongue, for things like pollen, dust, pets, or mold?",
+        "es": "En los últimos 6 meses, ¿ha recibido vacunas para la alergia, o gotas o tabletas para la alergia debajo de la lengua, para cosas como polen, polvo, mascotas o moho?"
+      },
+      "questionProxy": {
+        "en": "In the last 6 months, has the person you're calling for gotten allergy shots, or allergy drops or tablets under the tongue, for things like pollen, dust, pets, or mold?",
+        "es": "En los últimos 6 meses, ¿la persona por la que llama ha recibido vacunas para la alergia, o gotas o tabletas para la alergia debajo de la lengua, para cosas como polen, polvo, mascotas o moho?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have had allergy shots, drops, or tablets in the last 6 months — is that right?",
+        "es": "Entonces, usted ha recibido vacunas, gotas o tabletas para la alergia en los últimos 6 meses, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have had allergy shots, drops, or tablets in the last 6 months — is that right?",
+        "es": "Entonces, esa persona ha recibido vacunas, gotas o tabletas para la alergia en los últimos 6 meses, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-14",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E7"
+      ],
+      "sourceText": "Plan for home schooling during the 90-day outcome period",
+      "mode": "ask",
+      "question": {
+        "en": "Is there a plan for you to be home-schooled in the fall of the coming school year?",
+        "es": "¿Hay planes de que usted estudie en casa en el otoño del próximo año escolar?"
+      },
+      "questionProxy": {
+        "en": "Is there a plan for the person you're calling for to be home-schooled in the fall of the coming school year?",
+        "es": "¿Hay planes de que la persona por la que llama estudie en casa en el otoño del próximo año escolar?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So there is a plan for you to be home-schooled in the fall — is that right?",
+        "es": "Entonces, hay planes de que usted estudie en casa en el otoño, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So there is a plan for them to be home-schooled in the fall — is that right?",
+        "es": "Entonces, hay planes de que esa persona estudie en casa en el otoño, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-15",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E8"
+      ],
+      "sourceText": "requirement for intubation",
+      "mode": "ask",
+      "question": {
+        "en": "Has an asthma attack ever been so bad that you needed a breathing tube put down your throat?",
+        "es": "¿Alguna vez un ataque de asma fue tan fuerte que necesitó un tubo para respirar en la garganta?"
+      },
+      "questionProxy": {
+        "en": "Has the person you're calling for ever had an asthma attack so bad that they needed a breathing tube put down their throat?",
+        "es": "¿La persona por la que llama alguna vez tuvo un ataque de asma tan fuerte que necesitó un tubo para respirar en la garganta?"
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": "yes_no",
+      "unit": null,
+      "enumOptions": [],
+      "rule": {
+        "op": "eq",
+        "value": false
+      },
+      "readBackText": {
+        "en": "So you have needed a breathing tube because of asthma — is that right?",
+        "es": "Entonces, usted ha necesitado un tubo para respirar por el asma, ¿es correcto?"
+      },
+      "readBackTextProxy": {
+        "en": "So they have needed a breathing tube because of asthma — is that right?",
+        "es": "Entonces, esa persona ha necesitado un tubo para respirar por el asma, ¿es correcto?"
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": ""
+    },
+    {
+      "id": "EX-16",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E8"
+      ],
+      "sourceText": "cardiorespiratory arrest",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"During an asthma attack, has your heart or breathing ever stopped?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-17",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E9"
+      ],
+      "sourceText": "Inability of primary caregiver and child to speak English",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Ask at the screening visit: \"Do you or your main caregiver speak English?\" (Moved off the phone call to keep it near 6 minutes.)"
+    },
+    {
+      "id": "EX-18",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E9"
+      ],
+      "sourceText": "Inability of primary caregiver and child to speak English",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Confirm the primary caregiver and child can speak English well enough to take part in study visits."
+    },
+    {
+      "id": "EX-19",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E10"
+      ],
+      "sourceText": "In the opinion of the investigator, participant will not be able to wean from nasal steroids or to avoid nasal vaccinations during the 90-day fall outcome period",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator judges whether the child can stop nasal steroid sprays and avoid nasal vaccines during the 90-day fall outcome period."
+    },
+    {
+      "id": "EX-20",
+      "kind": "exclusion",
+      "bulletIds": [
+        "E11"
+      ],
+      "sourceText": "Past or current medical problems or findings from physical examination or laboratory testing that are not listed above",
+      "mode": "confirm_at_site",
+      "question": {
+        "en": "",
+        "es": ""
+      },
+      "questionProxy": {
+        "en": "",
+        "es": ""
+      },
+      "altPhrasings": {
+        "en": [],
+        "es": []
+      },
+      "answerType": null,
+      "unit": null,
+      "enumOptions": [],
+      "rule": null,
+      "readBackText": {
+        "en": "",
+        "es": ""
+      },
+      "readBackTextProxy": {
+        "en": "",
+        "es": ""
+      },
+      "groupId": null,
+      "registryDerived": false,
+      "siteCheckNote": "Investigator reviews history, physical exam and labs for any other problem that adds risk, affects the child's ability to follow the study, or affects data quality."
+    }
+  ],
+  "groups": [
+    {
+      "id": "GR-01",
+      "logic": "any",
+      "criterionIds": [
+        "IN-12",
+        "IN-13",
+        "IN-14"
+      ],
+      "label": "At least one: eosinophils above 300/µL, total IgE above 300 kU/L, or sensitized to 3+ perennial aeroallergens"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "asthma attack",
+      "plainDefinition": {
+        "en": "A time when asthma suddenly gets worse and breathing is hard. Doctors may call it a flare-up or exacerbation.",
+        "es": "Un momento en que el asma empeora de repente y cuesta respirar. Los médicos también lo llaman crisis o exacerbación."
+      }
+    },
+    {
+      "term": "steroid medicine",
+      "plainDefinition": {
+        "en": "A strong medicine, like prednisone, that calms swelling in the lungs. Here it means steroids taken by mouth, by shot, or by IV, not an inhaler.",
+        "es": "Una medicina fuerte, como la prednisona, que baja la inflamación de los pulmones. Aquí significa esteroides por boca, por inyección o por vena, no un inhalador."
+      }
+    },
+    {
+      "term": "Xolair (omalizumab)",
+      "plainDefinition": {
+        "en": "A medicine given as a shot to help control allergic asthma. It is the medicine being studied.",
+        "es": "Una medicina que se da en inyección para ayudar a controlar el asma alérgica. Es la medicina que se estudia."
+      }
+    },
+    {
+      "term": "biologic shot",
+      "plainDefinition": {
+        "en": "A medicine made from living cells, given as a shot, that targets one part of the immune system. Examples are Xolair, Dupixent and Nucala.",
+        "es": "Una medicina hecha a partir de células vivas, que se da en inyección y actúa sobre una parte del sistema inmunitario. Por ejemplo, Xolair, Dupixent y Nucala."
+      }
+    },
+    {
+      "term": "allergy shots or drops",
+      "plainDefinition": {
+        "en": "A treatment that slowly gets the body used to something a person is allergic to, like pollen or dust. It is given as regular shots, or as drops or tablets placed under the tongue.",
+        "es": "Un tratamiento que poco a poco acostumbra al cuerpo a algo que le causa alergia, como el polen o el polvo. Se da con inyecciones regulares, o con gotas o tabletas que se ponen debajo de la lengua."
+      }
+    },
+    {
+      "term": "latex",
+      "plainDefinition": {
+        "en": "A natural rubber used in some gloves, balloons and medical supplies.",
+        "es": "Un hule o goma natural que se usa en algunos guantes, globos y materiales médicos."
+      }
+    },
+    {
+      "term": "sickle cell disease",
+      "plainDefinition": {
+        "en": "An inherited blood disease where red blood cells are shaped like a curved blade. Having only the trait is different.",
+        "es": "Una enfermedad de la sangre heredada en la que los glóbulos rojos tienen forma de hoz. Tener solo el rasgo es diferente."
+      }
+    },
+    {
+      "term": "breathing tube",
+      "plainDefinition": {
+        "en": "A tube a doctor puts down the throat in the hospital to help someone breathe. Doctors call this intubation.",
+        "es": "Un tubo que un médico pone por la garganta en el hospital para ayudar a respirar. Los médicos lo llaman intubación."
+      }
+    }
+  ],
+  "derivedBulletIds": {
+    "age": [
+      "I2"
+    ],
+    "sex": []
+  }
+}
