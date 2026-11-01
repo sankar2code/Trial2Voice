@@ -230,6 +230,9 @@ export function Workspace({ nctId }: { nctId: string }) {
                   <Button variant="danger" disabled={busy !== null} onClick={() => run("discard", () => discardDraft(working.id, actor))}>Discard draft</Button>
                 </>
               )}
+              {working.status === "locked" && !trial.callsPaused && !trial.stale && (
+                <Link href={`/call/${trial.nctId}`}><Button variant="primary">Start a test call</Button></Link>
+              )}
               {working.status !== "draft" && !hasDraft && !trial.stale && <Button onClick={newVersion} disabled={busy !== null}>New version from v{working.version}</Button>}
               {settings.apiKey && versions.length > 0 && <Button onClick={build} disabled={busy !== null}>{busy === "build" ? "Building…" : "Rebuild with Claude"}</Button>}
               {!trial.stale && active && <Button variant="ghost" size="sm" onClick={() => run("sim", () => simulateRegistryChange(nctId, actor))} title="Demo: pretend the registry record changed">Simulate registry change</Button>}

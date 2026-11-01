@@ -278,3 +278,11 @@ export async function latestRegistryTrial(nctId: string): Promise<Trial> {
   const fresh = await fetchStudy(nctId);
   return { ...fresh, stale: trial.stale, callsPaused: trial.callsPaused, latestRegistryUpdate: trial.latestRegistryUpdate, latestEligibilityText: trial.latestEligibilityText };
 }
+
+// --- Calls -------------------------------------------------------------------
+
+export async function saveCall(call: import("../call/types").CallRecord) {
+  await db().calls.put(structuredClone(call));
+  if (call.status !== "in_progress")
+    await appendAudit("call agent", "call.ended", { callId: call.id, status: call.status, decision: call.decision ?? null, scriptVersionId: call.scriptVersionId }, call.nctId);
+}

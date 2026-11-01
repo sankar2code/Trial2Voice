@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button, Card, Field, Input } from "@/components/ui";
 import { saveSettings, useSettings } from "@/lib/settings";
 import { DEFAULT_BUILD_MODEL } from "@/lib/script/builder";
+import { DEFAULT_CALL_MODEL } from "@/lib/call/llmInterpreter";
 
 export default function SettingsPage() {
   const s = useSettings();
@@ -60,6 +61,13 @@ export default function SettingsPage() {
         </div>
         <Field label="Script-builder model" hint={`Default: ${DEFAULT_BUILD_MODEL}`}>
           <Input value={s.buildModel} onChange={(e) => saveSettings({ buildModel: e.target.value })} />
+        </Field>
+        <label className="flex gap-2 items-start text-sm">
+          <input type="checkbox" className="mt-1" checked={s.useLlmInCalls} onChange={(e) => saveSettings({ useLlmInCalls: e.target.checked })} />
+          <span><span className="font-medium">Use Claude to understand caller answers.</span> <span className="text-muted">Needs a key. Without it, calls use the built-in keyword parser. Claude never decides the outcome.</span></span>
+        </label>
+        <Field label="In-call model" hint={`Default: ${DEFAULT_CALL_MODEL}`}>
+          <Input value={s.callModel} onChange={(e) => saveSettings({ callModel: e.target.value })} />
         </Field>
       </Card>
     </div>

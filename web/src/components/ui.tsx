@@ -50,8 +50,8 @@ export function Field({ label, hint, children, className }: { label: string; hin
   );
 }
 
-export function Input(p: InputHTMLAttributes<HTMLInputElement>) {
-  return <input {...p} className={cx(inputCls, p.className)} />;
+export function Input({ ref, ...p }: InputHTMLAttributes<HTMLInputElement> & { ref?: React.Ref<HTMLInputElement> }) {
+  return <input ref={ref} {...p} className={cx(inputCls, p.className)} />;
 }
 
 export function TextArea(p: TextareaHTMLAttributes<HTMLTextAreaElement>) {

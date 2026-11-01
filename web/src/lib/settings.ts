@@ -3,11 +3,12 @@
 // localStorage and sent only to api.anthropic.com.
 import { useSyncExternalStore } from "react";
 import { DEFAULT_BUILD_MODEL } from "./script/builder";
+import { DEFAULT_CALL_MODEL } from "./call/llmInterpreter";
 
-export type Settings = { apiKey: string; buildModel: string; actor: string };
+export type Settings = { apiKey: string; buildModel: string; callModel: string; useLlmInCalls: boolean; actor: string };
 
 const KEY = "t2v.settings";
-const DEFAULTS: Settings = { apiKey: "", buildModel: DEFAULT_BUILD_MODEL, actor: "Demo admin" };
+const DEFAULTS: Settings = { apiKey: "", buildModel: DEFAULT_BUILD_MODEL, callModel: DEFAULT_CALL_MODEL, useLlmInCalls: true, actor: "Demo admin" };
 const listeners = new Set<() => void>();
 let cache: Settings | null = null;
 

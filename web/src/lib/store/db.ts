@@ -2,11 +2,13 @@
 // the /api routes; the function signatures in repo.ts stay the same.
 import Dexie, { type EntityTable } from "dexie";
 import type { AuditEvent, ScriptVersion, Trial } from "../types";
+import type { CallRecord } from "../call/types";
 
 export class Trial2VoiceDB extends Dexie {
   trials!: EntityTable<Trial, "nctId">;
   scripts!: EntityTable<ScriptVersion, "id">;
   audit!: EntityTable<AuditEvent, "seq">;
+  calls!: EntityTable<CallRecord, "id">;
 
   constructor(name = "trial2voice") {
     super(name);
@@ -14,6 +16,9 @@ export class Trial2VoiceDB extends Dexie {
       trials: "nctId",
       scripts: "id, nctId, [nctId+version], status",
       audit: "++seq, at, nctId, type",
+    });
+    this.version(2).stores({
+      calls: "id, nctId, startedAt, status",
     });
   }
 }

@@ -23,4 +23,16 @@ npx vitest run     # unit tests, including validation of the demo scripts
 - **Protocol-change watch** runs when the Trials page opens. A changed registry record marks the script stale and pauses calls. "Simulate registry change" demos this.
 - **Demo trials** (MODIUS, OBOE, MOTION-P) ship with pre-built scripts written to the same rules, so no key is needed (`src/data/demo/`).
 
+## Phase 2 — Call (done)
+
+Open a locked trial and click **Start a test call** (or go to `/call/<NCT ID>`).
+
+- **Decision engine** (`src/lib/engine.ts`): the only code that sets eligibility. A lint rule blocks any LLM import. A screen-out counts only after a confirmed read-back; anything unclear becomes "Needs site review".
+- **Call flow** (`src/lib/call/session.ts`): disclosure → consent → who's calling → questions → read-backs → closing review → contact → close (Addendum G5). It also handles repeat, clarify (approved alternates, then the glossary), go back, medical questions, asking for a person, caregiver switch, under-18 stop, silence and the 12-minute cap.
+- **Red flags** (`src/lib/call/redflags.ts`): checked on every caller turn in English and Spanish. Self-harm stops the call at once. Other categories ask "Is this happening right now?"
+- **Answer parsing**: a built-in keyword parser (`parse.ts`) needs no key. With a key, Claude Haiku 5.5 reads answers (`llmInterpreter.ts`) and falls back to the keyword parser on any error.
+- **Voice**: browser speech in Chrome and Safari (`src/lib/voice/webspeech.ts`), with typing always available. A spoken filler plays when understanding takes longer than 700 ms.
+- **Privacy**: no transcript is kept without consent or for under-18 callers. Contact details are read back but never stored, and the name and phone digits are redacted in the saved transcript.
+- **Tests**: 30 end-to-end call scenarios in `session.test.ts`, alongside the parser, red-flag, phone and engine tests. 502 tests in total.
+
 Data lives in this browser's IndexedDB. Track B swaps `src/lib/store` for Postgres behind API routes.

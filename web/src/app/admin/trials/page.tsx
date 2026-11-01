@@ -126,9 +126,14 @@ export default function TrialsPage() {
                   <div className="font-medium mt-1">{t.shortName}</div>
                   <div className="text-sm text-muted truncate max-w-2xl">{t.briefTitle}</div>
                 </div>
-                <Link href={`/admin/trials/${t.nctId}/script`}>
+<div className="flex gap-2">
+                  {active?.status === "locked" && !t.callsPaused && !t.stale && (
+                    <Link href={`/call/${t.nctId}`}><Button>Test call</Button></Link>
+                  )}
+                  <Link href={`/admin/trials/${t.nctId}/script`}>
                   <Button variant={draft || !latest ? "primary" : "secondary"}>{latest ? "Open script" : "Build script"}</Button>
                 </Link>
+                </div>
               </div>
               <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
                 <span>
