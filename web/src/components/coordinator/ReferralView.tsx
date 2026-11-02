@@ -53,7 +53,7 @@ export function ReferralView({ id }: { id: string }) {
   const [attempt, setAttempt] = useState<{ outcome: AttemptOutcome; voicemail: boolean }>({ outcome: "no_answer", voicemail: false });
 
   if (data === undefined) return <p className="text-sm text-muted">Loading…</p>;
-  if (!data.r) return <p className="text-sm">Referral not found in this browser. <Link href="/coordinator" className="underline text-accent">Back to the queue</Link></p>;
+  if (!data.r) return <p className="text-sm">Referral not found in this browser. <Link href="/coordinator" className="underline text-accent-ink">Back to the queue</Link></p>;
   const { r, call, script, trial } = data;
   if (!call || !script) return <p className="text-sm">The call record or script version for this referral is missing.</p>;
 

@@ -235,7 +235,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
       <Card className="p-6 max-w-xl space-y-2">
         <h1 className="text-lg font-semibold">{trial?.shortName ?? nctId}</h1>
         <p className="text-sm">{notReady}</p>
-        {!embedded && <Link className="text-sm text-accent underline" href={trial ? `/admin/trials/${nctId}/script` : "/admin/trials"}>Open the script (admin)</Link>}
+        {!embedded && <Link className="text-sm text-accent-ink underline" href={trial ? `/admin/trials/${nctId}/script` : "/admin/trials"}>Open the script (admin)</Link>}
       </Card>
     );
   }
@@ -464,8 +464,8 @@ function DemoResult({ call, script, onRestart, embedded }: { call: CallRecord; s
       )}
       <div className="flex gap-2">
         <Button size="sm" onClick={onRestart}>New call</Button>
-        {!embedded && (call.status === "completed" || call.status === "red_flag") && <Link href={`/coordinator/referrals/${call.id}`} className="text-sm text-accent underline self-center">Open in the coordinator queue</Link>}
-        {!embedded && <Link href={`/coordinator/calls/${call.id}`} className="text-sm text-accent underline self-center">Call console</Link>}
+        {!embedded && (call.status === "completed" || call.status === "red_flag") && <Link href={`/coordinator/referrals/${call.id}`} className="text-sm text-accent-ink underline self-center">Open in the coordinator queue</Link>}
+        {!embedded && <Link href={`/coordinator/calls/${call.id}`} className="text-sm text-accent-ink underline self-center">Call console</Link>}
       </div>
     </Card>
   );

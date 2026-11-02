@@ -28,7 +28,7 @@ export default function Home() {
         ))}
       </ol>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/admin/trials" className="rounded-md bg-accent text-white px-4 py-2 text-sm font-medium hover:bg-teal-800">
+        <Link href="/admin/trials" className="rounded-md bg-accent text-white px-4 py-2 text-sm font-medium hover:bg-accent-strong">
           Open trials
         </Link>
         <Link href="/coordinator" className="rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium hover:bg-stone-50">
@@ -42,7 +42,7 @@ export default function Home() {
           voices provided by the site. For the AI-powered extras (building scripts for any trial, Claude reading
           answers and reviewing calls) you add your own Claude key, which stays in your browser and is billed to your own
           account.{" "}
-          <Link href="/settings#api-keys" className="text-accent underline">How API keys work</Link>
+          <Link href="/settings#api-keys" className="text-accent-ink underline">How API keys work</Link>
         </p>
       </div>
     </div>

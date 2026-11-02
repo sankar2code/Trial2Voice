@@ -11,7 +11,7 @@ export function Button({ variant = "secondary", size = "md", className, ...p }: 
       className={cx(
         "inline-flex items-center justify-center gap-1.5 rounded-md font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
         size === "sm" ? "text-xs px-2 py-1" : "text-sm px-3 py-1.5",
-        variant === "primary" && "bg-accent text-white hover:bg-teal-800",
+        variant === "primary" && "bg-accent text-white hover:bg-accent-strong",
         variant === "secondary" && "border border-border bg-surface hover:bg-stone-50",
         variant === "ghost" && "text-muted hover:text-foreground hover:bg-stone-100",
         variant === "danger" && "border border-red-200 text-red-700 bg-surface hover:bg-red-50",
@@ -29,7 +29,7 @@ export function Badge({ tone = "neutral", children, className }: { tone?: Tone; 
     amber: "bg-amber-100 text-amber-900",
     red: "bg-red-100 text-red-800",
     blue: "bg-sky-100 text-sky-800",
-    teal: "bg-accent-soft text-accent",
+    teal: "bg-accent-soft text-accent-ink",
   };
   return <span className={cx("inline-flex items-center rounded px-1.5 py-0.5 text-xs font-medium whitespace-nowrap", tones[tone], className)}>{children}</span>;
 }
@@ -71,7 +71,7 @@ export function Dialog({ open, onClose, title, children }: { open: boolean; onCl
     if (!open && d.open) d.close();
   }, [open]);
   return (
-    <dialog ref={ref} onClose={onClose} className="rounded-lg border border-border p-0 backdrop:bg-black/30 w-[min(32rem,calc(100vw-2rem))] m-auto">
+    <dialog ref={ref} onClose={onClose} className="rounded-lg border border-border bg-surface text-foreground p-0 backdrop:bg-black/50 w-[min(32rem,calc(100vw-2rem))] m-auto">
       <div className="p-5">
         <h2 className="text-lg font-semibold mb-3">{title}</h2>
         {children}

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* Admin tool: light theme only for now. */
+/* Theme: light by default; dark via data-theme="dark" on <html>, set before
+   first paint by a small script in the root layout (Auto follows the OS). */
 :root {
   color-scheme: light;
   --background: #f7f7f5;
@@ -8,8 +9,94 @@
   --foreground: #1c1c1a;
   --muted: #6b6a65;
   --border: #e3e2dd;
-  --accent: #0f766e;
+  --accent: #0f766e; /* filled buttons, with white text */
+  --accent-strong: #115e59; /* hover on filled buttons */
+  --accent-ink: #0f766e; /* links and accent text */
   --accent-soft: #e6f4f2;
+}
+
+@media screen {
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --background: #0f0f0e;
+    --surface: #191817;
+    --foreground: #ecebe7;
+    --muted: #a8a69f;
+    --border: #2f2d2a;
+    --accent: #0f766e;
+    --accent-strong: #0d9488;
+    --accent-ink: #2dd4bf;
+    --accent-soft: #10302d;
+
+    /* Tailwind shades used in the app, flipped so tinted panels go dark and
+       dark text goes light (generated from Tailwind's own palette). */
+    --color-stone-50: oklch(21.6% 0.006 56.043);
+    --color-stone-100: oklch(26.8% 0.007 34.298);
+    --color-stone-200: oklch(37.4% 0.01 67.558);
+    --color-stone-300: oklch(44.4% 0.011 73.639);
+    --color-stone-400: oklch(55.3% 0.013 58.071);
+    --color-stone-500: oklch(70.9% 0.01 56.259);
+    --color-stone-600: oklch(86.9% 0.005 56.366);
+    --color-stone-700: oklch(92.3% 0.003 48.717);
+    --color-stone-800: oklch(97% 0.001 106.424);
+    --color-stone-900: oklch(98.5% 0.001 106.423);
+    --color-stone-950: oklch(98.5% 0.001 106.423);
+    --color-red-50: oklch(39.6% 0.141 25.723);
+    --color-red-100: oklch(44.4% 0.177 26.899);
+    --color-red-200: oklch(50.5% 0.213 27.518);
+    --color-red-300: oklch(57.7% 0.245 27.325);
+    --color-red-400: oklch(63.7% 0.237 25.331);
+    --color-red-500: oklch(70.4% 0.191 22.216);
+    --color-red-600: oklch(80.8% 0.114 19.571);
+    --color-red-700: oklch(88.5% 0.062 18.334);
+    --color-red-800: oklch(93.6% 0.032 17.717);
+    --color-red-900: oklch(97.1% 0.013 17.38);
+    --color-red-950: oklch(97.1% 0.013 17.38);
+    --color-amber-50: oklch(41.4% 0.112 45.904);
+    --color-amber-100: oklch(47.3% 0.137 46.201);
+    --color-amber-200: oklch(55.5% 0.163 48.998);
+    --color-amber-300: oklch(66.6% 0.179 58.318);
+    --color-amber-400: oklch(76.9% 0.188 70.08);
+    --color-amber-500: oklch(82.8% 0.189 84.429);
+    --color-amber-600: oklch(87.9% 0.169 91.605);
+    --color-amber-700: oklch(92.4% 0.12 95.746);
+    --color-amber-800: oklch(96.2% 0.059 95.617);
+    --color-amber-900: oklch(98.7% 0.022 95.277);
+    --color-amber-950: oklch(98.7% 0.022 95.277);
+    --color-green-50: oklch(39.3% 0.095 152.535);
+    --color-green-100: oklch(44.8% 0.119 151.328);
+    --color-green-200: oklch(52.7% 0.154 150.069);
+    --color-green-300: oklch(62.7% 0.194 149.214);
+    --color-green-400: oklch(72.3% 0.219 149.579);
+    --color-green-500: oklch(79.2% 0.209 151.711);
+    --color-green-600: oklch(87.1% 0.15 154.449);
+    --color-green-700: oklch(92.5% 0.084 155.995);
+    --color-green-800: oklch(96.2% 0.044 156.743);
+    --color-green-900: oklch(98.2% 0.018 155.826);
+    --color-green-950: oklch(98.2% 0.018 155.826);
+    --color-teal-50: oklch(38.6% 0.063 188.416);
+    --color-teal-100: oklch(43.7% 0.078 188.216);
+    --color-teal-200: oklch(51.1% 0.096 186.391);
+    --color-teal-300: oklch(60% 0.118 184.704);
+    --color-teal-400: oklch(70.4% 0.14 182.503);
+    --color-teal-500: oklch(77.7% 0.152 181.912);
+    --color-teal-600: oklch(85.5% 0.138 181.071);
+    --color-teal-700: oklch(91% 0.096 180.426);
+    --color-teal-800: oklch(95.3% 0.051 180.801);
+    --color-teal-900: oklch(98.4% 0.014 180.72);
+    --color-teal-950: oklch(98.4% 0.014 180.72);
+    --color-sky-50: oklch(39.1% 0.09 240.876);
+    --color-sky-100: oklch(44.3% 0.11 240.79);
+    --color-sky-200: oklch(50% 0.134 242.749);
+    --color-sky-300: oklch(58.8% 0.158 241.966);
+    --color-sky-400: oklch(68.5% 0.169 237.323);
+    --color-sky-500: oklch(74.6% 0.16 232.661);
+    --color-sky-600: oklch(82.8% 0.111 230.318);
+    --color-sky-700: oklch(90.1% 0.058 230.902);
+    --color-sky-800: oklch(95.1% 0.026 236.824);
+    --color-sky-900: oklch(97.7% 0.013 236.62);
+    --color-sky-950: oklch(97.7% 0.013 236.62);
+  }
 }
 
 @theme inline {
@@ -19,6 +106,8 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -31,6 +120,6 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 2px;
 }

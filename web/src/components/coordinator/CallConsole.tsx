@@ -89,7 +89,7 @@ export function CallConsole({ callId }: { callId: string }) {
                   className={cx("grid grid-cols-[3.5rem_4.5rem_1fr] gap-2 text-sm rounded px-1 py-0.5", (flagged.has(i) || hash === `#turn-${i}`) && "bg-amber-50 ring-1 ring-amber-300")}
                 >
                   <span className="text-xs text-muted font-mono pt-0.5">{fmtMs(e.t)}</span>
-                  <span className={cx("text-xs pt-0.5", e.role === "agent" ? "text-accent" : "text-foreground")}>{e.role === "agent" ? "Agent" : "Caller"}{e.lang === "es" ? " · es" : ""}</span>
+                  <span className={cx("text-xs pt-0.5", e.role === "agent" ? "text-accent-ink" : "text-foreground")}>{e.role === "agent" ? "Agent" : "Caller"}{e.lang === "es" ? " · es" : ""}</span>
                   <span>
                     {e.text}
                     {e.kind && e.role === "agent" && <span className="ml-2 text-[10px] uppercase tracking-wide text-muted">{e.kind.replace("fixed:", "")}</span>}

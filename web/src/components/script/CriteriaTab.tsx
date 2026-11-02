@@ -70,7 +70,7 @@ export function CriteriaTab({ script, issues, readOnly, onChange }: { script: Sc
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex gap-1 text-xs">
             {(["all", "ask", "site", "issues"] as const).map((f) => (
-              <button key={f} onClick={() => setFilter(f)} className={cx("rounded px-2 py-1", filter === f ? "bg-stone-800 text-white" : "bg-stone-100 hover:bg-stone-200")}>
+              <button key={f} onClick={() => setFilter(f)} className={cx("rounded px-2 py-1", filter === f ? "bg-foreground text-background" : "bg-stone-100 hover:bg-stone-200")}>
                 {f === "all" ? `All ${script.criteria.length}` : f === "ask" ? `Asked ${script.criteria.filter((c) => c.mode === "ask").length}` : f === "site" ? `Site check ${script.criteria.filter((c) => c.mode !== "ask").length}` : "With issues"}
               </button>
             ))}

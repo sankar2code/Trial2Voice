@@ -83,7 +83,7 @@ export function Workspace({ nctId }: { nctId: string }) {
   const validation = useMemo(() => (working ? validateScript(working) : null), [working]);
 
   if (trial === undefined || versions === undefined) return <p className="text-sm text-muted">Loading…</p>;
-  if (!trial) return <p className="text-sm">Trial {nctId} isn&apos;t in this browser yet. <Link className="text-accent underline" href="/admin/trials">Add it from Trials</Link>.</p>;
+  if (!trial) return <p className="text-sm">Trial {nctId} isn&apos;t in this browser yet. <Link className="text-accent-ink underline" href="/admin/trials">Add it from Trials</Link>.</p>;
 
   const readOnly = !working || working.status !== "draft";
   const actor = settings.actor;
