@@ -3,6 +3,8 @@ import Link from "next/link";
 const NAV = [
   ["/admin/trials", "Trials"],
   ["/coordinator", "Coordinator"],
+  ["/insights", "Insights"],
+  ["/evals", "Evals"],
   ["/settings", "Settings"],
 ] as const;
 

@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npx eslint src
+      - run: npx tsc --noEmit -p .
+      # Unit + scenario tests. The eval gates (simulated callers) run inside
+      # `vitest run`, so a failing gate fails CI.
+      - run: npx vitest run
+      - run: npx next build

@@ -63,6 +63,8 @@ export type SessionOptions = {
   id?: string;
   /** Nearest recruiting site for a ZIP code; the ZIP itself is never stored. */
   findSite?: (zip: string) => Promise<SiteMatch | null>;
+  /** Evals only: receives the confirmed phone digits in memory. Never stored. */
+  onPhoneConfirmed?: (digits: string) => void;
 };
 
 const uid = () => (globalThis.crypto?.randomUUID?.() ?? `id-${Math.random().toString(36).slice(2)}`);
@@ -681,6 +683,7 @@ export class CallSession {
     const i = await this.yesNo(text);
     if (i.type === "answer" && i.value === true) {
       this.contactDraft.digits = ph.digits; // never "got it" before this confirmation (G11 §4)
+      this.o.onPhoneConfirmed?.(ph.digits);
       this.phase = { p: "contact_voicemail", tries: 0 };
       return this.turn([this.say("voicemail", "contact")]);
     }

@@ -5,6 +5,7 @@ import { saveSettings, useSettings } from "@/lib/settings";
 import { DEFAULT_BUILD_MODEL } from "@/lib/script/builder";
 import { DEFAULT_CALL_MODEL } from "@/lib/call/llmInterpreter";
 import { DEFAULT_ELEVEN_MODEL, listElevenVoices } from "@/lib/voice/elevenlabs";
+import { TABLES, backupCounts, exportAll, importAll, validateBackup, type Backup } from "@/lib/store/backup";
 
 export default function SettingsPage() {
   const s = useSettings();
@@ -73,6 +74,8 @@ export default function SettingsPage() {
       </Card>
 
       <ElevenLabsSettings />
+
+      <DataSettings />
     </div>
   );
 }
@@ -163,6 +166,111 @@ function ElevenLabsSettings() {
           </p>
         </>
       )}
+    </Card>
+  );
+}
+
+function DataSettings() {
+  const s = useSettings();
+  const [pending, setPending] = useState<{ name: string; backup: Backup } | null>(null);
+  const [mode, setMode] = useState<"replace" | "merge">("merge");
+  const [busy, setBusy] = useState(false);
+  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null);
+
+  const doExport = async () => {
+    setResult(null);
+    const backup = await exportAll();
+    const url = URL.createObjectURL(new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" }));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `trial2voice-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
+  const pick = async (file: File | undefined) => {
+    setResult(null);
+    setPending(null);
+    if (!file) return;
+    try {
+      setPending({ name: file.name, backup: validateBackup(JSON.parse(await file.text())) });
+    } catch (e) {
+      setResult({ ok: false, message: e instanceof SyntaxError ? "That file isn't valid JSON." : e instanceof Error ? e.message : "Couldn't read that file." });
+    }
+  };
+
+  const apply = async () => {
+    if (!pending) return;
+    setBusy(true);
+    try {
+      const r = await importAll(pending.backup, mode, s.actor || "unknown");
+      const written = TABLES.map((t) => `${t} ${r.counts[t] ?? 0}`).join(", ");
+      setResult({ ok: r.auditChainOk, message: `Imported (${mode}): ${written}. Audit chain ${r.auditChainOk ? "verified" : "FAILED verification — the log may have been edited"}.` });
+      setPending(null);
+    } catch (e) {
+      setResult({ ok: false, message: e instanceof Error ? e.message : "Import failed." });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const counts = pending && backupCounts(pending.backup);
+
+  return (
+    <Card className="p-5 space-y-4">
+      <div>
+        <h2 className="font-medium">Data</h2>
+        <p className="text-sm text-muted mt-1">
+          Move everything in this browser — trials, scripts, calls, referrals, eval runs and the audit log — to another
+          machine. The file contains call transcripts (demo data only) and no API keys or settings.
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-2 items-center">
+        <Button onClick={doExport}>Export all data</Button>
+        <label className="inline-flex items-center justify-center rounded-md text-sm px-3 py-1.5 font-medium border border-border bg-surface hover:bg-stone-50 cursor-pointer">
+          Import…
+          <input
+            type="file"
+            accept="application/json,.json"
+            className="sr-only"
+            onChange={(e) => {
+              void pick(e.target.files?.[0]);
+              e.target.value = "";
+            }}
+          />
+        </label>
+      </div>
+
+      {pending && counts && (
+        <div className="rounded-md border border-border p-3 space-y-3">
+          <p className="text-sm">
+            <span className="font-medium">{pending.name}</span> <span className="text-muted">exported {new Date(pending.backup.exportedAt).toLocaleString()}</span>
+          </p>
+          <ul className="text-sm grid grid-cols-2 gap-x-4">
+            {TABLES.map((t) => (
+              <li key={t} className="flex justify-between"><span className="text-muted">{t}</span><span>{counts[t]}</span></li>
+            ))}
+          </ul>
+          <div className="space-y-1 text-sm" role="radiogroup" aria-label="Import mode">
+            <label className="flex gap-2 items-start">
+              <input type="radio" className="mt-1" checked={mode === "merge"} onChange={() => setMode("merge")} />
+              <span><span className="font-medium">Merge</span> <span className="text-muted">— add and update rows by id. Refused if the audit logs are different histories.</span></span>
+            </label>
+            <label className="flex gap-2 items-start">
+              <input type="radio" className="mt-1" checked={mode === "replace"} onChange={() => setMode("replace")} />
+              <span><span className="font-medium">Replace</span> <span className="text-muted">— delete all data in this browser first, then restore the file as-is.</span></span>
+            </label>
+          </div>
+          <div className="flex gap-2">
+            <Button variant={mode === "replace" ? "danger" : "primary"} disabled={busy} onClick={apply}>
+              {busy ? "Importing…" : mode === "replace" ? "Replace all data" : "Merge data"}
+            </Button>
+            <Button variant="ghost" disabled={busy} onClick={() => setPending(null)}>Cancel</Button>
+          </div>
+        </div>
+      )}
+
+      {result && <p role="status" className={`text-sm ${result.ok ? "text-green-700" : "text-red-700"}`}>{result.message}</p>}
     </Card>
   );
 }

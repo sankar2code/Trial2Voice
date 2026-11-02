@@ -280,9 +280,10 @@ function parseYesNo(plain: string): YN | null {
   }
   // Bare "no" / "sí": strong when leading the turn, weak when buried mid-sentence
   // (STT noise, "I know" heard as "no", conditional "si").
+  // A "no" right after another no-word is a repeat ("no no", "no, never no"), not a buried one.
   const toks = t.split(" ");
   toks.forEach((tok, i) => {
-    if (tok === "no") no.push(i === 0 ? 0.95 : 0.75);
+    if (tok === "no") no.push(i === 0 || toks[i - 1] === "no" || (toks[i - 1] === "_" && !yes.length) ? 0.95 : 0.75);
     if (tok === "si") yes.push(i === 0 ? 0.95 : 0.8);
   });
   if (yes.length && no.length) return null;

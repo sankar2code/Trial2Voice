@@ -426,3 +426,13 @@ describe("keywordInterpreter", () => {
     await expect(keywordInterpreter.redFlagTiming("I have chest pain right now", { category: "chest_pain", matched: "chest pain" }, "en")).resolves.toBe("unclear");
   });
 });
+
+
+describe("repeated no (speech noise)", () => {
+  it.each(["uh no no", "no no no", "uh no, never no, never", "nope no"])("%s is a clear no", (u) => {
+    expect(parseUtterance(u, { kind: "yes_no" }, "en")).toEqual({ type: "answer", value: false, confidence: 0.95 });
+  });
+  it("a lone no mid-sentence stays cautious", () => {
+    expect(parseUtterance("well my doctor said no", { kind: "yes_no" }, "en")).toMatchObject({ type: "answer", value: false, confidence: 0.75 });
+  });
+});

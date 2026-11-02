@@ -274,7 +274,7 @@ Each phase ends with something demoable.
 | Task | Done when |
 |---|---|
 | Simulated callers (text mode): personas from PRD §9 with ground-truth eligibility | `/evals` runs 20 personas per demo trial |
-| Gate report: decision accuracy ≥ 90%, FN ≤ 5%, FP ≤ 15%, red-flag 100%, off-script claims 0 | Gates shown pass/fail; Vitest + Playwright run in GitHub Actions |
+| Gate report: decision accuracy ≥ 90%, FN ≤ 5%, FP ≤ 15%, red-flag 100%, off-script claims 0, plus G10/G11 gates (caregiver wording 0 violations, children alone stopped 100%, phone number exact ≥ 98%) | Gates shown pass/fail; Vitest + Playwright run in GitHub Actions |
 | Funnel + criterion drop-off page | Charts populate from stored calls |
 | Export / import all data as JSON | Coordinator view can be shown on another machine |
 | README (architecture diagram from Addendum G8), walkthrough video, portfolio page | Ready to share |

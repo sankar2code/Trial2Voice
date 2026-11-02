@@ -286,3 +286,13 @@ export async function saveCall(call: import("../call/types").CallRecord) {
   if (call.status !== "in_progress")
     await appendAudit("call agent", "call.ended", { callId: call.id, status: call.status, decision: call.decision ?? null, scriptVersionId: call.scriptVersionId }, call.nctId);
 }
+
+// --- Funnel events -----------------------------------------------------------
+
+export async function logEvent(e: Omit<import("./db").AppEvent, "seq" | "at">) {
+  try {
+    await db().events.add({ ...e, at: new Date().toISOString() });
+  } catch {
+    /* analytics must never break a call */
+  }
+}

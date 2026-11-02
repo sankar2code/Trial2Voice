@@ -45,4 +45,12 @@ Open a locked trial and click **Start a test call** (or go to `/call/<NCT ID>`).
 - **Nearest site** from the caller's ZIP code (`src/lib/sites.ts`). The closing line names the site, and the ZIP itself is never stored.
 - **Embeddable widget**: `<script src="/embed.js" data-trial="NCT…">` adds an iframe pointing at `/embed/<NCT ID>`. The test page is `/embed-test.html`.
 
+## Phase 4 — Evals, insights, ship (done)
+
+- **Simulated callers** (`src/lib/evals/`): 20 personas per trial, generated from the script, each with known ground truth. A responder replies to whatever the agent actually says. `evals.test.ts` runs all 60 for the demo trials in `vitest run` and asserts the PRD §9 gates plus the G10/G11 gates. A failing gate fails CI.
+- **Evals page** (`/evals`): runs the same callers in the browser against each trial's latest version, drafts included, with either the keyword parser or Claude. It shows the gate table and each caller's transcript, saves the run, and compares it with the previous one.
+- **Insights page** (`/insights`): the funnel from page opened to visit scheduled, drop-off by criterion, and the PRD §3 and G11 metrics, from this browser's data.
+- **Export / import** (Settings → Data): a JSON backup of every table, with no API keys. Replace or merge, with the audit chain verified after import.
+- **CI** (`.github/workflows/ci.yml`): lint, type-check, tests including the eval gates, and a production build.
+
 Data lives in this browser's IndexedDB. Track B swaps `src/lib/store` for Postgres behind API routes.

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Badge, Button, Card, Input, cx } from "@/components/ui";
 import { db } from "@/lib/store/db";
-import { activeLocked, saveCall } from "@/lib/store/repo";
+import { activeLocked, logEvent, saveCall } from "@/lib/store/repo";
 import { completeCall, runLlmJudge } from "@/lib/store/referrals";
 import { nearestSiteForZip } from "@/lib/sites";
 import type { ScriptVersion } from "@/lib/types";
@@ -65,6 +65,11 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
   const rateRef = useRef(rate);
   voiceRef.current = voice;
   rateRef.current = rate;
+
+  // Funnel: page opened (PRD §12 "link opened").
+  useEffect(() => {
+    void logEvent({ nctId, type: "call_page_opened", embedded });
+  }, [nctId, embedded]);
 
   // Voices load asynchronously and differ per browser and OS.
   useEffect(() => {
@@ -253,6 +258,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
     } catch (e) {
       return setError(e instanceof Error ? e.message : "Couldn't start the call.");
     }
+    void logEvent({ nctId: trial.nctId, type: "call_started", callId: session.current.record.id, embedded });
     if (voice) await loadVoices();
     await speakTurn(session.current.start());
   };

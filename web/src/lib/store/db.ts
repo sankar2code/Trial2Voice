@@ -5,12 +5,20 @@ import type { AuditEvent, ScriptVersion, Trial } from "../types";
 import type { CallRecord } from "../call/types";
 import type { Referral } from "./referrals";
 
+/** Lightweight funnel events (PRD §12). No PHI: trial, type, time, call id. */
+export type AppEvent = { seq?: number; at: string; nctId: string; type: "call_page_opened" | "call_started"; callId?: string; embedded?: boolean };
+
+/** A stored eval run (simulated callers), for comparing releases (PRD §9). */
+export type EvalRunRecord = { id: string; at: string; interpreter: string; trials: string[]; summary: unknown; results: unknown[] };
+
 export class Trial2VoiceDB extends Dexie {
   trials!: EntityTable<Trial, "nctId">;
   scripts!: EntityTable<ScriptVersion, "id">;
   audit!: EntityTable<AuditEvent, "seq">;
   calls!: EntityTable<CallRecord, "id">;
   referrals!: EntityTable<Referral, "id">;
+  events!: EntityTable<AppEvent, "seq">;
+  evalRuns!: EntityTable<EvalRunRecord, "id">;
 
   constructor(name = "trial2voice") {
     super(name);
@@ -24,6 +32,10 @@ export class Trial2VoiceDB extends Dexie {
     });
     this.version(3).stores({
       referrals: "id, nctId, createdAt",
+    });
+    this.version(4).stores({
+      events: "++seq, nctId, type, at",
+      evalRuns: "id, at",
     });
   }
 }
