@@ -27,6 +27,24 @@ export const RATE_LIMIT = { requests: 240, windowMs: 10 * 60_000 }; // ~6 full c
 const json = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", "Cache-Control": "no-store", ...headers } });
 
+/** The key as pasted into a dashboard may carry spaces, newlines or quotes. */
+export function cleanKey(raw: string | undefined): string {
+  return (raw ?? "").trim().replace(/^["']|["']$/g, "").trim();
+}
+
+/** ElevenLabs' short reason code (e.g. "missing_permissions"); never the key or full payload. */
+async function upstreamReason(res: Response): Promise<string> {
+  try {
+    const body = (await res.json()) as { detail?: { status?: string; code?: string; message?: string } | string };
+    const d = body.detail;
+    const code = typeof d === "string" ? d : d?.status ?? d?.code;
+    // Keep only a snake_case code like "missing_permissions"; drop free text.
+    return code ? String(code).match(/[a-z][a-z0-9_]{2,40}/i)?.[0] ?? "" : "";
+  } catch {
+    return "";
+  }
+}
+
 const allowlist = (env: TtsEnv) =>
   (env.ELEVENLABS_VOICE_IDS ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -59,32 +77,57 @@ export function resetRateLimit() {
 
 let voiceCache: { at: number; key: string; voices: { id: string; label: string }[] } | null = null;
 
+type RawVoice = { voice_id: string; name: string; category?: string; labels?: Record<string, string> };
+
+async function fetchVoiceList(key: string, fetcher: typeof fetch): Promise<{ voices?: RawVoice[]; status?: number; reason?: string }> {
+  const v2 = new URL(`${API}/v2/voices`);
+  v2.searchParams.set("page_size", "100");
+  let res = await fetcher(v2, { headers: { "xi-api-key": key } });
+  // Older endpoint as a fallback if the newer one rejects the request.
+  if (!res.ok && res.status !== 401) res = await fetcher(`${API}/v1/voices`, { headers: { "xi-api-key": key } });
+  if (!res.ok) return { status: res.status, reason: await upstreamReason(res) };
+  const body = (await res.json()) as { voices?: RawVoice[] };
+  return { voices: body.voices ?? [] };
+}
+
 export async function handleVoices(req: Request, env: TtsEnv, fetcher: typeof fetch = fetch): Promise<Response> {
-  if (!env.ELEVENLABS_API_KEY) return json({ configured: false, voices: [] });
+  const key = cleanKey(env.ELEVENLABS_API_KEY);
+  if (!key) return json({ configured: false, voices: [] });
   if (!sameSite(req)) return json({ error: "Not allowed." }, 403);
   const allow = allowlist(env);
-  const model = env.ELEVENLABS_MODEL || DEFAULT_MODEL;
-  const defaults = { en: env.ELEVENLABS_DEFAULT_VOICE_ID ?? null, es: env.ELEVENLABS_DEFAULT_VOICE_ID_ES ?? env.ELEVENLABS_DEFAULT_VOICE_ID ?? null };
+  const model = (env.ELEVENLABS_MODEL || DEFAULT_MODEL).trim();
+  const defEn = env.ELEVENLABS_DEFAULT_VOICE_ID?.trim() || null;
+  const defEs = env.ELEVENLABS_DEFAULT_VOICE_ID_ES?.trim() || defEn;
 
-  if (!voiceCache || voiceCache.key !== env.ELEVENLABS_API_KEY || Date.now() - voiceCache.at > 10 * 60_000) {
-    const url = new URL(`${API}/v2/voices`);
-    url.searchParams.set("page_size", "100");
-    url.searchParams.set("sort", "name");
-    url.searchParams.set("sort_direction", "asc");
-    const res = await fetcher(url, { headers: { "xi-api-key": env.ELEVENLABS_API_KEY } });
-    if (!res.ok) return json({ configured: true, voices: [], error: `ElevenLabs error ${res.status}` }, 502);
-    const body = (await res.json()) as { voices: { voice_id: string; name: string; category?: string; labels?: Record<string, string> }[] };
-    voiceCache = {
-      at: Date.now(),
-      key: env.ELEVENLABS_API_KEY,
-      voices: body.voices.map((v) => {
-        const bits = [v.labels?.accent, v.labels?.gender].filter(Boolean);
-        return { id: v.voice_id, label: bits.length ? `${v.name} (${bits.join(", ")})` : v.name };
-      }),
-    };
+  let listError: string | undefined;
+  if (!voiceCache || voiceCache.key !== key || Date.now() - voiceCache.at > 10 * 60_000) {
+    const r = await fetchVoiceList(key, fetcher);
+    if (r.voices) {
+      voiceCache = {
+        at: Date.now(),
+        key,
+        voices: r.voices
+          .map((v) => {
+            const bits = [v.labels?.accent, v.labels?.gender].filter(Boolean);
+            return { id: v.voice_id, label: bits.length ? `${v.name} (${bits.join(", ")})` : v.name };
+          })
+          .sort((a, b) => a.label.localeCompare(b.label)),
+      };
+    } else {
+      listError = `ElevenLabs error ${r.status}${r.reason ? `: ${r.reason}` : ""}`;
+    }
   }
-  const voices = allow.length ? voiceCache.voices.filter((v) => allow.includes(v.id)) : voiceCache.voices;
-  return json({ configured: true, model, defaults: { en: defaults.en ?? voices[0]?.id ?? null, es: defaults.es ?? voices[0]?.id ?? null }, voices });
+
+  let voices = voiceCache && voiceCache.key === key ? voiceCache.voices : [];
+  if (allow.length) voices = voices.filter((v) => allow.includes(v.id));
+  // Listing can fail (e.g. a key without "Voices: read") while speech still
+  // works: offer the configured default voices in that case.
+  if (!voices.length) {
+    const ids = [...new Set([defEn, defEs, ...allow].filter((x): x is string => Boolean(x)))];
+    voices = ids.map((id, i) => ({ id, label: id === defEn ? "Site voice (English)" : id === defEs ? "Site voice (Spanish)" : `Site voice ${i + 1}` }));
+  }
+  if (!voices.length) return json({ configured: true, voices: [], error: listError ?? "No voices available." }, listError ? 502 : 200);
+  return json({ configured: true, model, defaults: { en: defEn ?? voices[0].id, es: defEs ?? voices[0].id }, voices, ...(listError ? { warning: listError } : {}) });
 }
 
 // --- POST /api/tts -------------------------------------------------------------
@@ -96,7 +139,8 @@ const TtsBody = z.object({
 });
 
 export async function handleTts(req: Request, env: TtsEnv, fetcher: typeof fetch = fetch): Promise<Response> {
-  if (!env.ELEVENLABS_API_KEY) return json({ error: "ElevenLabs isn't set up on this site." }, 503);
+  const key = cleanKey(env.ELEVENLABS_API_KEY);
+  if (!key) return json({ error: "ElevenLabs isn't set up on this site." }, 503);
   if (!sameSite(req)) return json({ error: "Not allowed." }, 403);
   if (rateLimited(req)) return json({ error: "Too many requests. Try again in a few minutes." }, 429, { "Retry-After": "120" });
 
@@ -113,17 +157,18 @@ export async function handleTts(req: Request, env: TtsEnv, fetcher: typeof fetch
 
   const upstream = await fetcher(`${API}/v1/text-to-speech/${encodeURIComponent(body.voiceId)}/stream?output_format=mp3_44100_128`, {
     method: "POST",
-    headers: { "xi-api-key": env.ELEVENLABS_API_KEY, "Content-Type": "application/json", Accept: "audio/mpeg" },
+    headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
     body: JSON.stringify({
       text: body.text,
-      model_id: env.ELEVENLABS_MODEL || DEFAULT_MODEL,
+      model_id: (env.ELEVENLABS_MODEL || DEFAULT_MODEL).trim(),
       voice_settings: { stability: 0.5, similarity_boost: 0.75, speed: Math.min(1.2, Math.max(0.7, body.speed)) },
     }),
   });
   if (!upstream.ok || !upstream.body) {
     // Don't leak upstream details; the status tells the client whether to fall back.
     const status = upstream.status === 401 ? 502 : upstream.status === 429 || upstream.status === 402 ? 429 : 502;
-    return json({ error: `ElevenLabs error ${upstream.status}` }, status);
+    const reason = await upstreamReason(upstream);
+    return json({ error: `ElevenLabs error ${upstream.status}${reason ? `: ${reason}` : ""}` }, status);
   }
   return new Response(upstream.body, { status: 200, headers: { "Content-Type": "audio/mpeg", "Cache-Control": "no-store" } });
 }

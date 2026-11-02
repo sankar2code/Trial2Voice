@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import { handleTts, handleVoices, MAX_TEXT, RATE_LIMIT, resetRateLimit, sameSite } from "./elevenlabs";
+import { cleanKey, handleTts, handleVoices, MAX_TEXT, RATE_LIMIT, resetRateLimit, sameSite } from "./elevenlabs";
 
 const env = { ELEVENLABS_API_KEY: "server-key-123", ELEVENLABS_VOICE_IDS: "voiceAAAAAAAAAA,voiceBBBBBBBBBB" };
 const VOICE = "voiceAAAAAAAAAA";
@@ -102,5 +102,48 @@ describe("GET /api/voices", () => {
     expect(body.voices[0].label).toBe("Aria (american, female)");
     expect(body.defaults).toEqual({ en: "voiceAAAAAAAAAA", es: "voiceBBBBBBBBBB" });
     expect(JSON.stringify(body)).not.toContain("key-for-list-test");
+  });
+});
+
+
+describe("robustness (pasted keys, failing list)", () => {
+  const list = (voices: object[]) => new Response(JSON.stringify({ voices }));
+  const fail = (status: number, detail: unknown) => new Response(JSON.stringify({ detail }), { status });
+
+  test("pasted keys are cleaned of spaces, newlines and quotes", () => {
+    expect(cleanKey('  "sk_abc123"\n')).toBe("sk_abc123");
+    expect(cleanKey("'sk_abc123'")).toBe("sk_abc123");
+    expect(cleanKey(undefined)).toBe("");
+  });
+
+  test("the cleaned key is what's sent", async () => {
+    const f = vi.fn().mockResolvedValue(audio());
+    await handleTts(req("/api/tts", { method: "POST", body: { text: "hi", voiceId: VOICE } }), { ...env, ELEVENLABS_API_KEY: ' "server-key-123" ' }, f as never);
+    expect(f.mock.calls[0][1].headers["xi-api-key"]).toBe("server-key-123");
+  });
+
+  test("v2 rejected → falls back to v1", async () => {
+    const f = vi.fn().mockResolvedValueOnce(fail(400, { status: "invalid_parameters" })).mockResolvedValueOnce(list([{ voice_id: VOICE, name: "Aria" }]));
+    const r = await handleVoices(req("/api/voices"), { ELEVENLABS_API_KEY: "key-fallback-1" }, f as never);
+    const body = await r.json();
+    expect(String(f.mock.calls[1][0])).toContain("/v1/voices");
+    expect(body.voices).toEqual([{ id: VOICE, label: "Aria" }]);
+  });
+
+  test("listing not allowed → reason shown, default voices still offered", async () => {
+    const f = vi.fn().mockResolvedValue(fail(401, { status: "missing_permissions", message: "The API key you used is missing the permission voices_read" }));
+    const r = await handleVoices(req("/api/voices"), { ELEVENLABS_API_KEY: "key-perm-1", ELEVENLABS_DEFAULT_VOICE_ID: VOICE }, f as never);
+    const body = await r.json();
+    expect(r.status).toBe(200);
+    expect(body.voices).toEqual([{ id: VOICE, label: "Site voice (English)" }]);
+    expect(body.warning).toBe("ElevenLabs error 401: missing_permissions");
+  });
+
+  test("listing fails and no defaults → clear error with the reason only", async () => {
+    const f = vi.fn().mockResolvedValue(fail(400, "invalid_api_key some longer explanation"));
+    const r = await handleVoices(req("/api/voices"), { ELEVENLABS_API_KEY: "key-bad-1" }, f as never);
+    const body = await r.json();
+    expect(r.status).toBe(502);
+    expect(body.error).toBe("ElevenLabs error 400: invalid_api_key");
   });
 });

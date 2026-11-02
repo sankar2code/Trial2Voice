@@ -16,6 +16,7 @@ export type SiteVoices = {
   defaults?: { en: string | null; es: string | null };
   voices: ElevenVoice[];
   error?: string;
+  warning?: string; // voices available, but listing them failed (defaults used)
 };
 
 let siteVoices: Promise<SiteVoices> | null = null;
@@ -26,7 +27,7 @@ export function getSiteVoices(): Promise<SiteVoices> {
     siteVoices = fetch("/api/voices", { cache: "no-store" })
       .then(async (r) => {
         const body = (await r.json().catch(() => ({}))) as Partial<SiteVoices>;
-        return { configured: Boolean(body.configured), model: body.model, defaults: body.defaults, voices: body.voices ?? [], error: r.ok ? undefined : body.error ?? `Error ${r.status}` };
+        return { configured: Boolean(body.configured), model: body.model, defaults: body.defaults, voices: body.voices ?? [], warning: body.warning, error: r.ok ? undefined : body.error ?? `Error ${r.status}` };
       })
       .catch(() => ({ configured: false, voices: [], error: "Couldn't reach this site's voice service." }));
     // Retry after a failure on the next request.

@@ -109,7 +109,10 @@ function ElevenLabsSettings() {
         {site === null ? (
           <span className="text-muted">Checking this site&apos;s voices…</span>
         ) : available ? (
-          <span className="text-green-700">ElevenLabs voices are provided by this site ({site.voices.length} available{site.model ? `, ${site.model}` : ""}).</span>
+          <>
+            <span className="text-green-700">ElevenLabs voices are provided by this site ({site.voices.length} available{site.model ? `, ${site.model}` : ""}).</span>
+            {site.warning && <span className="block text-xs text-muted mt-1">Using the configured default voices; the full voice list couldn&apos;t be loaded ({site.warning}).</span>}
+          </>
         ) : site.configured ? (
           <span className="text-amber-800">This site&apos;s ElevenLabs voices aren&apos;t available right now{site.error ? ` (${site.error})` : ""}. Browser voices are used.</span>
         ) : (
