@@ -19,11 +19,28 @@ export function speechOutputSupported(): boolean {
   return typeof window !== "undefined" && "speechSynthesis" in window;
 }
 
-function pickVoice(lang: Lang): SpeechSynthesisVoice | undefined {
+function voiceScore(v: SpeechSynthesisVoice, lang: Lang) {
+  return (v.lang === LOCALE[lang] ? 4 : 0) + (/natural|neural|premium|enhanced|google/i.test(v.name) ? 3 : 0) + (/samantha|paulina|monica|ava|allison/i.test(v.name) ? 2 : 0) + (v.localService ? 1 : 0);
+}
+
+/** Voices for a language, best first. Novelty voices (Bells, Bubbles…) are left out. */
+export function listVoices(lang: Lang): { name: string; label: string }[] {
+  if (!speechOutputSupported()) return [];
+  const novelty = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|deranged|hysterical|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|reed/i;
+  return window.speechSynthesis
+    .getVoices()
+    .filter((v) => v.lang.toLowerCase().startsWith(lang) && !novelty.test(v.name))
+    .sort((a, b) => voiceScore(b, lang) - voiceScore(a, lang) || a.name.localeCompare(b.name))
+    .map((v) => ({ name: v.name, label: v.name.includes("(") ? v.name : `${v.name} (${v.lang})` }));
+}
+
+function pickVoice(lang: Lang, preferred?: string): SpeechSynthesisVoice | undefined {
   const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith(lang));
-  const score = (v: SpeechSynthesisVoice) =>
-    (v.lang === LOCALE[lang] ? 4 : 0) + (/natural|neural|premium|enhanced|google/i.test(v.name) ? 3 : 0) + (/samantha|paulina|monica|ava|allison/i.test(v.name) ? 2 : 0) + (v.localService ? 1 : 0);
-  return voices.sort((a, b) => score(b) - score(a))[0];
+  if (preferred) {
+    const chosen = voices.find((v) => v.name === preferred);
+    if (chosen) return chosen;
+  }
+  return voices.sort((a, b) => voiceScore(b, lang) - voiceScore(a, lang))[0];
 }
 
 /** Voices load asynchronously in some browsers. */
@@ -37,13 +54,13 @@ export function loadVoices(): Promise<void> {
   });
 }
 
-export function speak(text: string, lang: Lang, rate = 1): Promise<void> {
+export function speak(text: string, lang: Lang, rate = 1, voiceName?: string): Promise<void> {
   if (!speechOutputSupported()) return Promise.resolve();
   return new Promise((resolve) => {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = LOCALE[lang];
     u.rate = rate;
-    const v = pickVoice(lang);
+    const v = pickVoice(lang, voiceName);
     if (v) u.voice = v;
     u.onend = () => resolve();
     u.onerror = () => resolve();

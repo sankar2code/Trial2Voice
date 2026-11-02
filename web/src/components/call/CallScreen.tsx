@@ -8,8 +8,10 @@ import { activeLocked, saveCall } from "@/lib/store/repo";
 import { CallSession, type AgentLine, type Turn } from "@/lib/call/session";
 import { keywordInterpreter } from "@/lib/call/parse";
 import { LlmInterpreter } from "@/lib/call/llmInterpreter";
-import { getSettings } from "@/lib/settings";
-import { listenOnce, loadVoices, speak, speechInputSupported, speechOutputSupported, stopSpeaking } from "@/lib/voice/webspeech";
+import { getSettings, saveSettings, useSettings } from "@/lib/settings";
+import { listVoices, listenOnce, loadVoices, speechInputSupported, speechOutputSupported } from "@/lib/voice/webspeech";
+import { speakLine, stopAllSpeech } from "@/lib/voice/tts";
+import { listElevenVoices, type ElevenVoice } from "@/lib/voice/elevenlabs";
 import type { CallRecord, Lang } from "@/lib/call/types";
 
 type Caption = { role: "agent" | "caller"; text: string; key: number };
@@ -24,6 +26,10 @@ const CANNED = {
   es: { repeat: "¿Puede repetir?", notSure: "No estoy seguro", back: "Regresar" },
 };
 const FILLER = { en: "One moment.", es: "Un momento." };
+const SAMPLE = {
+  en: "Hi, I'm an AI assistant for this study. I'll ask a few short questions.",
+  es: "Hola, soy un asistente de inteligencia artificial de este estudio. Le haré unas preguntas cortas.",
+};
 
 export function CallScreen({ nctId, embedded = false }: { nctId: string; embedded?: boolean }) {
   const trial = useLiveQuery(() => db().trials.get(nctId), [nctId]);
@@ -41,6 +47,10 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
   const [phoneHint, setPhoneHint] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CallRecord | null>(null);
+  const [voices, setVoices] = useState<{ name: string; label: string }[]>([]);
+  const [elevenVoices, setElevenVoices] = useState<ElevenVoice[] | null>(null);
+  const [voiceNotice, setVoiceNotice] = useState<string | null>(null);
+  const settings = useSettings();
 
   const session = useRef<CallSession | null>(null);
   const stopListening = useRef<() => void>(() => {});
@@ -51,6 +61,33 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
   const rateRef = useRef(rate);
   voiceRef.current = voice;
   rateRef.current = rate;
+
+  // Voices load asynchronously and differ per browser and OS.
+  useEffect(() => {
+    if (!speechOutputSupported()) return;
+    let live = true;
+    const refresh = () => live && setVoices(listVoices(lang));
+    void loadVoices().then(refresh);
+    window.speechSynthesis.addEventListener("voiceschanged", refresh);
+    return () => {
+      live = false;
+      window.speechSynthesis.removeEventListener("voiceschanged", refresh);
+    };
+  }, [lang]);
+
+  const useEleven = settings.ttsProvider === "elevenlabs" && Boolean(settings.elevenApiKey);
+  useEffect(() => {
+    if (!useEleven) return setElevenVoices(null);
+    const ctrl = new AbortController();
+    listElevenVoices(getSettings().elevenApiKey, ctrl.signal)
+      .then(setElevenVoices)
+      .catch((e) => {
+        if (ctrl.signal.aborted) return;
+        setElevenVoices([]);
+        setVoiceNotice(`${e instanceof Error ? e.message : "Couldn't load ElevenLabs voices."} Using browser voices.`);
+      });
+    return () => ctrl.abort();
+  }, [useEleven, settings.elevenApiKey]);
 
   useEffect(() => {
     const s = { input: speechInputSupported(), output: speechOutputSupported() };
@@ -64,7 +101,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
     const s = session.current;
     if (!s) return;
     stopListening.current();
-    stopSpeaking();
+    stopAllSpeech();
     setStatus("ended");
     setResult(structuredClone(s.record));
     try {
@@ -109,7 +146,8 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
         addCaption("agent", l.text);
         if (voiceRef.current) {
           setStatus("speaking");
-          await speak(l.text, l.lang, l.slow ? Math.max(0.6, rateRef.current - 0.25) : rateRef.current);
+          const r = await speakLine(l.text, l.lang, l.slow ? Math.max(0.6, rateRef.current - 0.25) : rateRef.current);
+          if (r.fallbackReason) setVoiceNotice(`${r.fallbackReason} Using the browser voice.`);
         }
       }
       if (turn.ended) return finish();
@@ -130,13 +168,13 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
     const filler = setTimeout(() => {
       if (voiceRef.current) {
         fillerSaid = true;
-        void speak(FILLER[s.lang], s.lang, rateRef.current);
+        void speakLine(FILLER[s.lang], s.lang, rateRef.current);
       }
     }, 700);
     try {
       const turn = await s.hear(text);
       clearTimeout(filler);
-      if (fillerSaid) stopSpeaking();
+      if (fillerSaid) stopAllSpeech();
       await speakTurn(turn);
     } catch (e) {
       clearTimeout(filler);
@@ -173,7 +211,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
       void saveCall(s.record);
     }
     stopListening.current();
-    stopSpeaking();
+    stopAllSpeech();
   }, []);
 
   if (trial === undefined || versions === undefined) return <p className="text-sm text-muted">Loading…</p>;
@@ -247,6 +285,49 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
             <span className="text-muted">{lang === "es" ? "Velocidad de la voz" : "Speech speed"}: {rate.toFixed(1)}×</span>
             <input type="range" min={0.6} max={1.4} step={0.1} value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full accent-teal-700" />
           </label>
+          {supported.output && (
+            <div className="space-y-1">
+              <label className="block text-sm">
+                <span className="text-muted">{lang === "es" ? "Voz" : "Voice"}</span>
+                <div className="flex gap-2 mt-1">
+                  {useEleven ? (
+                    <select
+                      className="w-full rounded-md border border-border bg-surface px-2 py-1.5 text-sm"
+                      value={settings.elevenVoice[lang]}
+                      onChange={(e) => saveSettings({ elevenVoice: { ...settings.elevenVoice, [lang]: e.target.value } })}
+                      disabled={elevenVoices === null}
+                    >
+                      <option value="">{elevenVoices === null ? "Loading ElevenLabs voices…" : lang === "es" ? "Elija una voz de ElevenLabs" : "Choose an ElevenLabs voice"}</option>
+                      {(elevenVoices ?? []).map((v) => <option key={v.id} value={v.id}>{v.label}</option>)}
+                    </select>
+                  ) : (
+                    <select
+                      className="w-full rounded-md border border-border bg-surface px-2 py-1.5 text-sm"
+                      value={settings.voice[lang]}
+                      onChange={(e) => saveSettings({ voice: { ...settings.voice, [lang]: e.target.value } })}
+                    >
+                      <option value="">{lang === "es" ? "Automática (la mejor disponible)" : "Automatic (best available)"}</option>
+                      {voices.map((v) => <option key={v.name} value={v.name}>{v.label}</option>)}
+                    </select>
+                  )}
+                  <Button
+                    type="button"
+                    onClick={async () => {
+                      stopAllSpeech();
+                      setVoiceNotice(null);
+                      const r = await speakLine(SAMPLE[lang], lang, rate);
+                      if (r.fallbackReason) setVoiceNotice(`${r.fallbackReason} Using the browser voice.`);
+                    }}
+                  >
+                    {lang === "es" ? "Escuchar" : "Preview"}
+                  </Button>
+                </div>
+              </label>
+              {useEleven && <p className="text-xs text-muted">ElevenLabs voice ({settings.elevenModel}). Change provider in <Link href="/settings" className="underline">Settings</Link>.</p>}
+              {!useEleven && voices.length === 0 && <p className="text-xs text-muted">{lang === "es" ? "Este navegador no tiene voces en español." : "No voices found for this language in this browser."}</p>}
+              {!useEleven && <p className="text-xs text-muted">{lang === "es" ? "Las voces vienen de su navegador y sistema." : "Voices come from your browser and operating system. Ones marked Premium or Enhanced usually sound best."}</p>}
+            </div>
+          )}
           <Button variant="primary" onClick={start}>{ui.start}</Button>
           <p className="text-xs text-muted">Demo: don&apos;t give real health information. {voice && "Your browser may send audio to its speech service."}</p>
         </Card>
@@ -305,6 +386,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
         </>
       )}
 
+      {voiceNotice && <p className="text-sm text-amber-800">{voiceNotice}</p>}
       {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
 
       {result && <DemoResult call={result} script={script} onRestart={() => { setStatus("idle"); setProgress({ current: 0, total: 0 }); }} embedded={embedded} />}
