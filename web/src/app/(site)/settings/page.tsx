@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Card, Field, Input } from "@/components/ui";
+import { KeysExplainer } from "@/components/KeysExplainer";
 import { saveSettings, useSettings } from "@/lib/settings";
 import { DEFAULT_BUILD_MODEL } from "@/lib/script/builder";
 import { DEFAULT_CALL_MODEL } from "@/lib/call/llmInterpreter";
-import { DEFAULT_ELEVEN_MODEL, listElevenVoices } from "@/lib/voice/elevenlabs";
+import { getSiteVoices, type SiteVoices } from "@/lib/voice/elevenlabs";
 import { TABLES, backupCounts, exportAll, importAll, validateBackup, type Backup } from "@/lib/store/backup";
 
 export default function SettingsPage() {
@@ -13,8 +14,10 @@ export default function SettingsPage() {
   const [saved, setSaved] = useState(false);
 
   return (
-    <div className="max-w-xl space-y-6">
+    <div className="max-w-3xl space-y-6">
       <h1 className="text-2xl font-semibold">Settings</h1>
+
+      <KeysExplainer />
 
       <Card className="p-5 space-y-4">
         <Field label="Your name" hint="Recorded in the audit log for every change you make.">
@@ -82,90 +85,53 @@ export default function SettingsPage() {
 
 function ElevenLabsSettings() {
   const s = useSettings();
-  const [key, setKey] = useState("");
-  const [check, setCheck] = useState<{ state: "idle" | "checking" | "ok" | "error"; message?: string }>({ state: "idle" });
-
-  const test = async (apiKey: string) => {
-    setCheck({ state: "checking" });
-    try {
-      const voices = await listElevenVoices(apiKey);
-      setCheck({ state: "ok", message: `Connected — ${voices.length} voice${voices.length === 1 ? "" : "s"} available. Pick one on the call screen.` });
-      return true;
-    } catch (e) {
-      setCheck({ state: "error", message: e instanceof Error ? e.message : "Couldn't reach ElevenLabs." });
-      return false;
-    }
-  };
+  const [site, setSite] = useState<SiteVoices | null>(null);
+  useEffect(() => {
+    let live = true;
+    void getSiteVoices().then((v) => live && setSite(v));
+    return () => {
+      live = false;
+    };
+  }, []);
+  const available = Boolean(site?.configured && site.voices.length);
 
   return (
     <Card className="p-5 space-y-4">
       <div>
         <h2 className="font-medium">Agent voice</h2>
         <p className="text-sm text-muted mt-1">
-          Browser voices are free and built in. ElevenLabs voices sound more natural; they need your ElevenLabs key,
-          which is saved in this browser only and sent only to ElevenLabs. Only the agent&apos;s voice uses ElevenLabs —
-          listening and the call logic stay in the browser. If ElevenLabs fails during a call, the browser voice takes over.
+          No key needed. This site can provide natural ElevenLabs voices; otherwise your browser&apos;s built-in voices
+          are used. Only the agent&apos;s voice changes — listening and the call logic stay in your browser. If the
+          site&apos;s voice service fails during a call, the browser voice takes over.
         </p>
       </div>
-      <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Voice provider">
-        {(["browser", "elevenlabs"] as const).map((p) => (
-          <button
-            key={p}
-            role="radio"
-            aria-checked={s.ttsProvider === p}
-            onClick={() => saveSettings({ ttsProvider: p })}
-            className={`rounded-md border px-3 py-1.5 text-sm ${s.ttsProvider === p ? "border-accent bg-accent-soft" : "border-border"}`}
-          >
-            {p === "browser" ? "Browser voices" : "ElevenLabs"}
-          </button>
-        ))}
+      <div className="text-sm">
+        {site === null ? (
+          <span className="text-muted">Checking this site&apos;s voices…</span>
+        ) : available ? (
+          <span className="text-green-700">ElevenLabs voices are provided by this site ({site.voices.length} available{site.model ? `, ${site.model}` : ""}).</span>
+        ) : site.configured ? (
+          <span className="text-amber-800">This site&apos;s ElevenLabs voices aren&apos;t available right now{site.error ? ` (${site.error})` : ""}. Browser voices are used.</span>
+        ) : (
+          <span className="text-muted">This site doesn&apos;t provide ElevenLabs voices, so browser voices are used.</span>
+        )}
       </div>
-
-      {s.ttsProvider === "elevenlabs" && (
-        <>
-          <Field label="ElevenLabs API key">
-            <Input
-              type="password"
-              autoComplete="off"
-              placeholder={s.elevenApiKey ? "•••••••• (saved)" : "Paste your ElevenLabs key"}
-              value={key}
-              onChange={(e) => {
-                setKey(e.target.value);
-                setCheck({ state: "idle" });
-              }}
-            />
-          </Field>
-          <div className="flex flex-wrap gap-2 items-center">
-            <Button
-              variant="primary"
-              disabled={!key.trim() || check.state === "checking"}
-              onClick={async () => {
-                const k = key.trim();
-                if (await test(k)) {
-                  saveSettings({ elevenApiKey: k });
-                  setKey("");
-                }
-              }}
+      {available && (
+        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Voice source">
+          {(["elevenlabs", "browser"] as const).map((p) => (
+            <button
+              key={p}
+              role="radio"
+              aria-checked={s.ttsProvider === p}
+              onClick={() => saveSettings({ ttsProvider: p })}
+              className={`rounded-md border px-3 py-1.5 text-sm ${s.ttsProvider === p ? "border-accent bg-accent-soft" : "border-border"}`}
             >
-              {check.state === "checking" ? "Checking…" : "Save key"}
-            </Button>
-            {s.elevenApiKey && !key && (
-              <>
-                <Button onClick={() => test(s.elevenApiKey)} disabled={check.state === "checking"}>Test saved key</Button>
-                <Button variant="danger" onClick={() => { saveSettings({ elevenApiKey: "", elevenVoice: { en: "", es: "" } }); setCheck({ state: "idle" }); }}>Remove key</Button>
-              </>
-            )}
-          </div>
-          {check.message && <p className={`text-sm ${check.state === "ok" ? "text-green-700" : "text-red-700"}`}>{check.message}</p>}
-          <Field label="ElevenLabs model" hint={`Default: ${DEFAULT_ELEVEN_MODEL} (low latency, many languages). eleven_flash_v2_5 is a cheaper fast option.`}>
-            <Input value={s.elevenModel} onChange={(e) => saveSettings({ elevenModel: e.target.value.trim() || DEFAULT_ELEVEN_MODEL })} />
-          </Field>
-          <p className="text-xs text-muted">
-            Demo only: the key is visible in this browser&apos;s developer tools. Set a low spending limit on it, and
-            don&apos;t use it on a shared or public deployment. Real patient calls need a BAA with ElevenLabs.
-          </p>
-        </>
+              {p === "elevenlabs" ? "Site voices (ElevenLabs)" : "Browser voices"}
+            </button>
+          ))}
+        </div>
       )}
+      <p className="text-xs text-muted">Pick the exact voice, and preview it, on the call screen.</p>
     </Card>
   );
 }

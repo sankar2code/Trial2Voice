@@ -57,9 +57,21 @@ npm run dev          # http://localhost:3000
 npx vitest run       # unit tests + 60 simulated-caller evals with release gates
 ```
 
-Then open **Trials → Load demo trials**, approve a script, and click **Test call**. API keys are optional and are entered in **Settings**, where they're saved in your browser only:
-- **Anthropic:** builds scripts for new trials, reads answers with Claude, and runs the Claude quality review.
-- **ElevenLabs:** more natural agent voices.
+Then open **Trials → Load demo trials**, approve a script, and click **Test call**.
+
+**Keys:**
+- **Claude (Anthropic): bring your own.** Visitors paste their key in **Settings**. It stays in their browser and is billed to their account. It unlocks building scripts for new trials, Claude reading answers, and the Claude quality review. Everything else works without it.
+- **ElevenLabs voices: provided by the site.** The owner's key lives only on the server. The browser calls this site's `/api/tts` and `/api/voices` routes, which add the key, so it never reaches visitors. Without it, calls use browser voices. To enable it locally, copy `web/.env.example` to `web/.env.local` and set `ELEVENLABS_API_KEY`.
+
+## Deploy (Vercel)
+
+1. Import the GitHub repo in Vercel and set **Root Directory** to `web`. Everything else stays at its default.
+2. Under **Settings → Environment Variables**, add `ELEVENLABS_API_KEY`. Optional:
+   - `ELEVENLABS_VOICE_IDS`: an allowlist of voices, recommended for a public site.
+   - `ELEVENLABS_DEFAULT_VOICE_ID` and `ELEVENLABS_DEFAULT_VOICE_ID_ES`: the default English and Spanish voices.
+   - `ELEVENLABS_MODEL`: the speech model.
+3. In ElevenLabs, give that key a **credit limit** and only text-to-speech plus voice-read permissions. The site's route also refuses other websites, caps text length and rate-limits each visitor, but the credit limit is the real spending cap.
+4. Deploy. The site is served over HTTPS, so the microphone works.
 
 ## Release gates (PRD §9)
 

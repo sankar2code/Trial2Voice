@@ -1,11 +1,10 @@
 "use client";
 // Per-browser settings. The API key is stored only in this browser's
-// localStorage. The Anthropic key goes only to api.anthropic.com, the
-// ElevenLabs key only to api.elevenlabs.io.
+// localStorage and is sent only to api.anthropic.com. ElevenLabs voices are
+// provided by the site (server-side key), so visitors never enter one.
 import { useSyncExternalStore } from "react";
 import { DEFAULT_BUILD_MODEL } from "./script/builder";
 import { DEFAULT_CALL_MODEL } from "./call/llmInterpreter";
-import { DEFAULT_ELEVEN_MODEL } from "./voice/elevenlabs";
 
 export type Settings = {
   apiKey: string;
@@ -14,15 +13,13 @@ export type Settings = {
   useLlmInCalls: boolean;
   actor: string;
   voice: { en: string; es: string }; // browser voice names
-  ttsProvider: "browser" | "elevenlabs";
-  elevenApiKey: string;
-  elevenModel: string;
-  elevenVoice: { en: string; es: string }; // ElevenLabs voice IDs
+  ttsProvider: "browser" | "elevenlabs"; // "elevenlabs" = the site's voices when available
+  elevenVoice: { en: string; es: string }; // ElevenLabs voice IDs ("" = site default)
 };
 
 const KEY = "t2v.settings";
 const DEFAULTS: Settings = { apiKey: "", buildModel: DEFAULT_BUILD_MODEL, callModel: DEFAULT_CALL_MODEL, useLlmInCalls: true, actor: "Demo admin", voice: { en: "", es: "" },
-  ttsProvider: "browser", elevenApiKey: "", elevenModel: DEFAULT_ELEVEN_MODEL, elevenVoice: { en: "", es: "" },
+  ttsProvider: "elevenlabs", elevenVoice: { en: "", es: "" },
 };
 const listeners = new Set<() => void>();
 let cache: Settings | null = null;
@@ -31,7 +28,14 @@ function read(): Settings {
   if (cache) return cache;
   try {
     const raw = window.localStorage.getItem(KEY);
-    cache = { ...DEFAULTS, ...(raw ? JSON.parse(raw) : {}) };
+    const stored = raw ? JSON.parse(raw) : {};
+    // Earlier versions let visitors save their own ElevenLabs key; drop it.
+    if ("elevenApiKey" in stored || "elevenModel" in stored) {
+      delete stored.elevenApiKey;
+      delete stored.elevenModel;
+      window.localStorage.setItem(KEY, JSON.stringify(stored));
+    }
+    cache = { ...DEFAULTS, ...stored };
   } catch {
     cache = { ...DEFAULTS };
   }

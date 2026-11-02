@@ -3,8 +3,10 @@ import Link from "next/link";
 const steps = [
   ["Ingest", "Pull a study from ClinicalTrials.gov by NCT ID."],
   ["Draft", "Turn each criterion into a plain spoken question, in English and Spanish, with a decision rule."],
-  ["Review", "Edit side by side with the registry text. Every registry bullet must be covered."],
-  ["Approve & lock", "Record the approver and IRB reference. The version is frozen and fingerprinted."],
+  ["Review & lock", "Check every question against the registry text, then lock it with the approver and IRB reference."],
+  ["Call", "A voice or typed pre-screen with AI disclosure, read-backs, red-flag stops and caregiver support."],
+  ["Refer", "A rules engine scores the answers; the coordinator gets a traced referral and can override anything."],
+  ["Check quality", "Every call is checked against the approved script; simulated callers gate each release."],
 ];
 
 export default function Home() {
@@ -29,13 +31,20 @@ export default function Home() {
         <Link href="/admin/trials" className="rounded-md bg-accent text-white px-4 py-2 text-sm font-medium hover:bg-teal-800">
           Open trials
         </Link>
-        <Link href="/settings" className="rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium hover:bg-stone-50">
-          Add an API key (optional)
+        <Link href="/coordinator" className="rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium hover:bg-stone-50">
+          Coordinator queue
         </Link>
       </div>
-      <p className="mt-4 text-xs text-muted">
-        Phase 1 of the prototype: script building and approval. Voice calls arrive in Phase 2.
-      </p>
+      <div className="mt-8 rounded-lg border border-border bg-surface p-4 text-sm">
+        <div className="font-medium">Works without API keys</div>
+        <p className="text-muted mt-1">
+          The demo trials, calls, coordinator queue, insights and evals all run free in your browser, with natural
+          voices provided by the site. For the AI-powered extras (building scripts for any trial, Claude reading
+          answers and reviewing calls) you add your own Claude key, which stays in your browser and is billed to your own
+          account.{" "}
+          <Link href="/settings#api-keys" className="text-accent underline">How API keys work</Link>
+        </p>
+      </div>
     </div>
   );
 }

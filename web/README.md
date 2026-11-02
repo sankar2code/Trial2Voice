@@ -53,4 +53,8 @@ Open a locked trial and click **Start a test call** (or go to `/call/<NCT ID>`).
 - **Export / import** (Settings → Data): a JSON backup of every table, with no API keys. Replace or merge, with the audit chain verified after import.
 - **CI** (`.github/workflows/ci.yml`): lint, type-check, tests including the eval gates, and a production build.
 
+## Site-provided voices
+
+ElevenLabs voices come from the site, not the visitor. `src/app/api/tts` and `src/app/api/voices` are the only server code. They read `ELEVENLABS_API_KEY` from the environment (see `.env.example`) and proxy to ElevenLabs, with these guards: same-site only, a text length cap, an optional voice allowlist and a per-IP rate limit (`src/lib/server/elevenlabs.ts`). Visitors bring only their own Claude key.
+
 Data lives in this browser's IndexedDB. Track B swaps `src/lib/store` for Postgres behind API routes.

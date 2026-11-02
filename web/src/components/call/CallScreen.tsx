@@ -14,7 +14,7 @@ import { LlmInterpreter } from "@/lib/call/llmInterpreter";
 import { getSettings, saveSettings, useSettings } from "@/lib/settings";
 import { listVoices, listenOnce, loadVoices, speechInputSupported, speechOutputSupported } from "@/lib/voice/webspeech";
 import { speakLine, stopAllSpeech } from "@/lib/voice/tts";
-import { listElevenVoices, type ElevenVoice } from "@/lib/voice/elevenlabs";
+import { getSiteVoices, type SiteVoices } from "@/lib/voice/elevenlabs";
 import type { CallRecord, Lang } from "@/lib/call/types";
 
 type Caption = { role: "agent" | "caller"; text: string; key: number };
@@ -51,7 +51,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CallRecord | null>(null);
   const [voices, setVoices] = useState<{ name: string; label: string }[]>([]);
-  const [elevenVoices, setElevenVoices] = useState<ElevenVoice[] | null>(null);
+  const [site, setSite] = useState<SiteVoices | null>(null);
   const [voiceNotice, setVoiceNotice] = useState<string | null>(null);
   const settings = useSettings();
 
@@ -84,19 +84,16 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
     };
   }, [lang]);
 
-  const useEleven = settings.ttsProvider === "elevenlabs" && Boolean(settings.elevenApiKey);
+  // The site's ElevenLabs voices (server-side key), if this deployment has them.
   useEffect(() => {
-    if (!useEleven) return setElevenVoices(null);
-    const ctrl = new AbortController();
-    listElevenVoices(getSettings().elevenApiKey, ctrl.signal)
-      .then(setElevenVoices)
-      .catch((e) => {
-        if (ctrl.signal.aborted) return;
-        setElevenVoices([]);
-        setVoiceNotice(`${e instanceof Error ? e.message : "Couldn't load ElevenLabs voices."} Using browser voices.`);
-      });
-    return () => ctrl.abort();
-  }, [useEleven, settings.elevenApiKey]);
+    let live = true;
+    void getSiteVoices().then((v) => live && setSite(v));
+    return () => {
+      live = false;
+    };
+  }, []);
+  const siteHasVoices = Boolean(site?.configured && site.voices.length);
+  const useEleven = settings.ttsProvider === "elevenlabs" && siteHasVoices;
 
   useEffect(() => {
     const s = { input: speechInputSupported(), output: speechOutputSupported() };
@@ -312,10 +309,9 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
                       className="w-full rounded-md border border-border bg-surface px-2 py-1.5 text-sm"
                       value={settings.elevenVoice[lang]}
                       onChange={(e) => saveSettings({ elevenVoice: { ...settings.elevenVoice, [lang]: e.target.value } })}
-                      disabled={elevenVoices === null}
                     >
-                      <option value="">{elevenVoices === null ? "Loading ElevenLabs voices…" : lang === "es" ? "Elija una voz de ElevenLabs" : "Choose an ElevenLabs voice"}</option>
-                      {(elevenVoices ?? []).map((v) => <option key={v.id} value={v.id}>{v.label}</option>)}
+                      <option value="">{lang === "es" ? "Voz predeterminada del sitio" : "Site default voice"}</option>
+                      {site!.voices.map((v) => <option key={v.id} value={v.id}>{v.label}</option>)}
                     </select>
                   ) : (
                     <select
@@ -340,7 +336,22 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
                   </Button>
                 </div>
               </label>
-              {useEleven && <p className="text-xs text-muted">ElevenLabs voice ({settings.elevenModel}). Change provider in <Link href="/settings" className="underline">Settings</Link>.</p>}
+              {siteHasVoices && (
+                <div className="flex flex-wrap gap-2 text-xs" role="radiogroup" aria-label="Voice source">
+                  {(["elevenlabs", "browser"] as const).map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      role="radio"
+                      aria-checked={settings.ttsProvider === p}
+                      onClick={() => saveSettings({ ttsProvider: p })}
+                      className={cx("rounded border px-2 py-0.5", settings.ttsProvider === p ? "border-accent bg-accent-soft" : "border-border")}
+                    >
+                      {p === "elevenlabs" ? (lang === "es" ? "Voces del sitio (ElevenLabs)" : "Site voices (ElevenLabs)") : lang === "es" ? "Voces del navegador" : "Browser voices"}
+                    </button>
+                  ))}
+                </div>
+              )}
               {!useEleven && voices.length === 0 && <p className="text-xs text-muted">{lang === "es" ? "Este navegador no tiene voces en español." : "No voices found for this language in this browser."}</p>}
               {!useEleven && <p className="text-xs text-muted">{lang === "es" ? "Las voces vienen de su navegador y sistema." : "Voices come from your browser and operating system. Ones marked Premium or Enhanced usually sound best."}</p>}
             </div>
