@@ -6,8 +6,10 @@ import type { Criterion, ScriptVersion, Trial } from "../types";
 import { line, type LineCtx, type LineKey } from "./lines";
 import { detectRedFlag } from "./redflags";
 import { parsePhone, phoneReadBack } from "./phone";
+import { detectLanguage, isOnlyLanguageRequest } from "./language";
+import type { SiteMatch } from "../sites";
 import type {
-  Answer, AnswerValue, CallRecord, Expectation, Intent, Interpreter, Lang, NumericValue, RedFlagHit, Relationship, TranscriptEntry,
+  Answer, AnswerValue, CallRecord, Expectation, Intent, Interpreter, Lang, NumericValue, RedFlagHit, Relationship, TimeOfDay, TranscriptEntry,
 } from "./types";
 
 export const MAX_CALL_MS = 12 * 60_000;
@@ -47,6 +49,7 @@ type Phase =
   | { p: "contact_phone_confirm"; digits: string; tries: number }
   | { p: "contact_voicemail"; tries: number }
   | { p: "contact_time" }
+  | { p: "contact_zip"; tries: number }
   | { p: "ended" };
 
 export type SessionOptions = {
@@ -58,6 +61,8 @@ export type SessionOptions = {
   mode: "voice" | "text";
   now?: () => number;
   id?: string;
+  /** Nearest recruiting site for a ZIP code; the ZIP itself is never stored. */
+  findSite?: (zip: string) => Promise<SiteMatch | null>;
 };
 
 const uid = () => (globalThis.crypto?.randomUUID?.() ?? `id-${Math.random().toString(36).slice(2)}`);
@@ -100,11 +105,14 @@ export class CallSession {
   private consentGiven = false;
   private lastPrompt: AgentLine[] = [];
   private contactDraft: { name?: string; digits?: string } = {}; // memory only (G11 §8)
+  private curLang: Lang;
+  private prefs: { voicemailOk: boolean | null; bestTime: TimeOfDay | null } = { voicemailOk: null, bestTime: null };
 
   constructor(private readonly o: SessionOptions) {
     if (o.script.status !== "locked") throw new Error("Calls run only on a locked, approved script version.");
     if (o.trial.callsPaused || o.trial.stale) throw new Error("Calls for this trial are paused.");
     this.now = o.now ?? (() => Date.now());
+    this.curLang = o.lang;
     this.t0 = this.now();
     this.asked = o.script.criteria.filter((c) => c.mode === "ask");
     const n = this.asked.length;
@@ -129,7 +137,7 @@ export class CallSession {
   // --- public API ------------------------------------------------------------
 
   get ended() { return this.phase.p === "ended"; }
-  get lang() { return this.o.lang; }
+  get lang() { return this.curLang; }
 
   progress() {
     const idx = this.phase.p === "question" || this.phase.p === "readback" ? this.phase.idx + 1 : this.answeredCount();
@@ -146,7 +154,7 @@ export class CallSession {
     if (this.ended) return this.turn([]);
     if (!text) return this.turn([]);
     this.silences = 0;
-    this.log({ role: "caller", text: this.redactCaller(text), lang: this.o.lang, t: this.elapsed() });
+    this.log({ role: "caller", text: this.redactCaller(text), lang: this.curLang, t: this.elapsed() });
 
     const cap = this.checkCap();
     if (cap) return cap;
@@ -155,6 +163,17 @@ export class CallSession {
     if (this.phase.p !== "red_flag_check") {
       const hit = detectRedFlag(text);
       if (hit) return this.onRedFlag(text, hit);
+    }
+
+    // Language follows the caller, turn by turn (PRD §4). Names, numbers and
+    // phone digits never switch it.
+    const contactPhase = this.phase.p === "contact_name" || this.phase.p === "contact_phone" || this.phase.p === "contact_zip";
+    const detected = contactPhase ? null : detectLanguage(text);
+    if (detected && detected !== this.curLang) {
+      this.tool("switch_language", { from: this.curLang, to: detected }, "switched", 0);
+      this.curLang = detected;
+      this.record.language = "mixed";
+      if (isOnlyLanguageRequest(text)) return this.turn(this.promptForPhase());
     }
     return this.dispatch(text);
   }
@@ -201,6 +220,7 @@ export class CallSession {
       case "contact_phone_confirm": return this.onContactPhoneConfirm(text, ph);
       case "contact_voicemail": return this.onVoicemail(text, ph);
       case "contact_time": return this.onBestTime(text);
+      case "contact_zip": return this.onZip(text, ph);
       case "ended": return this.turn([]);
     }
   }
@@ -210,11 +230,11 @@ export class CallSession {
     let intent: Intent;
     let used = this.o.interpreter.name;
     try {
-      intent = await this.o.interpreter.interpret(text, expect, this.o.lang, { question });
+      intent = await this.o.interpreter.interpret(text, expect, this.curLang, { question });
     } catch (e) {
       if (!this.o.fallback) throw e;
       used = `${this.o.fallback.name} (fallback)`;
-      intent = await this.o.fallback.interpret(text, expect, this.o.lang, { question });
+      intent = await this.o.fallback.interpret(text, expect, this.curLang, { question });
     }
     // Contact details never go into the log (G11): keep only the intent type.
     const logged = expect.kind === "free_text" || expect.kind === "phone" ? { type: intent.type, redacted: true } : intent;
@@ -303,7 +323,7 @@ export class CallSession {
 
   private questionText(c: Criterion): string {
     const proxy = this.record.respondent === "proxy";
-    return (proxy ? c.questionProxy : c.question)[this.o.lang];
+    return (proxy ? c.questionProxy : c.question)[this.curLang];
   }
 
   private askQuestion(idx: number, before: AgentLine[] = [], opts: { returnToReview?: boolean; slow?: boolean } = {}): Turn {
@@ -366,7 +386,7 @@ export class CallSession {
 
   private altsFor(c: Criterion): string[] {
     // Alternate phrasings are written in "you" form; caregivers hear the proxy question instead.
-    return this.record.respondent === "proxy" ? [] : c.altPhrasings[this.o.lang];
+    return this.record.respondent === "proxy" ? [] : c.altPhrasings[this.curLang];
   }
 
   private clarify(c: Criterion, ph: Extract<Phase, { p: "question" }>, term?: string): Turn {
@@ -384,7 +404,7 @@ export class CallSession {
         this.o.script.glossary.find((g) => qLower.includes(g.term.toLowerCase().split(" (")[0]));
       if (entry) {
         this.phase = { ...ph, glossaryUsed: true };
-        return this.turn([this.speak(entry.plainDefinition[this.o.lang], "glossary"), this.speak(q, "question")]);
+        return this.turn([this.speak(entry.plainDefinition[this.curLang], "glossary"), this.speak(q, "question")]);
       }
     }
     return this.turn([this.say("clarifyFallback", "fixed:clarify_fallback")]);
@@ -422,8 +442,8 @@ export class CallSession {
   }
 
   private readBackText(c: Criterion, value: AnswerValue): string {
-    const tpl = (this.record.respondent === "proxy" ? c.readBackTextProxy : c.readBackText)[this.o.lang];
-    return tpl.replace(/\{answer\}/g, formatValue(value, this.o.lang));
+    const tpl = (this.record.respondent === "proxy" ? c.readBackTextProxy : c.readBackText)[this.curLang];
+    return tpl.replace(/\{answer\}/g, formatValue(value, this.curLang));
   }
 
   private async onReadBack(text: string, ph: Extract<Phase, { p: "readback" }>): Promise<Turn> {
@@ -495,7 +515,7 @@ export class CallSession {
     const started = this.now();
     let timing: Awaited<ReturnType<Interpreter["redFlagTiming"]>> = "unclear";
     try {
-      timing = await this.o.interpreter.redFlagTiming(text, hit, this.o.lang);
+      timing = await this.o.interpreter.redFlagTiming(text, hit, this.curLang);
     } catch {
       timing = "unclear";
     }
@@ -589,7 +609,10 @@ export class CallSession {
   }
 
   private closeWithDecision(before: AgentLine[]): Turn {
-    const key: LineKey = this.record.decision === "LIKELY_ELIGIBLE" ? "closeLikely" : "closeReview";
+    const site = this.record.nearestSite;
+    if (site) this.ctx.site = site.facility;
+    const likely = this.record.decision === "LIKELY_ELIGIBLE";
+    const key: LineKey = site ? (likely ? "closeLikelySite" : "closeReviewSite") : likely ? "closeLikely" : "closeReview";
     return this.end("completed", [...before, this.say(key, "close"), this.say("goodbye", "close")]);
   }
 
@@ -613,9 +636,10 @@ export class CallSession {
 
   private async onContactName(text: string, ph: Extract<Phase, { p: "contact_name" }>): Promise<Turn> {
     const i = await this.interpret(text, { kind: "free_text" });
-    if (i.type === "answer" && typeof i.value === "string" && i.value.trim()) {
+    // A name has no digits; a number said here was meant for the next step.
+    if (i.type === "answer" && typeof i.value === "string" && i.value.trim() && !/\d/.test(i.value)) {
       this.phase = { p: "contact_name_confirm", name: i.value.trim(), tries: ph.tries };
-      return this.turn([this.speak(this.o.lang === "es" ? `Anoté ${i.value.trim()}. ¿Es correcto?` : `I have ${i.value.trim()}. Is that right?`, "contact", false, "[NAME read-back]")]);
+      return this.turn([this.confirmLine("confirmName", i.value.trim(), "[NAME read-back]")]);
     }
     if (i.type === "stop") return this.noContact("contactDeclined");
     if (ph.tries >= 1) {
@@ -650,8 +674,7 @@ export class CallSession {
     const parsed = parsePhone(text);
     if (!parsed || !parsed.valid) return this.phoneRetry(ph.tries);
     this.phase = { p: "contact_phone_confirm", digits: parsed.digits, tries: ph.tries };
-    const prefix = this.o.lang === "es" ? "Anoté" : "I have";
-    return this.turn([this.speak(`${prefix} ${phoneReadBack(parsed.digits, this.o.lang)}. ${this.o.lang === "es" ? "¿Es correcto?" : "Is that right?"}`, "contact", false, "[PHONE read-back]")]);
+    return this.turn([this.confirmLine("confirmPhone", phoneReadBack(parsed.digits, this.curLang), "[PHONE read-back]")]);
   }
 
   private async onContactPhoneConfirm(text: string, ph: Extract<Phase, { p: "contact_phone_confirm" }>): Promise<Turn> {
@@ -673,6 +696,7 @@ export class CallSession {
 
   private async onVoicemail(text: string, ph: Extract<Phase, { p: "contact_voicemail" }>): Promise<Turn> {
     const i = await this.yesNo(text);
+    if (i.type === "answer" && typeof i.value === "boolean") this.prefs.voicemailOk = i.value;
     if (i.type !== "answer" && ph.tries < 1 && i.type !== "unsure") {
       this.phase = { p: "contact_voicemail", tries: ph.tries + 1 };
       return this.turn([this.say("voicemail", "contact")]);
@@ -682,15 +706,73 @@ export class CallSession {
   }
 
   private async onBestTime(text: string): Promise<Turn> {
-    await this.interpret(text, { kind: "time_of_day" });
-    // Track A demo: contact details are discarded, never stored (G11 §8).
+    const i = await this.interpret(text, { kind: "time_of_day" });
+    if (i.type === "answer" && typeof i.value === "string") this.prefs.bestTime = i.value as TimeOfDay;
+    // Track A demo: name and number are discarded, never stored (G11 §8).
+    // Preferences that don't identify anyone are kept for the coordinator.
     this.record.contact = "demo_discarded";
+    this.record.contactPrefs = { voicemailOk: this.prefs.voicemailOk, bestTime: this.prefs.bestTime, language: this.curLang };
     this.contactDraft = {};
     this.tool("contact_captured", { stored: false }, "demo: discarded", 0);
+    if (!this.o.findSite) return this.closeWithDecision([]);
+    this.phase = { p: "contact_zip", tries: 0 };
+    return this.turn([this.say("askZip", "contact")]);
+  }
+
+  private async onZip(text: string, ph: Extract<Phase, { p: "contact_zip" }>): Promise<Turn> {
+    const meta = await this.interpret(text, { kind: "phone" });
+    const skip = meta.type === "unsure" || meta.type === "stop" || /\b(skip|omitir|no se|no sé|pass)\b/i.test(text);
+    const digits = parsePhone(text)?.digits ?? "";
+    if (!skip && digits.length === 5 && this.o.findSite) {
+      const started = this.now();
+      let site: SiteMatch | null = null;
+      try {
+        site = await this.o.findSite(digits);
+      } catch {
+        site = null;
+      }
+      this.tool("nearest_site", { zip: "[redacted]" }, site ? { facility: site.facility, miles: site.miles } : null, this.now() - started);
+      if (site) this.record.nearestSite = site;
+      return this.closeWithDecision([]);
+    }
+    if (!skip && ph.tries < 1) {
+      this.phase = { p: "contact_zip", tries: ph.tries + 1 };
+      return this.turn([this.say("zipRetry", "contact")]);
+    }
     return this.closeWithDecision([]);
   }
 
   // --- helpers -----------------------------------------------------------------
+
+  /** Re-render the current prompt (used after a language switch). */
+  private promptForPhase(): AgentLine[] {
+    const ph = this.phase;
+    const proxy = this.record.respondent === "proxy";
+    switch (ph.p) {
+      case "consent": return [this.say("disclosure", "disclosure")];
+      case "who_for_pediatric": return [this.say("whoForPediatric", "who_for")];
+      case "who_for": return [this.say("whoFor", "who_for")];
+      case "relationship": return [this.say("relationship", "relationship")];
+      case "question": {
+        const c = this.asked[ph.idx];
+        return [this.speak(this.questionText(c), "question")];
+      }
+      case "readback": return [this.speak(this.readBackText(this.asked[ph.idx], ph.value), "readback")];
+      case "switch_confirm": return [this.say("switchConfirm", "switch_confirm")];
+      case "red_flag_check": return [this.say(proxy ? "happeningNowProxy" : "happeningNow", "red_flag_check")];
+      case "review": return [this.say("reviewAsk", "review")];
+      case "review_pick": return [this.say("reviewWhich", "review_pick")];
+      case "contact_optin": return [this.say(proxy ? "contactAskProxy" : "contactAsk", "contact")];
+      case "contact_name": return [this.say("askName", "contact")];
+      case "contact_name_confirm": return [this.confirmLine("confirmName", ph.name, "[NAME read-back]")];
+      case "contact_phone": return [this.say("askPhone", "contact")];
+      case "contact_phone_confirm": return [this.confirmLine("confirmPhone", phoneReadBack(ph.digits, this.curLang), "[PHONE read-back]")];
+      case "contact_voicemail": return [this.say("voicemail", "contact")];
+      case "contact_time": return [this.say("bestTime", "contact")];
+      case "contact_zip": return [this.say("askZip", "contact")];
+      case "ended": return [];
+    }
+  }
 
   private answeredCount() {
     return new Set(this.record.answers.filter((a) => !a.supersededBy).map((a) => a.criterionId)).size;
@@ -741,21 +823,29 @@ export class CallSession {
   }
 
   private say(key: LineKey, kind: string): AgentLine {
-    return { text: line(key, this.o.lang, this.ctx), lang: this.o.lang, kind };
+    return { text: line(key, this.curLang, this.ctx), lang: this.curLang, kind };
   }
 
   private speak(text: string, kind: string, slow = false, redacted?: string): AgentLine & { redacted?: string } {
-    return { text, lang: this.o.lang, kind, slow, ...(redacted ? { redacted } : {}) };
+    return { text, lang: this.curLang, kind, slow, ...(redacted ? { redacted } : {}) };
   }
 
   private logAgent(l: AgentLine & { redacted?: string }) {
     this.log({ role: "agent", text: l.redacted ?? l.text, lang: l.lang, t: this.elapsed(), kind: l.kind });
   }
 
+  /** A contact read-back from the approved lines; stored redacted. */
+  private confirmLine(key: "confirmName" | "confirmPhone", value: string, redacted: string) {
+    return this.speak(line(key, this.curLang, { ...this.ctx, value }), "contact", false, redacted);
+  }
+
   private redactCaller(text: string): string {
     const p = this.phase.p;
-    if (p === "contact_name" || p === "contact_name_confirm") return p === "contact_name" ? "[NAME]" : text;
-    if (p === "contact_phone" || p === "contact_phone_confirm")
+    if (p === "contact_name") return "[NAME]";
+    // A plain yes/no is kept; anything else may be a corrected name (G11 §8).
+    if (p === "contact_name_confirm")
+      return /^\s*(yes|yeah|yep|no|nope|correct|right|that'?s right|s[ií]|correcto|as[ií] es)[\s.!,]*$/i.test(text) ? text : "[NAME]";
+    if (p === "contact_phone" || p === "contact_phone_confirm" || p === "contact_zip")
       return text.replace(/\d/g, "#").replace(/\b(zero|one|two|three|four|five|six|seven|eight|nine|oh|double|triple|cero|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)\b/gi, "#");
     return text;
   }

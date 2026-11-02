@@ -112,5 +112,7 @@ export type CallRecord = {
   rows?: { criterionId: string; result: RowResult }[];
   redFlag?: { category: RedFlagCategory; utterance: string };
   contact?: "demo_discarded" | "no_contact"; // Track A never stores real contact details (G11 §8)
+  contactPrefs?: { voicemailOk: boolean | null; bestTime: TimeOfDay | null; language: Lang }; // non-identifying
+  nearestSite?: { facility: string; city: string; state: string; phone?: string; miles?: number };
   demo: true;
 };

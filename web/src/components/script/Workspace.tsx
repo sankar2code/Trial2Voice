@@ -54,7 +54,7 @@ function useAutosave(script: ScriptVersion | null) {
 
 export function Workspace({ nctId }: { nctId: string }) {
   const settings = useSettings();
-  const trial = useLiveQuery(() => db().trials.get(nctId), [nctId]);
+  const trial = useLiveQuery(async () => (await db().trials.get(nctId)) ?? null, [nctId]);
   const versions = useLiveQuery(async () => (await db().scripts.where("nctId").equals(nctId).toArray()).sort((a, b) => b.version - a.version), [nctId]);
 
   const [selectedId, setSelectedId] = useState<string | null>(null);

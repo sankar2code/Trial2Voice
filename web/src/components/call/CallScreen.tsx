@@ -5,6 +5,9 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { Badge, Button, Card, Input, cx } from "@/components/ui";
 import { db } from "@/lib/store/db";
 import { activeLocked, saveCall } from "@/lib/store/repo";
+import { completeCall, runLlmJudge } from "@/lib/store/referrals";
+import { nearestSiteForZip } from "@/lib/sites";
+import type { ScriptVersion } from "@/lib/types";
 import { CallSession, type AgentLine, type Turn } from "@/lib/call/session";
 import { keywordInterpreter } from "@/lib/call/parse";
 import { LlmInterpreter } from "@/lib/call/llmInterpreter";
@@ -32,7 +35,7 @@ const SAMPLE = {
 };
 
 export function CallScreen({ nctId, embedded = false }: { nctId: string; embedded?: boolean }) {
-  const trial = useLiveQuery(() => db().trials.get(nctId), [nctId]);
+  const trial = useLiveQuery(async () => (await db().trials.get(nctId)) ?? null, [nctId]);
   const versions = useLiveQuery(() => db().scripts.where("nctId").equals(nctId).toArray(), [nctId]);
 
   const [lang, setLang] = useState<Lang>("en");
@@ -53,6 +56,7 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
   const settings = useSettings();
 
   const session = useRef<CallSession | null>(null);
+  const scriptRef = useRef<ScriptVersion | null>(null);
   const stopListening = useRef<() => void>(() => {});
   const busy = useRef(false);
   const keyCounter = useRef(0);
@@ -105,7 +109,10 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
     setStatus("ended");
     setResult(structuredClone(s.record));
     try {
-      await saveCall(s.record);
+      const referral = scriptRef.current ? await completeCall(s.record, scriptRef.current) : (await saveCall(s.record), null);
+      const key = getSettings().apiKey;
+      // Optional Claude review of the call (PRD §7 post-call judge); runs in the background.
+      if (referral && key) void runLlmJudge(referral.id, key);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Couldn't save the call record.");
     }
@@ -238,7 +245,11 @@ export function CallScreen({ nctId, embedded = false }: { nctId: string; embedde
     const settings = getSettings();
     const interpreter = settings.apiKey && settings.useLlmInCalls ? new LlmInterpreter(settings.apiKey, settings.callModel) : keywordInterpreter;
     try {
-      session.current = new CallSession({ trial, script, interpreter, fallback: keywordInterpreter, lang, mode: voice ? "voice" : "text" });
+      scriptRef.current = script;
+      session.current = new CallSession({
+        trial, script, interpreter, fallback: keywordInterpreter, lang, mode: voice ? "voice" : "text",
+        findSite: (zip) => nearestSiteForZip(trial, zip),
+      });
     } catch (e) {
       return setError(e instanceof Error ? e.message : "Couldn't start the call.");
     }
@@ -436,7 +447,8 @@ function DemoResult({ call, script, onRestart, embedded }: { call: CallRecord; s
       )}
       <div className="flex gap-2">
         <Button size="sm" onClick={onRestart}>New call</Button>
-        {!embedded && <Link href={`/admin/trials/${call.nctId}/script`} className="text-sm text-accent underline self-center">Back to the script</Link>}
+        {!embedded && (call.status === "completed" || call.status === "red_flag") && <Link href={`/coordinator/referrals/${call.id}`} className="text-sm text-accent underline self-center">Open in the coordinator queue</Link>}
+        {!embedded && <Link href={`/coordinator/calls/${call.id}`} className="text-sm text-accent underline self-center">Call console</Link>}
       </div>
     </Card>
   );

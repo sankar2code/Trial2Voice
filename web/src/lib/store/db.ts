@@ -3,12 +3,14 @@
 import Dexie, { type EntityTable } from "dexie";
 import type { AuditEvent, ScriptVersion, Trial } from "../types";
 import type { CallRecord } from "../call/types";
+import type { Referral } from "./referrals";
 
 export class Trial2VoiceDB extends Dexie {
   trials!: EntityTable<Trial, "nctId">;
   scripts!: EntityTable<ScriptVersion, "id">;
   audit!: EntityTable<AuditEvent, "seq">;
   calls!: EntityTable<CallRecord, "id">;
+  referrals!: EntityTable<Referral, "id">;
 
   constructor(name = "trial2voice") {
     super(name);
@@ -19,6 +21,9 @@ export class Trial2VoiceDB extends Dexie {
     });
     this.version(2).stores({
       calls: "id, nctId, startedAt, status",
+    });
+    this.version(3).stores({
+      referrals: "id, nctId, createdAt",
     });
   }
 }

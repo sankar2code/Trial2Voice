@@ -86,7 +86,16 @@ export type DecisionResult = {
 export function decide(script: { criteria: Criterion[]; groups: CriterionGroup[]; confidenceThreshold: number }, answers: Answer[]): DecisionResult {
   const current = currentAnswers(answers);
   const rows = script.criteria.map((c) => ({ criterionId: c.id, result: criterionResult(c, current.get(c.id), script.confidenceThreshold) }));
+  return decideFromRows(rows, script.groups);
+}
+
+/**
+ * Same decision rules applied to per-criterion results directly. Used when a
+ * coordinator overrides a row: the outcome is recomputed, never hand-set.
+ */
+export function decideFromRows(rows: { criterionId: string; result: RowResult }[], groupsDef: CriterionGroup[]): DecisionResult {
   const byId = new Map(rows.map((r) => [r.criterionId, r.result]));
+  const script = { groups: groupsDef };
 
   const grouped = new Set(script.groups.flatMap((g) => g.criterionIds));
   const groups = script.groups.map((g) => ({ groupId: g.id, result: groupResult(g.criterionIds.map((id) => byId.get(id) ?? "UNSURE")) }));

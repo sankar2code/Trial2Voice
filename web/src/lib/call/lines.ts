@@ -3,7 +3,7 @@
 // hears it. The agent never says "eligible" and never gives medical advice.
 import type { Lang } from "./types";
 
-type Ctx = { shortName: string; questions: number; minutes: number; sitePhone: string; days: number };
+type Ctx = { shortName: string; questions: number; minutes: number; sitePhone: string; days: number; site?: string; value?: string };
 type Line = (c: Ctx) => string;
 type L = { en: Line; es: Line };
 const t = (en: string | Line, es: string | Line): L => ({
@@ -73,6 +73,14 @@ export const LINES = {
     (c) => `Based on your answers, you may be a fit. The study team will contact you within ${c.days} business days to confirm.`,
     (c) => `Según sus respuestas, el estudio podría ser para usted. El equipo del estudio se comunicará con usted en ${c.days} días hábiles para confirmarlo.`,
   ),
+  closeLikelySite: t(
+    (c) => `Based on your answers, you may be a fit. The study team at ${c.site} will contact you within ${c.days} business days to confirm.`,
+    (c) => `Según sus respuestas, el estudio podría ser para usted. El equipo del estudio en ${c.site} se comunicará con usted en ${c.days} días hábiles para confirmarlo.`,
+  ),
+  closeReviewSite: t(
+    (c) => `Thank you. A few answers need the study team to check. The team at ${c.site} will contact you within ${c.days} business days.`,
+    (c) => `Gracias. Algunas respuestas las tiene que revisar el equipo del estudio. El equipo en ${c.site} se comunicará con usted en ${c.days} días hábiles.`,
+  ),
   closeReview: t(
     (c) => `Thank you. A few answers need the study team to check. They'll contact you within ${c.days} business days.`,
     (c) => `Gracias. Algunas respuestas las tiene que revisar el equipo del estudio. Se comunicarán con usted en ${c.days} días hábiles.`,
@@ -94,11 +102,19 @@ export const LINES = {
   ),
   contactDeclined: t((c) => `That's fine. You can contact the study team at ${c.sitePhone}.`, (c) => `Está bien. Puede comunicarse con el equipo del estudio al ${c.sitePhone}.`),
   askName: t("What's your first name?", "¿Cuál es su nombre?"),
+  // Contact read-backs (G11). `value` is the name or the digits spoken one by one; stored redacted.
+  confirmName: t((c) => `I have ${c.value}. Is that right?`, (c) => `Anoté ${c.value}. ¿Es correcto?`),
+  confirmPhone: t((c) => `I have ${c.value}. Is that right?`, (c) => `Anoté ${c.value}. ¿Es correcto?`),
   askPhone: t("What's the best phone number to reach you?", "¿Cuál es el mejor número de teléfono para comunicarnos con usted?"),
   phoneShort: t("I got fewer digits than I expected. Could you say the full number again?", "Recibí menos dígitos de los que esperaba. ¿Me puede decir el número completo otra vez?"),
   phoneType: t("You can also type it in the box on your screen.", "También puede escribirlo en el cuadro de su pantalla."),
   phoneGiveUp: t((c) => `Sorry, I couldn't get the number. You can contact the study team at ${c.sitePhone}.`, (c) => `Perdón, no pude anotar el número. Puede comunicarse con el equipo del estudio al ${c.sitePhone}.`),
   voicemail: t("If we miss you, is it OK to leave a message that mentions this study?", "Si no le encontramos, ¿podemos dejarle un mensaje que mencione este estudio?"),
+  askZip: t(
+    "Last one: what's your ZIP code? It helps us find the study site closest to you. You can also say skip.",
+    "Una última pregunta: ¿cuál es su código postal? Nos ayuda a encontrar el centro del estudio más cercano. También puede decir omitir.",
+  ),
+  zipRetry: t("Sorry, I need the five-digit ZIP code, or you can say skip.", "Perdón, necesito el código postal de cinco dígitos, o puede decir omitir."),
   bestTime: t("What's the best time to call: morning, afternoon, or evening?", "¿Cuál es la mejor hora para llamarle: en la mañana, la tarde o la noche?"),
 
   // G9 red flags — stop the screener.

@@ -35,4 +35,14 @@ Open a locked trial and click **Start a test call** (or go to `/call/<NCT ID>`).
 - **Privacy**: no transcript is kept without consent or for under-18 callers. Contact details are read back but never stored, and the name and phone digits are redacted in the saved transcript.
 - **Tests**: 30 end-to-end call scenarios in `session.test.ts`, alongside the parser, red-flag, phone and engine tests. 502 tests in total.
 
+## Phase 3 — Referral, coordinator, quality (done)
+
+- **Referral queue** (`/coordinator`): tabs for To review, Held for quality review, Not a match (for sampling missed eligible callers), Red flags, Follow-up and Closed.
+- **Referral page** (`/coordinator/referrals/<id>`): every answer traced to its question, the caller's words and the result. The header reads like "14 of 14 asked criteria passed · 35 to confirm at site". It also shows the nearest site, the demo contact line, voicemail and best-time preferences, and the caregiver-permission banner. Coordinators can accept, or reject with a reason. They can override any answer, and the outcome is re-scored by the same engine, or override the status itself with a reason. Contact attempts are logged, with "unreachable" after 3, and a voicemail is blocked if the caller said no. Every action goes into the audit log. The page is printable.
+- **Call console** (`/coordinator/calls/<id>`): the transcript with timestamps, every agent step with its timing, latency figures for understanding answers, and flagged turns highlighted.
+- **Post-call judge** (`src/lib/quality/judge.ts`): rule checks always run. They flag any agent line not found in the approved script, a missing disclosure, any mention of "eligible", questions asked before consent, a screen-out without a confirmed read-back, and "you" wording on caregiver calls. With an API key, Claude Sonnet 5.5 also reviews for advice and off-script claims. Flagged calls are held until a person releases them.
+- **English ↔ Spanish** switching turn by turn (`src/lib/call/language.ts`), keeping the current question.
+- **Nearest site** from the caller's ZIP code (`src/lib/sites.ts`). The closing line names the site, and the ZIP itself is never stored.
+- **Embeddable widget**: `<script src="/embed.js" data-trial="NCT…">` adds an iframe pointing at `/embed/<NCT ID>`. The test page is `/embed-test.html`.
+
 Data lives in this browser's IndexedDB. Track B swaps `src/lib/store` for Postgres behind API routes.
